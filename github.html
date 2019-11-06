@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Codeup</title>
+    <style>
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        img {
+            display:inline;
+            float:left;
+            clear:left;
+            padding: 5px;
+        }
+
+        table {
+            border: lightgray;
+        }
+
+        th {
+            background-color: darkgrey;
+            text-align: left;
+            padding-bottom: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        td:first-child { text-align: left;
+            padding-right: 1000px;
+        }
+
+        li {
+            display: inline;
+            padding: 10px;
+        } /*horizontal navigation bar*/
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        } /*use unordered list for navigation bar, style none gets rid of bullets and makes horizontal*/
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul id=#navtop> <!--top nav bar-->
+            <img src=img/placeholder-38.svg>
+            <li><a href="pull-requests.asp">Pull Requests</a></li>
+            <li><a href="issues.asp">Issues</a></li>
+            <li><a href="marketplace.asp">Marketplace</a></li>
+            <li><a href="explore.asp">Explore</a></li>
+        </ul>
+    </nav>
+
+    <span>
+        <img src=img/placeholder-38.svg>
+        <h2>Codeup</h2>
+    </span>
+
+    <ul id=#menutabs> <!--tabs-->
+        <li><a href="repository.asp">Repository</a></li>
+        <li><a href="people.asp">People</a></li>
+        <li><a href="teams.asp">Teams</a></li>
+        <li><a href="projects.asp">Projects</a></li>
+        <li><a href="settings.asp">Settings</a></li>
+    </ul>
+
+    <table border=1>
+        <tr>
+            <th>Codeup's Dev Team</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><img src=img/placeholder-48.svg style="clear:left;">Kent Beck</td>
+            <td>Member</td>
+            <td>1 team</td>
+        </tr>
+        <tr>
+            <td><img src=img/placeholder-48.svg style="clear:left;">Codeup Instruction Staff</td>
+            <td>Member</td>
+            <td>1 team</td>
+        </tr>
+        <tr>
+            <td><img src=img/placeholder-48.svg style="clear:left;">Martin Fowler</td>
+            <td>Member</td>
+            <td>0 teams</td>
+        </tr>
+    </table>
+</body>
+</html>
