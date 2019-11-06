@@ -10,7 +10,9 @@
     <hr> <!-- horizontal rule, void element; line span width of page by default-->
     <h2>Thought for the Day</h2>
     <img src="https://static.parade.com/wp-content/uploads/2018/03/dachsund-puppy-national-geographic-ftr.jpg"> <!-- void element; You should NOT use websites as img sources, steals bandwidth; img tags important for Accessibility users-->
-    <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> <!--emphasizes, not according to style guide. Default is bold.--> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Justo eget magna fermentum iaculis eu non diam phasellus. Eget aliquet nibh praesent tristique." -<a href="https://en.wikipedia.org/wiki/Plato">Probably Plato</a> </p>
+    <blockquote>
+        "Lorem ipsum dolor sit amet, <strong>consectetur</strong> <!--emphasizes, not according to style guide. Default is bold.--> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Justo eget magna fermentum iaculis eu non diam phasellus. Eget aliquet nibh praesent tristique." -<a href="https://en.wikipedia.org/wiki/Plato">Probably Plato</a><!--anchor tags = inline element-->
+    </blockquote> <!--Quotes are block level elements-->
 
     <h2>Mindset</h2>
         <ol>
@@ -23,8 +25,8 @@
         </ol>
 
     <h2>Expectations</h2>
-    <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </li>
+    <ul> <!--list declaration = block level elements-->
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </li><!--list items  = inline elements-->
         <li>Justo eget magna fermentum iaculis eu non diam phasellus.</li>
         <li>Eget aliquet nibh praesent tristique.</li>
     </ul>
@@ -54,5 +56,40 @@
                 </ul>
             </li>
         </ol>
+
+    <h2>Snacks</h2>
+        <table> <!--only for data, not for style; six table row elements = one header + five data points-->
+            <tr> <!--collection of rows-->
+                <th>Number</th> <!--table header, first line (row) of table to define columns-->
+                <th>Name</th>
+                <th>Flavor</th>
+            </tr>
+            <tr>
+                <td>1</td> <!--table data (details), go below previous row-->
+                <td>Cheetos</td>
+                <td>Hot</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Cheetos</td>
+                <td>Lime</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Snickers</td>
+                <td>Creamy Almond</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Candy Corn</td>
+                <td>Fall Flavors</td>
+            <tr>
+                <td>5</td>
+                <td>Corn Nuts</td>
+                <td>Spicy</td>
+            </tr>
+            </tr>
+        </table>
+
 </body>
 </html>
