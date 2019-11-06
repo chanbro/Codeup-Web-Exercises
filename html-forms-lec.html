@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>HTML FORMS</title>
+</head>
+<body>
+	<h1>Welcome to HTML Forms, Europa!</h1>
+
+	<h4>Keyboard shortcut for a comment  -> command /</h4>
+
+	<hr>
+<!--
+
+Personal Notes
+
+BIG BIG NOTE: comment = command + / on line
+			  shift + option + arrow = move line up or down
+			  duplicate = command + d
+			  element*n + tab, where n = number; executes same command on n lines
+
+ Default method = Get: Ping server to return information; does not change server data
+ Data added to end of URL as query string: https://.......?key1=valuepair1&key2=valuepair2...
+ Post not added to URL; data embedded in body of request
+ Action defines where data gets sent; default = data sent back to current URL
+ Submit- <button type="submit">Submit</button> style flexibility; <input type="submit" value="button name"> void
+ Disable = non-interactive but present (greyed out can't be selected); similar to checked attribute (auto-selected)
+ Hidden will not show in browser, hidden to user; send information from for to application ex. unique user id; dynamic changes thru JS or JQuery
+ Nested label
+ -->
+	<!-- TODO TOGETHER: Go to hookbin.com and click "create new endpoint". Copy and paste the new endpoint url in the action attribute of the form below
+	Done; use to experiment with get/post requests-->
+
+
+
+	<!--********************************
+	  	Structure , Method, Action
+	******************************** !-->
+
+	<!-- TODO TOGETHER: Review the following form - focus on the structure, method, and action	-->
+<!--	<form method="POST" action="https://hookb.in/NOQDPR3g03UEaowKmz8j"> &lt;!&ndash; will not see query in URL because post&ndash;&gt;-->
+
+<!--		<label for="username">Username</label>-->
+<!--		<input id="username" name="username" type="text">-->
+<!--		<br>-->
+
+<!--		<label for="password">Password</label>-->
+<!--		<input id="password" name="password" type="password">-->
+<!--		<br>-->
+
+<!--		<input type="submit">-->
+<!--	</form>-->
+
+
+	<!-- TODO: Practice submitting different values from the form. View the results on your hookbin dashboard.	-->
+
+
+
+
+
+
+
+<!--	TODO TOGETHER: Build a form, using a GET request, with an input to enter and submit a zipcode	-->
+<!--	<form method="POST" action="https://hookb.in/NOQDPR3g03UEaowKmz8j"> &lt;!&ndash; will see query in URL because get-->
+
+<!--		<label for="zipcode-input">Zip Code</label>-->
+<!--		<input id="zipcode-input" name="zipcode" type="text" placeholder="Enter Zip Code">-->
+<!--		<button type="submit">Search</button>-->
+<!--	</form>-->
+
+	<!-- TODO TOGETHER: What is the main difference we notice with a GET request vs POST request? *HINT - Check URL	-->
+<!--	Data added to end of URL as query string: https://.......?key1=valuepair1&key2=valuepair2...-->
+<!--	Post not added to URL; data embedded in body of request-->
+
+
+
+
+
+	<!-- TODO: Practice submitting different zip codes and view the request in hookbin	-->
+	<!-- TODO: Change the placeholder value in the form. What do you notice?	-->
+<!--	Changes grayed out text in background of search bar-->
+
+	<!--********************************
+		  		QUERY STRINGS
+	******************************** !-->
+
+	<!-- TODO TOGETHER: Review the zipcode form and determine what the query string is	-->
+<!--query string: ?zipcode=78205-->
+
+
+	<!--**************************************
+		TODO TOGETHER- Review the following:
+			Review an input with type=submit
+			Review a text input element
+			Review a text area
+			Review checkbox and radio elements
+			Review select elements
+			Review hidden inputs
+	************************************ !-->
+		<form method="GET" action="https://hookb.in/NOQDPR3g03UEaowKmz8j">
+			<label for="screen-name-input">Screen Name</label>
+			<input id="screen-name-input" name="screen-name" type="text" placeholder="Enter Screen Name">
+
+			<br>
+
+			<label for="">Email</label>
+			<input type="email" id="email-input" name="email" placeholder="Enter email body here">
+
+			<br>
+
+			<textarea name="comment" id="comment-input" cols="30" rows="10"></textarea>
+
+			<br>
+
+			<select name="coffee-choice" id="coffee-input">
+				<option value="light">Light Roast</option>
+				<option value="medium">Medium Roast</option>
+				<option value="dark">Dark Roast</option>
+			</select>
+
+			<br>
+
+		<h2>What kind of phone do you own? (Un-nested Code- Radio</h2>
+			<label for="android">Android</label>
+			<input type="radio" id="android" value="android" name="phone">
+			<label for="iOS">iOS</label>
+			<input type="radio" id="iOS" value="iOS" name="phone">
+			<label for="windows">Windows</label>
+			<input type="radio" id="windows" value="windows" name="phone">
+			<label for="other">Other</label>
+			<input type="radio" id="other" value="other" name="phone">
+
+			<br>
+
+			<h2>What kind of phone do you own?(Nested Code- Checked)</h2>
+			<label for="android">
+				Android <input type="checkbox" id="android" value="android" name="phone">
+			</label>
+			<label for="iOS">
+				iOS <input type="checkbox" id="iOS" value="iOS" name="phone">
+			</label>
+			<label for="windows">
+				Windows <input type="checkbox" id="windows" value="windows" name="phone">
+			</label>
+
+			<label for="other">
+				Other <input type="checkbox" id="other" value="other" name="phone">
+			</label>
+
+
+			<br><br>
+
+			<label for="newsletter-input">Sign up for our newsletter!</label>
+			<input type="checkbox" name="newsletter" id="newsletter-input" checked>
+
+			<br>
+
+			<input type="hidden" name="user-id" value="335"> <!--will not show in browser, hidden to user;
+			send information from for to application ex. unique user id; dynamic changes thru JS or JQuery-->
+
+			<button type="submit">Submit</button>
+		</form>
+
+
+        <!--************************************************************
+            TODO: Answer the following about the form listed below:
+                1. What key-value pair will be submitted?
+                2. Where will this form be submitted to?
+                3. What type of request will be made?
+                4. What would happen if we submitted this form using the POST method
+                5. What happens if a user fills out this input in the form
+        ************************************************************ !-->
+
+<!--<form method="POST">-->
+<!--<input name="the_answer" value="42">-->
+<!--<input type="submit">-->
+<!--</form>-->
+
+		<!-- 1. ?the_answer=42
+		2. to itself (current page)
+		3. Get
+		4. Page refresh, nowhere to post to
+		5. Page refresh, reset to stored value 42-->
+
+
+
+	<!--********************************
+				DISABLED
+	******************************** !-->
+	<!-- TODO TOGETHER: Review the disabled attribute	-->
+	<!--	<input type="text" name="username" value="codeup" disabled>-->
+
+	<!--	<select name="newsletter_signup">-->
+	<!--		<option disabled value="n">No</option>-->
+	<!--		<option selected value="y">Yes</option>-->
+	<!--	</select>-->
+
+
+
+	<!-- TODO: What happens when a user tries to enter text into the first input?	-->
+	<!-- TODO: What happens when a user tries to select the "no" option in the select	-->
+
+
+	<!--********************************
+				LABELS
+	******************************** !-->
+	<!-- TODO TOGETHER: Review label elements	-->
+
+
+
+
+
+
+<!--
+	TODO: Create a series of labels and checkbox inputs for the following question:
+		What kind of phone do you own? (as an <h2> element)
+		- Android
+		- iOS
+		- Windows
+		- Other
+ -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>
