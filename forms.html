@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register with Us</title>
+</head>
+<body>
+
+<!--What do you notice when changing the form's request method from GET to POST?
+    All answers appear in URL-->
+<!--What happens if you leave off the name attribute on an input?-->
+<!--What happens if you leave off the id attribute on a form input?-->
+
+<form method="POST" action="https://www.elformo.com/forms/500800d5-f426-42db-ba2c-953bc4b80df9">
+
+    <h1>Register With Us</h1>
+
+    <label for="email-input">
+        Email <input type="email" id="email-input" name="email" placeholder="Enter email address">
+    </label>
+
+    <br>
+
+    <label for="password-input">
+        Password <input type="password" id="password-input" name="password" placeholder="Enter password">
+    </label>
+
+    <br>
+
+    <textarea name="bio" id="bio-input" cols="30" rows="10" placeholder="Tell us about yourself."></textarea>
+
+    <br>
+
+    <h3>How did you hear about us?</h3>
+        <label for="billboard-input">
+            Billboard <input type="checkbox" id="billboard-input" value="billboard" name="referral">
+        </label>
+        <label for="radio-ad-input">
+            Radio Advertisement <input type="checkbox" id="radio-ad-input-input" value="radio-ad" name="referral">
+        </label>
+        <label for="internet-input">
+            Internet Advertisement <input type="checkbox" id="internet-input" value="internet" name="referral">
+        </label>
+        <label for="other-input">
+            Other <input type="checkbox" id="other-input-input" value="other" name="referral">
+        </label>
+        <!--What happens if the inputs are given different name attributes?
+            Not grouped together as one question; will group as 2+ options-->
+
+    <h3>What web browser are you using?</h3>
+        <select name="browser-choice" id="browser-input">
+            <option value="chrome">Google Chrome</option>
+            <option value="safari">Safari</option>
+            <option value="firefox">Mozilla Firefox</option>
+            <option value="explorer">Internet Explorer</option>
+            <option value="other">Other</option>
+        </select>
+
+    <br>
+
+
+
+    <br>
+
+    <button type="submit">Submit</button>
+
+
+
+
+</form>
+
+</body>
+</html>
