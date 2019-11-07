@@ -28,9 +28,16 @@ BIG BIG NOTE: comment = command + / on line
  Post not added to URL; data embedded in body of request
  Action defines where data gets sent; default = data sent back to current URL
  Submit- <button type="submit">Submit</button> style flexibility; <input type="submit" value="button name"> void
- Disable = non-interactive but present (greyed out can't be selected); similar to checked attribute (auto-selected)
+ Disable = non-interactive but present (greyed out on page/can't be selected); similar to checked attribute (auto-selected)
  Hidden will not show in browser, hidden to user; send information from for to application ex. unique user id; dynamic changes thru JS or JQuery
- Nested label
+
+ ATTRIBUTES (HTML key-value pairs use = and CSS use : with pairs separated by ; )
+ ***IN CSS, STYLING PRIORITY WILL GO IN THE FOLLOWING ORDER (SPECIFICITY):***
+ id (selector # in CSS) identifies one element on page (unique); tags elements as reference point in stylizing, forms, etc.
+ class (selector . in CSS) categorizes elements (groups)
+ element (<html> <body> #id .class etc.) tells browser how to display content
+ inherited/parent (ex. <table> parent of <tr>) should inherit its value from its parent element
+ style defines design rules for elements (either inline or whole page)
  -->
 	<!-- TODO TOGETHER: Go to hookbin.com and click "create new endpoint". Copy and paste the new endpoint url in the action attribute of the form below
 	Done; use to experiment with get/post requests-->

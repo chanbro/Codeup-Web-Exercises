@@ -1,0 +1,10 @@
+img {
+    float: left;
+    width: 25%;
+    padding: 5px;
+}
+
+.fancy-header { /*overrides h1 style bc class>element*/
+    color: blue;
+    text-decoration: underline;
+}
