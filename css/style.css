@@ -5,6 +5,23 @@ img {
 }
 
 .fancy-header { /*overrides h1 style bc class>element*/
-    color: blue;
+    color: seagreen;
     text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: darkslateblue;
+    text-decoration: underline;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+ul {
+    list-style: inside url(img)
 }
