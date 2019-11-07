@@ -5,7 +5,7 @@ img {
 }
 
 .fancy-header { /*overrides h1 style bc class>element*/
-    color: seagreen;
+    color: midnightblue;
     text-decoration: underline;
 }
 
@@ -14,14 +14,34 @@ h1 {
 }
 
 h1,h2,h3,h4,h5,h6 {
+    font-weight: lighter;
     color: darkslateblue;
     text-decoration: underline;
 }
 
 body {
-    background-color: lightgrey;
+    font-family: 'Raleway', sans-serif;
+    background-image: url("../img/blue-and-white.jpg");
+    background-attachment: fixed;
 }
 
 ul {
-    list-style: inside url(img)
+    list-style: inside url(../img/computer-vector.png)
 }
+
+table, th, tr, td {
+    border: 2px groove navy;
+}
+
+a:hover {
+    color: cyan;
+    font-weight: bold;
+}
+
+a:visited {
+    color: purple;
+    font-style: italic;
+}
+
+
+
