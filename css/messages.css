@@ -1,0 +1,43 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+.info {
+    border: grey solid 1px;
+    background-color: lightskyblue;
+    color: indigo;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.success {
+    border: grey solid 1px;
+    background-color: lightgreen;
+    color: green;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.warning{
+    border: grey solid 1px;
+    background-color: yellow;
+    color: olive;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.error {
+    border: grey solid 1px;
+    background-color: pink;
+    color: darkred;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
