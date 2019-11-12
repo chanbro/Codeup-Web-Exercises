@@ -17,6 +17,7 @@
             float: right;
             border: 1px solid #000;
             font-size: xx-large;
+            text-align: center;
         }
         #box2 {
             background-color: #1969B2; /* blueish */
@@ -26,14 +27,31 @@
             float: left;
             border: 1px solid #000;
             font-size: xx-large;
+            text-align: center;
         }
+        #box3 {
+            background-color: hotpink;
+            height: 150px;
+            width: 150px;
+            margin: 10px;
+            float: left;
+            border: 1px solid #000;
+            font-size: xx-large;
+            text-align: center;
+        }
+    #text1 {
+        background-color: cadetblue;
+        clear: right;
+    }
+        /* clear is essentially a "text wrap" equivalent for CSS */
     </style>
 </head>
 <body>
 <div id="container">
-    <div id="box1"></div>
-    <div id="box2"></div>
-    <p>
+    <div id="box1">1</div>
+    <div id="box2">2</div>
+    <div id="box3">3</div>
+    <p id="text1">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
         enim ad minim veniam, quis nostrud exercitation ullamco laboris
