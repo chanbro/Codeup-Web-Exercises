@@ -7,21 +7,33 @@
 <body>
 <script>
 
-    function helloworld() {
-        return "Hello World!";
-    }
-    /*console.log("Hello World!");*/
+   //  function helloworld() {
+   //      return "Hello World!";
+   //  }
+   //  console.log("Hello World!");
+   //
+   //  function helloName(name) {
+   //      return "Hello " + (name) + "!"
+   //  }
+   // console.log(helloName("Daniel"));
+   //
+   //  function add(x, y) {
+   //      return x + y;
+   //  }
+   //  console.log(add(1, 1))
 
-    function helloName(name) {
-        return "Hello " + (name) + "!"
+    function addFour(w,x,y,z) {
+        return w + x + y + z;
     }
-   /* console.log(helloName("Daniel"));*/
+    console.log(addFour(1,2,3,4))
 
-    function add(x, y) {
-        return x + y;
+    //OR, because above will ultimately be too simple when we get more complicated
+
+    function addFour(w,x,y,z) {
+        var sum = w + x + y + z;
+        return sum
     }
-    console.log(add(1, 1))
-
+    console.log(addFour(5,6,7,8))
 
 </script>
 </body>
