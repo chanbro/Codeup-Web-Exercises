@@ -100,3 +100,26 @@ a {
 .container {
     padding: 2em;
 }
+.media {
+    width: 100%;
+    background-color: var(--light-bg);
+    border-bottom: var(--separator-color) 1px solid;
+    padding: .5em;
+    overflow: scroll;
+}
+.media-image {
+    max-width: 50px;
+    float: left;
+    margin-top: 1.33em;
+}
+.media-body {
+    float: left;
+    width: calc(100 - 50px);
+}
+.profile-items {
+    list-style-type: none;
+    padding: 0;
+}
+.profile-entry {
+    margin: .5em;
+}
