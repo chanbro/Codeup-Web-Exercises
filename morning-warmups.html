@@ -50,20 +50,36 @@
    //  }
    //  console.log(firstItem(["dog", "cat", "bird", "fish"]));
 
-   var animals = ["dog", "cat", "bird", "fish"];
-   // console.log(animals[0]);
-   // console.log(animals[1]);
+   // var animals = ["dog", "cat", "bird", "fish"];
+   // // console.log(animals[0]);
+   // // console.log(animals[1]);
+   //
+   // function arrayLength(inputArray) {
+   //     return inputArray[0];
+   // }
+   // console.log("There are " + animals.length + " items in the array.");
+   //
+   // var arrayLength = function (arr) {
+   //      return inputArray.length;
+   // }
+   //  console.log(arrayLength(["dog", "cat", "bird", "fish"]));
 
-   function arrayLength(inputArray) {
-       return inputArray[0];
-   }
-   console.log("There are " + animals.length + " items in the array.");
+   //Write a js function called lastItem that takes in an array and reutrns the last item
+   // var lastItem = function (inputArray) {
+   //     return inputArray[inputArray.length-1];
+   //     // return inputArray.slice(-1)[0];
+   // }
+   //console.log(lastItem(["dog","cat", "bird", "fish"]));
+   //console.log(lastItem(["vivian", "daniel", "justin", "sophie"]));
+   //console.log(lastItem(["apple", "mango", "grapes", "pineapple"]));
 
-   var arrayLength = function (arr) {
-        return inputArray.length;
-   }
-    console.log(arrayLength(["dog", "cat", "bird", "fish"]));
 
+
+    // write a js function called nthItem that takes in an array and a number and returns the nth item
+    var nthItem = function(inputArray, n) {
+        return inputArray[n-1];
+    }
+    console.log(nthItem(["vivian", "daniel", "justin", "sophie"], 2));
 </script>
 </body>
 </html>
