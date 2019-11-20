@@ -11,8 +11,23 @@
 <body>
 <!-- NOTES
 
-Two column grid system built with CSS Flexbox classes in Bootstrap
-Elements: containers, rows and columns
-12 columns 30px Gutter 15px Margin
+Bootstrap is default media query 'xs' (mobile-first approach)
+    Uses Bootstrap CSS Flex Box classes
+        12 columns 30px Gutter 15px Margin on ANY media
+    Editing for tablet typically shared by desktop
+        Additional classes used as screen size grows
+    Uses minimum width breakpoints for small>large screen; no breakpoints required
+        for mobile
+Components: Containers>Rows>Columns
+    *Remove padding/margin: .no-gutters
+    Containers: center and pad horizontally
+    Rows: wrappers for columns
+    Columns: stores content, MUST BE CHILD OF ROW, can nest rows with nested columns
+        (div row, div column, div row, etc.)
+Breakpoints: card column width, changes based on screen size (sm, md, lg, xl,
+    XS BY DEFAULT)
+
+
+
 </body>
 </html>
