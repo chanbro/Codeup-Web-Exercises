@@ -75,11 +75,31 @@
 
 
 
-    // write a js function called nthItem that takes in an array and a number and returns the nth item
-    var nthItem = function(inputArray, n) {
-        return inputArray[n-1];
-    }
-    console.log(nthItem(["vivian", "daniel", "justin", "sophie"], 2));
+    // // write a js function called nthItem that takes in an array and a number and returns the nth item
+    // var nthItem = function(inputArray, n) {
+    //     return inputArray[n-1];
+    // }
+    // console.log(nthItem(["vivian", "daniel", "justin", "sophie"], 2));
+
+    // Write a JS function called getType that takes in an input and returns the type of that input
+
+   console.log(typeof 42);
+   console.log(typeof 'dan');
+   console.log(typeof false);
+
+   // var getType = function(input){
+   //   return typeof oninput
+   // }
+
+   function getType(input) {
+       return typeof input
+   }
+
+   console.log("getType 'dan' = " + getType("dan")); //output:string
+   console.log("getType 7 = " + getType(7)); //output: number
+   console.log("getType true = " + getType(true)); //output boolean
+
+
 </script>
 </body>
 </html>
