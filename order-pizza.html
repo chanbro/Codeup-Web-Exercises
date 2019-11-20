@@ -41,6 +41,7 @@
 
 <!--Container Start, rest of page here-->
 <div class="container">
+
     <!-- Jumbotron INSIDE of container to span width of container ONLY; remove from container to span width of page-->
     <div class="jumbotron jumbotron-fluid .d-sm-none .d-md-block"> <!--.d classes not hiding for small screens in inspector-->
         <h1 class="display-4">Welcome to Pizza World!</h1>
@@ -68,9 +69,9 @@
                             Choose size and crust
                         </div>
                         <div class="card-body mb-3 p-3">
-                        <div class="card-header innerCard">
-                            Hand Tossed
-                        </div>
+                            <div class="card-header innerCard">
+                                Hand Tossed
+                            </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Garlic seasoned crust with rich, buttery taste</li>
                                 <li class="list-group-item">
@@ -92,6 +93,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <!--Crispy Thin-->
                     <div class="card">
                         <div class="card-body mb-3">
@@ -118,31 +120,49 @@
                                 </li>
                             </ul>
                         </div>
-                </div>
-                <div class="card-footer text-right">
-                    <a href="#nav-cheeseandsauce-tab" class="btn btn-primary">Next</a>
+                    </div>
+
+                    <!--Next Button-->
+                    <div class="card-footer text-right">
+                        <a href="#nav-cheeseandsauce-tab" class="btn btn-primary">Next</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!--Form 2-->
-<!--        <div class="tab-pane fade" id="nav-cheeseandsauce" role="tabpanel" aria-labelledby="nav-cheeseandsauce-tab">-->
-<!--            <div class="tab-pane fade show active" id="nav-cheeseandsauce" role="tabpanel" aria-labelledby="nav-cheeseandsauce-tab">-->
+        <div class="tab-pane fade" id="nav-cheeseandsauce" role="tabpanel" aria-labelledby="nav-cheeseandsauce-tab">
+            <div class="tab-pane fade show active" id="nav-cheeseandsauce" role="tabpanel" aria-labelledby="nav-cheeseandsauce-tab">
                 <div class="tab-pane fade show active" id="cheeseandsauce" role="tabpanel" aria-labelledby="cheeseandsauce-tab">
+                    <!--Card 2 Start-->
                     <div class="card container">
+
+                        <!--Card 2 Header-->
                         <div class="card-header p-3 mb-2 bg-primary text-white">
                             Choose cheese and sauce
                         </div>
+
+                        <!--Cheese select-->
                         <div class="card-header rounded">
                             Cheese
                         </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">How Much?</li>
-                                <select class="form-control">
-                                    <option>Regular</option>
-                                </select>
-                            </ul>
+                        <!--Cheese select-->
+                        <div class="form-group">
+                            <label for="cheeseSelect">How much?</label>
+                            <select class="form-control" id="cheeseSelect">
+                                <option>Regular</option>
+                                <option>Light</option>
+                                <option>Extra</option>
+                            </select>
+                        </div>
+<!--                            <ul class="list-group list-group-flush">-->
+<!--                                <li class="list-group-item">How Much?</li>-->
+<!--                                <select class="form-control">-->
+<!--                                    <option>Regular</option>-->
+<!--                                </select>-->
+<!--                            </ul>-->
 
+                        <!--Sauce select-->
                         <div class="card-header rounded">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">What type?</li>
