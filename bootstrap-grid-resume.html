@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>T-Box Resume</title>
+</head>
+<body>
+<!-- NOTES
+
+lorem.# for auto Lorem ipsum
+Bootstrap is default media query 'xs' (mobile-first approach)
+    Uses Bootstrap CSS Flex Box classes
+        12 columns 30px Gutter 15px Margin on ANY media
+    Editing for tablet typically shared by desktop
+        Additional classes used as screen size grows
+    Uses minimum width breakpoints for small>large screen; no breakpoints required
+        for mobile
+Components: Containers>Rows>Columns
+    *Remove padding/margin: .no-gutters
+    Containers: center and pad horizontally
+    Rows: wrappers for columns
+    Columns: stores content, MUST BE CHILD OF ROW, can nest rows with nested columns
+        (div row, div column, div row, etc.)
+        Nested columns resets grid of 12, nested column classes must add up to 12 again
+Breakpoints: card column width, changes based on screen size (sm, md, lg, xl,
+    XS BY DEFAULT)-->
+
+<!-- Starter template from https://getbootstrap.com/docs/4.3/getting-started/introduction/-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- Optional JavaScript; jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <!--End JS and jQuery tags-->
+      <style> /* CSS Styling*/
+
+          #name-row { /* Style for row */
+              background-color: #0fb784;
+          }
+
+          #software-row {
+              background-color: coral;
+          }
+
+          #social-row {
+              background-color: turquoise;
+          }
+
+          #left-col {
+              background-color: aquamarine;
+          }
+
+          #right-col {
+              background-color: lightskyblue;
+          }
+
+          #custom-hr {
+              border-top: 3px solid black; /*Border top for hr thickness*/
+          }
+
+          #custom .section-header {
+              color: mediumblue;
+              font-weight: bold;
+          }
+
+          #custom .sub-section {
+              color: coral;
+          }
+      </style>
+      <title>Hello, world!</title>
+</head>
+
+<!--Give body id="custom"; #custom .class in CSS to override Bootstrap-->
+<body id="custom">
+
+<!--Defining main container for entire page, set view to xs in inspector-->
+<div class="container" id="main-container">
+    <!-- Start first row -->
+    <div class="row" id="name-row">
+        <div class="col-12 text-center bg-color"> <!--Defining 12 columns, added class to center text, added bg color to visualize row -->
+            <h1 id="name-header">CHANEY BROWN</h1>
+        </div>
+    </div> <!--End of first row-->
+    <!-- Start second row -->
+    <div class="row" id="software-row">
+        <div class="col-12 text-center">
+            <h5>SOFTWARE DEVELOPER</h5>
+            <p>More description info here</p>
+        </div>
+    </div> <!-- End second row -->
+    <!-- Start third row; defining breakpoint for md viewer (tablet)-->
+    <div class="row" id="social-row">
+        <div class="col-12 col-md-3 social-icon">
+            PHONE
+        </div>
+        <div class="col-12 col-md-3 social-icon">
+            EMAIL
+        </div>
+        <div class="col-12 col-md-3 social-icon">
+            LINKEDIN
+        </div>
+        <div class="col-12 col-md-3 social-icon">
+            GITHUB
+        </div>
+    </div> <!-- End third row -->
+    <hr id="custom-hr"> <!--Custom divider-->
+<!--Resume Content -->
+<div class="row">
+    <!--Left content -->
+    <div class="col-12 col-md-4" id="left-col">
+        <!--Skills Section with margin top: 5 INSTEAD OF BREAK-->
+        <div class="mt5">
+            <h6 class="section-header">SKILLS AND ABILITIES</h6>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JAVASCRIPT</li>
+                    <li>BOOTSTRAP</li>
+                </ul>
+        </div>
+    <!--Academic Section with marging-top: 5em INSTEAD OF BREAK-->
+        <div class="mt-5">
+            <h6 class="section-header">ACADEMICS</h6>
+            <p>Lorem ipsum dolor amet hella ennui microdosing activated charcoal subway tile, chicharrones four loko fixie squid street art sustainable sartorial swag salvia. Blog scenester coloring book, photo booth four loko leggings messenger bag tattooed. Meh vegan food truck, kitsch lyft literally deep v semiotics sartorial tofu skateboard gochujang live-edge 90's. YOLO austin twee, gastropub offal glossier occupy seitan viral synth.</p>
+        </div>
+        <!--Job Section with margin-top: 5em INSTEAD of break-->
+        <div class="mt-5">
+            <h6 class="section-header">PROFESSIONAL EXPERIENCE</h6>
+                <p class="sub-section">JOB 1</p>
+                    <p>Lorem ipsum dolor amet hella ennui microdosing activated charcoal</p>
+                <p class="sub-section">JOB 2</p>
+                    <p>Lorem ipsum dolor amet hella ennui microdosing activated charcoal</p>
+        </div>
+    <!-- End of left column-->
+    </div>
+
+    <!-- Right content -->
+    <div class="col-12 col-md-8" id="right-col">
+        <!-- Project Section-->
+        <div class="mt5">
+            <h6 class="section-header">DEVELOPMENT PROJECTS</h6>
+                <p class="sub-section">PROJECT 1</p>
+                    <p>Lorem ipsum dolor amet hella ennui microdosing activated</p>
+                <p class="sub-section">PROJECT 2</p>
+                    <p>Lorem ipsum dolor amet hella ennui microdosing activated</p>
+                <p class="sub-section">PROJECT 3</p>
+                    <p>Lorem ipsum dolor amet hella ennui microdosing activated</p>
+                <p class="sub-section">PROJECT 4</p>
+                    <p>Lorem ipsum dolor amet hella ennui microdosing activated</p>
+        </div>
+
+
+</div>
+
+<!-- End of main container -->
+</div>
+
+</body>
+</html>
