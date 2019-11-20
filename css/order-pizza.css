@@ -4,7 +4,7 @@
     background-position: center;
     height: 25vh;
 }
-h1 { /*white text bg won't span entirety of jumbotron*/
+h1 {
     color: gray;
     background-color: white;
     opacity: .75;
