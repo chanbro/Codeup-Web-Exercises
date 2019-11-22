@@ -79,13 +79,14 @@
     // var nthItem = function(inputArray, n) {
     //     return inputArray[n-1];
     // }
+    // console.log(nthItem(["dog", "cat, "bird", "fish"]))
     // console.log(nthItem(["vivian", "daniel", "justin", "sophie"], 2));
 
     // Write a JS function called getType that takes in an input and returns the type of that input
 
-   console.log(typeof 42);
-   console.log(typeof 'dan');
-   console.log(typeof false);
+   // console.log(typeof 42);
+   // console.log(typeof 'dan');
+   // console.log(typeof false);
 
    // var getType = function(input){
    //   return typeof oninput
@@ -99,7 +100,15 @@
    // console.log("getType 7 = " + getType(7)); //output: number
    // console.log("getType true = " + getType(true)); //output boolean
 
+   //Write a js function that takes an array and puts 2 into it
 
+   var push2 = function(inputArray) {
+        inputArray.push(2);
+        return inputArray;
+   };
+
+   console.log(push2(["dog", "cat", "bird", "fish"]));
+   console.log(push2(["vivian", "daniel", "justin", "sophie"]));
 
 </script>
 </body>
