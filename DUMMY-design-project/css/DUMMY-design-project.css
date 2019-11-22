@@ -87,20 +87,14 @@ nav {
     font-family: 'Abel', sans-serif;
 }
 
-/*test css*/
 .small-img {
     width: 50px;
     height: 50px;
-    /*justify-content: left;*/
 }
 
 p {
     font-family: 'Abel', sans-serif;
 }
-
-/*h1 h2 h3 h4 h5{*/
-/*    font-family: 'Anton', sans-serif;*/
-/*}*/
 
 h1 {
     font-family: 'Anton', sans-serif;
@@ -177,5 +171,11 @@ h5 {
 }
 
 #custom-col-padding {
-    /*margin-top: 70px;*/
+    margin-top: 40px;
 }
+
+.figure {
+    margin-right: auto;
+    margin-left: auto;
+}
+
