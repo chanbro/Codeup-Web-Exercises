@@ -28,3 +28,11 @@ em {
 .article>a {
     float:right;
 }
+
+article.click>a {
+    color: purple;
+}
+
+p.click {
+    color: green;
+}
