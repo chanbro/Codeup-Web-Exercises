@@ -177,3 +177,206 @@ For examples, let var str = "Hello, my name is Joe."
 .trim(): returns a copy of the string with whitespace at the beginning and end removed. (if var str = "    hello, my name is jim", then str.trim -> "hello my name is jim"
  */
 
+// Exercise Part 1
+
+var a = 1;
+var b = a++;
+var c = ++a;
+// what is the value of a, b, and c?
+// a = 1, b = 2, c = 3 (?)
+
+var d = "hello";
+var e = false;
+
+d++;
+e++;
+//what is value of d++ and e++?
+//NaN, NaN
+
+var perplexed;
+// perplexed is undefined (no value is assigned)
+perplexed + 2;
+// NaN
+
+var price = 2.7;
+price.toFixed(2);
+// "2.70"
+
+var price = "2.7";
+price.toFixed(2);
+// error because NaN, cannot compute?
+
+isNaN(0);
+// false
+
+isNaN(1);
+//false
+
+isNaN("");
+//true
+
+isNaN("string");
+//true
+
+isNaN("0");
+//true
+
+isNaN("1");
+//true
+
+isNaN("3.145");
+//true
+
+isNaN(Number.MAX_VALUE);
+//if Number has a datatype of number, then false
+
+isNaN(Infinity);
+//if Infinity has datatype of number, then false
+
+isNaN("true");
+//true (string)
+
+isNaN(true);
+//false, booleans have value of 0 and 1
+
+isNaN("false");
+//true (string)
+
+isNaN(false);
+//false, booleans have value of 0 and 1
+
+// to illustrate why the isNaN() function is needed:
+NaN == NaN;
+//Not a Number is equal in value and type to Not a Number
+
+!true;
+//false
+
+!false;
+//true
+
+!!true;
+//true
+
+!!false;
+//false
+
+!!0;
+//true (is not not zero aka or is 0
+
+!!-0;
+//false, but idk what !!- is
+
+!!1;
+//true (is not not 1 aka is 1)
+
+!!-1;
+//false
+
+!!0.1;
+//true
+
+!!"hello";
+//true
+
+!!"";
+//false
+
+!!'';
+//false
+
+!!"false";
+//true
+
+!!"0";
+//true
+
+//Exercise Part 2
+
+var sample = "Hello Codeup";
+
+sample.length
+//12
+
+sample.toUpperCase();
+//"HELLO CODEUP"
+
+var newSample = sample + " Students";
+//"Hello Codeup Students"
+
+newSample.replace(" Students", " Class");
+//"Hello Codeup Class"
+
+sample.indexOf("c");
+//-1 becauase no lowercase C in string
+
+sample.indexOf("C");
+//6
+
+sample.substring(sample.indexOf("C"), sample.indexOf("p"));
+// "Codeu" (why is it cutting off before p and how to fix?
+
+//Part 3
+
+// You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?
+
+var pricePerDay = 3;
+
+var mermaidRental = pricePerDay * 3;
+//9
+
+var bearRental  = pricePerDay * 5;
+//15
+
+var herculesRental = pricePerDay * 1;
+//3
+
+var rentalPriceTotal = "$" + (mermaidRental + bearRental + herculesRental);
+//$27
+
+//Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
+
+googleHourlyPay = 400;
+
+amazonHourlyPay = 380;
+
+facebookHourlyPay = 350;
+
+weeklyPay = "$" + ((googleHourlyPay * 6) + (amazonHourlyPay * 4) + (facebookHourlyPay * 10));
+//$7420
+
+//Student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
+
+var classOpening = true; //class is has opening
+var noScheduleConflict = true; // no schedule conflicts
+var enrolled = classOpening && noScheduleConflict;
+var enrolled = !classOpening && noScheduleConflict; //testing, should come out as false because there is not an opening in the class (!classOpening = not true)
+
+// A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
+
+itemsBought = x >= 2;
+    var x = 4;
+offerValid = true;
+premiumMember= false;
+
+var productOffer = (itemsBought && offerValid) || premiumMember;
+
+//Part 4
+/* Create a variable that holds a boolean value for each of the following conditions:
+
+the password must be at least 5 characters
+the password must not include the username
+the username must be no more than 20 characters
+neither the username or password can start or end with whitespace
+ */
+
+var username = 'codeup';
+var password = 'notastrongpassword';
+
+var passwordFiveChar = password.length >= 5;
+var noUserInPassword = !password.includes(username);
+var userNameLength = username.length <= 20;
+var noWhitespace= !username.includes(username.indexOf(" ")) && !password.includes(password.indexOf(" "));
+
+var loginCredentials = passwordFiveChar && noUserInPassword && userNameLength && noWhitespace;
+
