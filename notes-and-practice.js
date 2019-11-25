@@ -183,7 +183,9 @@ var a = 1;
 var b = a++;
 var c = ++a;
 // what is the value of a, b, and c?
-// a = 1, b = 2, c = 3 (?)
+// a = 1, b = 1, c = 3
+//post-increment: increases value after calling function (b stays equal to a, but a increments by 2 so a = 3)
+// pre-increment: increase value of a before calling it (c = 3, a = 3)
 
 var d = "hello";
 var e = false;
@@ -191,12 +193,12 @@ var e = false;
 d++;
 e++;
 //what is value of d++ and e++?
-//NaN, NaN
-
+//d++ -> NaN; increments can only be applied to number)
+// e++ -> 1; false boolean is equal to numeric value of 0
 var perplexed;
 // perplexed is undefined (no value is assigned)
 perplexed + 2;
-// NaN
+// NaN. attempted to assign value
 
 var price = 2.7;
 price.toFixed(2);
@@ -265,7 +267,7 @@ NaN == NaN;
 //true (is not not zero aka or is 0
 
 !!-0;
-//false, but idk what !!- is
+//false, "not not negative 0"
 
 !!1;
 //true (is not not 1 aka is 1)
@@ -301,10 +303,12 @@ sample.length
 sample.toUpperCase();
 //"HELLO CODEUP"
 
-var newSample = sample + " Students";
+// var newSample = sample + " Students";
+sample += " Students"
 //"Hello Codeup Students"
 
-newSample.replace(" Students", " Class");
+// newSample.replace(" Students", " Class");
+sample = sample.replace( "Students", "Class");
 //"Hello Codeup Class"
 
 sample.indexOf("c");
@@ -313,8 +317,11 @@ sample.indexOf("c");
 sample.indexOf("C");
 //6
 
-sample.substring(sample.indexOf("C"), sample.indexOf("p"));
-// "Codeu" (why is it cutting off before p and how to fix?
+// sample.substring(sample.indexOf("C"), sample.indexOf("p"));
+// "Codeu" (why is it cutting off before p and how to fix? Solution:
+// sample.substring(sample.indexOf("C"), sample.indexOf("p")+1);
+sample.substring(6, 12);
+// "Codeup"
 
 //Part 3
 
@@ -322,6 +329,7 @@ sample.substring(sample.indexOf("C"), sample.indexOf("p"));
 
 var pricePerDay = 3;
 
+//alternatively, set all equal to rental days, (mermaid + bear + hercules) * pricePerDay
 var mermaidRental = pricePerDay * 3;
 //9
 
@@ -347,15 +355,22 @@ weeklyPay = "$" + ((googleHourlyPay * 6) + (amazonHourlyPay * 4) + (facebookHour
 
 //Student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
 
-var classOpening = true; //class is has opening
-var noScheduleConflict = true; // no schedule conflicts
-var enrolled = classOpening && noScheduleConflict;
-var enrolled = !classOpening && noScheduleConflict; //testing, should come out as false because there is not an opening in the class (!classOpening = not true)
+var classOpening = true; //class has opening (is NOT full)
+var ScheduleConflict = false; // no schedule conflicts
+var enrolled = classOpening && !ScheduleConflict;
+// true
+// var enrolled = !classOpening && !ScheduleConflict;
+//testing, should come out as false because there is not an opening in the class (!classOpening = not true)
+var classAt8 = false;
+var classSize = 125;
+var currentClassSize = 108;
+var canRegister = (currentClassSize < classSize) && !classAt8;
+
 
 // A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
 
+var x = 4;
 itemsBought = x >= 2;
-    var x = 4;
 offerValid = true;
 premiumMember= false;
 
@@ -376,7 +391,8 @@ var password = 'notastrongpassword';
 var passwordFiveChar = password.length >= 5;
 var noUserInPassword = !password.includes(username);
 var userNameLength = username.length <= 20;
-var noWhitespace= !username.includes(username.indexOf(" ")) && !password.includes(password.indexOf(" "));
-
+// var noWhitespace = !username.includes(username.indexOf(" ")) && !password.includes(password.indexOf(" ")); this did not skim the entire string, stops after it hits the first " "
+var noWhitespace = username.trim() === username && password.trim() === password;
+    //(trimming username and password to see if value of trim matches value of input)
 var loginCredentials = passwordFiveChar && noUserInPassword && userNameLength && noWhitespace;
 
