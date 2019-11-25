@@ -64,6 +64,7 @@ Expression	    Result
 
 /* Comparison
 *******CASE SENSITIVE*******
+Can be used to test typeof comparison (does a variable have a value, and if so what type is it, and how does it compare to other variables)
 String/number comparisons CAN BE TRUE, String/Boolean comparisons are FALSE (see info on parsing below)
 
             Comparison
@@ -73,6 +74,7 @@ Operator	    Description                     Example
 !=	            Not equal in value
 !==	            Not equal in type and value
 
+=: assignment operator (SETTING VARIABLE, NOT A COMPARISON)
 ==: Equal in value (ex. '6' == 6 -> true)
 ===: Equal in type AND value (ex. 6 === 6 -> true)
 !=: Not equal in value (ex. 5 != 6 -> true)
@@ -80,5 +82,24 @@ Operator	    Description                     Example
 
 
 >   >=  <  <= : work with strings because operators are for numbers, but JS parses strings containing numbers for easy comparison (ex. 4 >= '3' -> true; 4 >= '3 apples' -> false because JS cannot parse to number with "apple" within string)
->==  <==
+>==  <== : greater/less than OR equal to value in type AND value
+ */
+
+/* Variables
+
+; denotes that line of code is finished (acts like a period to end a sentence)
+var num = 17; (variable of num is set to 17)
+num -> 17 (calling variable num outputs 17 in console)
+Can set up multiple variables for comparison (ex. var num = 17, secondNum = 22, thirdNum= 34;)
+
+var noVal; (no value established)
+typeof noVal; -> undefined (it exists but does not have a value assigned yet, can assign value later)
+noVal == undefined -> true, noVal === undefined -> true
+const: set value, never changes and cannot be changed unless cleared
+ */
+
+/* Use Strict Mode
+
+Requires JS code is syntactically correct while writing code
+
  */
