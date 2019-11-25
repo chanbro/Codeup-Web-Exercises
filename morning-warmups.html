@@ -102,13 +102,33 @@
 
    //Write a js function that takes an array and puts 2 into it
 
-   var push2 = function(inputArray) {
-        inputArray.push(2);
-        return inputArray;
-   };
+   // var push2 = function(inputArray) {
+   //      inputArray.push(2);
+   //      return inputArray;
+   // };
+   //
+   // console.log(push2(["dog", "cat", "bird", "fish"]));
+   // console.log(push2(["vivian", "daniel", "justin", "sophie"]));
 
-   console.log(push2(["dog", "cat", "bird", "fish"]));
-   console.log(push2(["vivian", "daniel", "justin", "sophie"]));
+    console.log("Write a js function that accepts a number and returns true if that number is greater than 10")
+
+    var a = 11;
+    console.log("a = " + a);
+
+
+    if (a > 10) console.log("true");
+    else console.log("false");
+
+    // second solution
+   
+    console.log("other solution")
+
+    function greaterThanTen(numInput){
+        return numInput > 10;
+    }
+
+    console.log(greaterThanTen(5)); //false
+    console.log(greaterThanTen(100)); //true
 
 </script>
 </body>
