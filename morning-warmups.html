@@ -110,25 +110,46 @@
    // console.log(push2(["dog", "cat", "bird", "fish"]));
    // console.log(push2(["vivian", "daniel", "justin", "sophie"]));
 
-    console.log("Write a js function that accepts a number and returns true if that number is greater than 10")
+    // console.log("Write a js function that accepts a number and returns true if that number is greater than 10")
+    //
+    // var a = 11;
+    // console.log("a = " + a);
+    //
+    //
+    // if (a > 10) console.log("true");
+    // else console.log("false");
+    //
+    // // second solution
+    //
+    // console.log("other solution")
+    //
+    // function greaterThanTen(numInput){
+    //     return numInput > 10;
+    // }
+    //
+    // console.log(greaterThanTen(5)); //false
+    // console.log(greaterThanTen(100)); //true
 
-    var a = 11;
-    console.log("a = " + a);
+// Write a js function called youMayEnter that accepts a number that is an age. If the age is 13 or greater, return 'You may enter!" else return 'Sorry, you need a parent or guardian to enter
 
 
-    if (a > 10) console.log("true");
-    else console.log("false");
+//    youMayEnter = 12
+// if (youMayEnter > 13) console.log("You may enter!");
+//     else console.log("Sorry, you need a parent or guardian to enter");
+// //this works but is not a function
 
-    // second solution
+    function youMayEnter(age) {
+        console.log(age)
+        if(age >= 13) {
+            return "You may enter!"
+        } else {
+            return "Sorry, you need a parent or guardian to enter."
+        }
+    };
 
-    console.log("other solution")
-
-    function greaterThanTen(numInput){
-        return numInput > 10;
-    }
-
-    console.log(greaterThanTen(5)); //false
-    console.log(greaterThanTen(100)); //true
+    console.log(youMayEnter(25));
+    console.log(youMayEnter(11));
+    console.log(youMayEnter(13));
 
 </script>
 </body>
