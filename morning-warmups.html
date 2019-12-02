@@ -138,18 +138,34 @@
 //     else console.log("Sorry, you need a parent or guardian to enter");
 // //this works but is not a function
 
-    function youMayEnter(age) {
-        console.log(age)
-        if(age >= 13) {
-            return "You may enter!";
-        } else {
-            return "Sorry, you need a parent or guardian to enter.";
-        }
-    }
+    // function youMayEnter(age) {
+    //     console.log(age)
+    //     if(age >= 13) {
+    //         return "You may enter!";
+    //     } else {
+    //         return "Sorry, you need a parent or guardian to enter.";
+    //     }
+    // }
+    //
+    // console.log(youMayEnter(25));
+    // console.log(youMayEnter(11));
+    // console.log(youMayEnter(13));
 
-    console.log(youMayEnter(25));
-    console.log(youMayEnter(11));
-    console.log(youMayEnter(13));
+   //write a js function called seeYouLater that accepts a string. If the string is alligator, return "See you later alligator!", if the string is crocodile, return "After a while crocodile!", if the string is not either, return "So long!"
+
+   var userInput = prompt('Goodbye!');
+
+   function seeYouLater(userInput) {
+       if (userInput === "alligator") {
+           return "See you later alligator!";
+       } else if (userInput === "crocodile") {
+           return "After while crocodile!";
+       } else
+           return "So long!";
+   }
+
+   console.log("The user entered " + userInput);
+   alert(seeYouLater(userInput));
 
 </script>
 </body>
