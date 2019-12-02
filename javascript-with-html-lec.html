@@ -8,6 +8,8 @@
 	<title>Javascript with HTML</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--	Order matters when listing JS/jQuery/Java links-->
+	<script src="js/js-external-lec.js"></script>
 
 </head>
 <body>
@@ -68,13 +70,19 @@
 	<script>
 		//This is an inline example
 		//TODO: Console.log "Hello, World! From inline" from an inline JS script
+		//
+		// console.log("Hello, World! From inline")
 	</script>
 
 
 
 	<script>
+		"use strict";
+
 		//This is a use strict example
-		myAge = 25
+		// var myAge = 25;
+		//Displays error in console because myAge not declared a variable
+		// console.log(myAge);
 
 		//TODO: add "use strict"; above myAge. What do you notice in the console?
 
@@ -97,7 +105,8 @@
 
 		//TODO: Write an alert with an alert message
 
-
+		// alert("Welcome back to Codeup!");
+		// alert("Another alert");
 
 		/* *******************
 		*		Confirm
@@ -107,17 +116,32 @@
 		//TODO TOGETHER: Write a confirm interaction and console.log the result
 		// the following line will show the OK/CANCEL confirm dialog
 
+			// var confirm = confirm("Are you sure you want to exit?");
+		// console.log(confirm)
+
 		// TODO: Select the OK option. View the result. Select the confirm option. View the result.
+		//returns as boolean value
 
-
+		// var confirm = confirm("Are you sure you want to cancel your order?");
+		// console.log(confirm);
 		/* *******************
 		*		Prompts
 		* ********************/
 		// TODO TOGETHER: Write a prompt interaction. Console.log the result
 
+		// var userInput = prompt("Please enter your name ");
+		// console.log(userInput);
+
+		//string, '' if ok selected w/o input, null if cancel
+
 		// TODO: Write an additional prompt. Console.log the result
 
 
+		var tellMe = prompt("Tell me a secret :)")
+
+		console.log(tellMe);
+
+		alert("I'm going to tell everyone >:)")
 
 
 

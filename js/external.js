@@ -29,48 +29,70 @@ A product offer can be applied only if a person buys more than 2 items, and the 
 
 var movie1 = prompt('How many days would you like to rent "The Little Mermaid?"');
 
-function numCheck(movie1) {
-    if (isNaN(movie1))
-        return "Please enter the length of your rental.";
-    else
+function numCheck1(movie1) {
+    if (movie1 === null) {
+        return movie1.stop(true, false);
+    } else if (isNaN(movie1) || movie1 === '') {
+        return ("Please enter the number of days you will be renting the selected movie");
+    } else
         return "Added to cart";
 }
 
-alert(numCheck(movie1));
+alert(numCheck1(movie1));
+console.log(movie1);
 console.log("The user entered " + movie1);
+var movie1 = parseInt(movie1);
+console.log(typeof(movie1));
 
 
 var movie2 = prompt('How many days would you like to rent "Brother Bear?"');
 
-function numCheck(movie2) {
-    if (isNaN(movie2))
-        return "Please enter the length of your rental.";
-    else
+function numCheck2(movie2) {
+    if (movie2 === null) {
+        return movie2.stop(true, false);
+    } else if (isNaN(movie2) || movie2 === '') {
+        return ("Please enter the number of days you will be renting the selected movie");
+    } else
         return "Added to cart";
 }
 
-alert(numCheck(movie2));
+alert(numCheck2(movie2));
 console.log("The user entered " + movie2);
-
+var movie2 = parseInt(movie2);
+console.log(typeof(movie2));
 
 var movie3 = prompt('How many days would you like to rent "Hercules"');
 
-function numCheck(movie2) {
-    if (isNaN(movie2))
-        return "Please enter the length of your rental.";
-    else
+function numCheck3(movie3) {
+    if (movie3 === null) {
+        return movie3.stop(true, false);
+    } else if (isNaN(movie3) || movie3 === '') {
+        return ("Please enter the number of days you will be renting the selected movie");
+    } else
         return "Added to cart";
 }
 
-alert(numCheck(movie3));
+alert(numCheck3(movie3));
 console.log("The user entered " + movie3);
+var movie3 = parseInt(movie3);
+console.log(typeof(movie3));
+
 
 function rentalTotal() {
     if (!isNaN(movie1 + movie2 + movie3)) {
-        return (3 * (movie1 + movie2 + movie3));
+        return "Your total is $" + (3 * (movie1 + movie2 + movie3));
     } else {
         return "Error, please make sure each rental time is entered as a number.";
     }
 }
 
-alert("Your total is $" + rentalTotal());
+alert(rentalTotal());
+console.log(rentalTotal());
+
+var rentalTotalInt = rentalTotal();
+console.log(typeof rentalTotalInt);
+console.log("Parsing total...");
+rentalTotalInt = parseInt(rentalTotalInt.replace("Your total is $", ""));
+console.log(rentalTotalInt);
+console.log(typeof rentalTotalInt);
+
