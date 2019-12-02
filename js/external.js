@@ -206,24 +206,41 @@ A product offer can be applied only if a person buys more than 2 items, and the 
 
 // A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
 
-var cart = parseInt(prompt('How many items would you like to buy?'));
+var cart = prompt('How many items would you like to buy?');
 console.log("The user entered " + cart + " items.");
+var cartCheckInt = parseInt(cart);
+console.log(typeof cart);
 
 function cartCheck(cart) {
         if (isNaN(cart) || cart === '') {
             return ("Please enter the number of items you would like to buy.");
+        } else {
+            return ("Added to cart")
+        }
 }
 
-var offerValid = confirm("Is the offer valid? (Check expiration date)");
-    console.log(confirm);
+// alert(rentalTotal());
+console.log(cartCheck());
+// var cartCheckInt = cartCheck();
+console.log(typeof cartCheckInt);
+console.log("Parsing total...");
+// var cartCheckInt = parseInt(cart);
+console.log(cartCheckInt);
+console.log(typeof cartCheckInt);
+alert(cartCheck());
 
-var premium = confirm("Are you a premium member?");
-console.log(confirm());
-
-function productOffer() {
-    if ((cart >= 2 || premium === true) && offerValid === true) {
-        return ("Discount applied to cart.");
-    }
-}
-
-alert(productOffer());
+// var offerValid = confirm("Is the offer valid? (Check expiration date)");
+//     console.log(confirm);
+//
+// var premium = confirm("Are you a premium member?");
+// console.log(confirm());
+//
+// function productOffer() {
+//     if ((cart >= 2 || premium === true) && offerValid === true) {
+//         return ("Discount applied to cart.");
+//     } else {
+//         return ("Discount cannot be applied at this time.")
+//     }
+// }
+//
+// alert(productOffer());
