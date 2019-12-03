@@ -15,7 +15,39 @@
  *
  * Can you refactor your code to use functions?
  */
+var confirm = confirm("Would you like to enter a number?");
 
+function confirmCheck() {
+    if (confirm === false) {
+        return alert("You chose to not enter a number.") + confirm.stop(true, false);
+    } else {
+        return alert("Continuing to number game...");
+    }
+}
+confirmCheck();
+
+var x = prompt("Please enter a number.");
+
+switch (x) {
+        case (x % 2 === 0):
+            alert("That's an even number!");
+            break;
+            case (x % 2 !== 0):
+            alert("That's an odd number!");
+            break;
+    case (x):
+        alert("Did you know " + x + " + 100 =" + (x + 100) + "?");
+        break;
+    case (x < 0):
+        alert("Your number is negative!");
+        break;
+    case (x > 0):
+        alert("Your number is positive!");
+        break;
+}
+
+
+numberFact1(x);
 /* ########################################################################## */
 
 /**
