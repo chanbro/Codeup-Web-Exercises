@@ -10,26 +10,29 @@
  */
 
 function sayHello(name) {
-    console.log("Hello, " + name);
+    return console.log("Hello, " + name + "!")
 }
 
 sayHello("Codeup");
-
 /**
+ *
  * TODO:
  * Call the function 'sayHello' and pass your name as a string literal argument.
  * Store the result of the function call in a variable named 'helloMessage'.
  *
  * console.log 'helloMessage' to check your work
+ *
  */
-
+var helloMessage = sayHello("Chaney");
+console.log(helloMessage);
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
  * variable to the 'sayHello' function. You should see the same output in the
  * console.
  */
-
+var myName = "Chaney";
+sayHello(myName);
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
 var random = Math.floor((Math.random() * 3) + 1);
@@ -52,6 +55,14 @@ var random = Math.floor((Math.random() * 3) + 1);
  * number)
  */
 
+function isTwo(n) {
+    return n === 2;
+}
+console.log(isTwo(1));
+console.log(isTwo(2));
+console.log(isTwo(3));
+console.log(random);
+console.log(isTwo(random));
 /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
@@ -63,6 +74,13 @@ var random = Math.floor((Math.random() * 3) + 1);
  * > calculateTip(0.25, 25.50) // returns 6.37
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
+function calculateTip(x, y) {
+    return (x * y);
+}
+
+console.log(parseFloat(calculateTip(.20, 20)).toFixed(2)); // returns 4
+console.log(parseFloat(calculateTip(.25, 25.50)).toFixed(2));// returns 6.37
+console.log(parseFloat(calculateTip(.15, 33.42)).toFixed(2));// returns 5.0132
 
 /**
  * TODO:
@@ -70,7 +88,17 @@ var random = Math.floor((Math.random() * 3) + 1);
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+var meal = prompt("How much did your meal cost? Enter a dollar amount.");
+var tipPercentage = prompt("How much would you like to tip? Enter a percentage.");
 
+function tipTotal(meal, tipPercentage) {
+    var tipPercentage = tipPercentage.replace("%", "");
+    var tipPercentage = (tipPercentage * .01);
+    var meal = meal.replace("$", "");
+    return (meal * tipPercentage);
+}
+
+console.log(parseFloat(tipTotal(meal, tipPercentage)).toFixed(2));
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
@@ -85,3 +113,9 @@ var random = Math.floor((Math.random() * 3) + 1);
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(originalPrice, discountPercent) {
+    return (originalPrice - (originalPrice * discountPercent));
+}// 80
+
+console.log(parseFloat(applyDiscount(45.99, 0.12)).toFixed(2)); // 40.4712
