@@ -24,7 +24,7 @@ sayHello("Codeup");
  *
  */
 var helloMessage = sayHello("Chaney");
-console.log(helloMessage)
+console.log(helloMessage);
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
@@ -54,12 +54,9 @@ var random = Math.floor((Math.random() * 3) + 1);
  * different result everytime you refresh the page if you are using the random
  * number)
  */
+
 function isTwo(n) {
-    if (n === 2) {
-        return true
-    } else {
-        return false
-    }
+    return n === 2;
 }
 console.log(isTwo(1));
 console.log(isTwo(2));
@@ -91,16 +88,17 @@ console.log(parseFloat(calculateTip(.15, 33.42)).toFixed(2));// returns 5.0132
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
-var meal = prompt("How much did your meal cost?");
+var meal = prompt("How much did your meal cost? Enter a dollar amount.");
 var tipPercentage = prompt("How much would you like to tip? Enter a percentage.");
 
-function tip(meal, tipPercentage) {
+function tipTotal(meal, tipPercentage) {
     var tipPercentage = tipPercentage.replace("%", "");
     var tipPercentage = (tipPercentage * .01);
-    return console.log((meal * tipPercentage));
+    var meal = meal.replace("$", "");
+    return (meal * tipPercentage);
 }
 
-parseFloat(tip(meal, tipPercentage)).toFixed(2);
+console.log(parseFloat(tipTotal(meal, tipPercentage)).toFixed(2));
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
@@ -117,7 +115,7 @@ parseFloat(tip(meal, tipPercentage)).toFixed(2);
  */
 
 function applyDiscount(originalPrice, discountPercent) {
-    return console.log(originalPrice - (originalPrice * discountPercent));
+    return (originalPrice - (originalPrice * discountPercent));
 }// 80
 
-parseFloat(applyDiscount(45.99, 0.12)).toFixed(2); // 40.4712
+console.log(parseFloat(applyDiscount(45.99, 0.12)).toFixed(2)); // 40.4712
