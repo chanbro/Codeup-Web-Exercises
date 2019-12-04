@@ -25,6 +25,9 @@ console.log("hello from conditionals lec.js!");
 //     console.log("user is regular user");
 // }
 
+//sample for ternary:
+// (isAdmin) ? showAdminNavbar() : showRegularNavbar;
+
 //TODO Together: Send a 20% off coupon if its users birthday
 // if(isBirthday) {
 //     //send 20% off
@@ -218,6 +221,8 @@ console.log("hello from conditionals lec.js!");
 // }
 // trafficLightInstructions(lightColor);
 
+
+// var lightColor = prompt("What color is the traffic light?");
 // switch (lightColor) {
 //     case (lightColor === "green"):
 //         alert("You may proceed through the intersection.");
@@ -236,22 +241,22 @@ console.log("hello from conditionals lec.js!");
 // ================ NESTED STATEMENTS ===============
 //TODO Together: If user is under 15, they are not eligible for a learners permit, else they are. If they are eligible, check age. If they are 15 they are eligible for a learners permit, if they are 16 or older and have a permit, they are eligible for license, if they are 16 or older and do not have a permit, they are not eligble for a license.
 
-var userAge = prompt("What is your current age?");
-var hasPermit = confirm("Do you currently have a learner's permit?");
-
-function licenseApplication(userAge, hasPermit) {
-     if (userAge < 15) {
-         return alert("You are not eligible for a learners permit at this time. Minimum age for permit application is 15 years old.")
-     } else if (userAge >= 16 && hasPermit) {
-        return alert("You are eligible for a driver's license.")
-     } else if ((!hasPermit && userAge >= 16) || (userAge === 15)) {
-        return alert("You are not eligible for a driver's license at this time. Please apply for a learner's permit before applying for a driver's license.")
-     } else {
-         return alert("Error. Please check for errors and resubmit form.");
-     }
-}
-
-licenseApplication(userAge, hasPermit);
+// var userAge = prompt("What is your current age?");
+// var hasPermit = confirm("Do you currently have a learner's permit?");
+//
+// function licenseApplication(userAge, hasPermit) {
+//      if (userAge < 15) {
+//          return alert("You are not eligible for a learners permit at this time. Minimum age for permit application is 15 years old.")
+//      } else if (userAge >= 16 && hasPermit) {
+//         return alert("You are eligible for a driver's license.")
+//      } else if ((!hasPermit && userAge >= 16) || (userAge === 15)) {
+//         return alert("You are not eligible for a driver's license at this time. Please apply for a learner's permit before applying for a driver's license.")
+//      } else {
+//          return alert("Error. Please check for errors and resubmit form.");
+//      }
+// }
+//
+// licenseApplication(userAge, hasPermit);
 
 
 
@@ -270,18 +275,20 @@ licenseApplication(userAge, hasPermit);
 //     message = "Oops, something went wrong.";
 // }
 // console.log(message);
-
-
+//
+//
 // var success = true;
 // var message = (success) ? "Operation was successful from tern." : "Oops, something went wrong from tern.";
-// console.log(message)
+// console.log(message);
+// condition (true or false, if block (what happens if true), else block (what happens otherwise)
+//Only use with if/else, NOT if/else if
 
 
 //TODO: Refactor the following conditional as a ternary
 
-// var weather = "sunny";
+var weather = "sunny";
 // var weatherMessage;
-
+//
 // if(weather === "rainy"){
 //    weatherMessage = "It's raining!";
 // } else {
@@ -290,9 +297,17 @@ licenseApplication(userAge, hasPermit);
 
 //WRITE YOUR TERNARY STATEMENT HERE!
 
-
+// var weatherMessage = (weather === "rainy") ? "It's raining!" : "Have a nice day!";
+// console.log(weatherMessage); //"Have a nice day!" because weather = "sunny"
+// condition (true or false, if block (what happens if true), else block (what happens otherwise)
+//
 
 // =============== SWITCH STATEMENT ================
+//Only use when evaluating what it is equal to (?)
+// Stops switch statement from executing
+// Return stops function from running and returns output; can't be used with switch because it works on the other end of the code to create an output and stop the function
+// Don't put alerts in switch statements; call them outside of a function
+
 //TODO Together:
 
 // var pizzaPreference = prompt("What kind of pizza do you like?");
@@ -312,20 +327,108 @@ licenseApplication(userAge, hasPermit);
 
 //TODO: Write a switch statement that evaluates weather as the condition. Check for "rainy", "sunny", "snow", and a default case.
 
+// var weather = "rainy";
+//
+// switch (weather) {
+//     case "rainy":
+//         alert("It's raining");
+//         break;
+//     case "sunny":
+//         alert("It's sunny");
+//         break;
+//     case "snow":
+//         alert("It's snowing");
+//         break;
+//     default:
+//         alert("Have a nice day!");
+//         break;
+// }
+
+//OR as a function
+
+// function checkWeather(weather) {
+//     var weatherMessage;
+//
+//     switch (weather) {
+//         case "rainy":
+//             weatherMessage = "It's raining";
+//             break;
+//         case "sunny":
+//             weatherMessage = "It's sunny";
+//             break;
+//         case "snow":
+//             weatherMessage = "It's snow";
+//             break;
+//         default:
+//             weatherMessage = "Have a nice day";
+//             break;
+//     }
+//     return weatherMessage;
+// }
+//
+// alert(checkWeather(weather));
+
 
 //TODO: Rewrite the intersection function from earlier as a switch statement.
 
+var lightColor = prompt("What color is the traffic light?");
+console.log(lightColor);
+console.log(typeof(lightColor));
 
+function checkTrafficLight(lightColor){
+    var colorMessage;
+
+    switch(lightColor) {
+        case "green":
+            colorMessage = "go";
+            break;
+        case "yellow":
+            colorMessage = "slow";
+            break;
+        case "red":
+            colorMessage = "stop"
+            break;
+        default:
+            colorMessage = "that is not a traffic light color :|"
+    }
+    return colorMessage
+}
+alert(checkTrafficLight(lightColor));
+
+// This is an example of what NOT to do with switch statements
+// function lightInstructions(lightColor) {
+//
+//     switch (lightColor) {
+//         case (lightColor === "green"):
+//             alert("You may proceed through the intersection.");
+//             break;
+//         case (lightColor === "yellow"):
+//             alert("You should slow down, but you're probably going to speed up :)");
+//             break;
+//         case (lightColor === "red"):
+//             alert("You should stop before the intersection.");
+//             break;
+//         default:
+//             alert(lightColor + "? That is definitely not a traffic light color...");
+//             break;
+//     }
+//     return lightColor
+// }
+//
+// lightInstructions(lightColor);
 
 // ================ REVERSE ENGINEERING =================
 // Visit each of these links, outline the steps required to achieve each of these demonstrations. You can write code or just write the logic steps that would achieve each output
-
+// Event Listener: code is "listening" for user reaction to know how to respond
+// DOM
 
 // 1) https://mdn.github.io/learning-area/javascript/building-blocks/allowance-updater.html
 
+//If shopping done === true (aka if button is clicked), add $5 to allowance and display in text
 
 // 2) https://mdn.github.io/learning-area/javascript/building-blocks/simple-else-if.html
-
+// If weather === "some string" (selected from the dropdown menu), display corresponding message
 
 // 3) https://mdn.github.io/learning-area/javascript/building-blocks/simple-ternary.html
 
+//dropdown select = some color, if black then turn background color black, otherwise white OR when white is selected
