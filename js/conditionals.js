@@ -15,44 +15,54 @@
  *
  * Can you refactor your code to use functions?
  */
-var confirm = confirm("Would you like to enter a number?");
-
-function confirmCheck() {
-    if (confirm === false) {
-        return alert("You chose to not enter a number.") + confirm.stop(true, false);
-        // } else {
-        //     return alert("Continuing to number game...");
-        // }
-    }
-}
-confirmCheck();
-
-var numberString = prompt("Please enter a number.");
-var number = parseFloat(numberString);
-function numberGame(number) {
-
-    switch (number) {
-        case (isNaN(x) || x === null):
-            alert("Please enter a number");
-            break;
-        case (x % 2 === 0):
-            alert("That's an even number!");
-        break;
-        case (x % 2 !== 0):
-            alert("That's an odd number!");
-            break;
-        break;
-        case (x < 0):
-            alert("Your number is negative!");
-        break;
-        case (x > 0):
-            alert("Your number is positive!");
-            break;
-        default:
-            alert("Did you know " + x + " + 100 =" + (x + 100) + "?");
-            break;
-    }
-
+// var gameStart = confirm('Would you like to enter a number?');
+//
+// function confirmCheck(gameStart) {
+//     if (gameStart === false)
+//         return alert("You chose to not enter a number.") + gameStart.stop(true, false);
+// }
+// confirmCheck(gameStart);
+//
+// var numberString = prompt("Please enter a number.");
+// console.log(numberString);
+// console.log(typeof numberString);
+//
+// function numCheck(numberString) {
+//     if (isNaN(numberString)) {
+//         return alert("That is not a number. Please try again.") + numberString.stop(true, false);
+//     } else {
+//         return parseFloat(numberString);
+//     }
+// }
+//
+// var num = parseFloat(numCheck(numberString));
+// console.log(typeof num);
+//
+// function evenOdd(num) {
+//     if (num % 2 === 0) {
+//         return "That's an even number!"
+//     } else {
+//         return "That's an odd number!"
+//     }
+// }
+//
+// alert(evenOdd(num));
+//
+// function negPos(num) {
+//     if (num < 0) {
+//         return "Your number is negative!"
+//     } else {
+//         return "Your number is positive!"
+//     }
+// }
+//
+// alert(negPos(num));
+//
+// function addHundred(num) {
+//     return "Did you know " + num + " + 100 =" + (num + 100) + "?";
+// }
+//
+// alert(addHundred(num));
 
 
 /* ########################################################################## */
@@ -77,8 +87,8 @@ function numberGame(number) {
 
 // Don't change the next two lines!
 // These lines create two variables for you:
-// - `colors`: a list of the colors of the rainbow
-// - `randomColor`: contains a single random color value from the list (this
+// `colors`: a list of the colors of the rainbow
+// `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
 // var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 // var randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -88,11 +98,72 @@ function numberGame(number) {
  * You should see a different message every time you refresh the page
  */
 
+// var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+// var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+// function analyzeColor(randomColor) {
+//     if (randomColor === 'red') {
+//         return "Roses are red";
+//     } else if (randomColor === 'orange') {
+//         return "Traffic cones are orange";
+//     } else if (randomColor === 'yellow') {
+//         return "Bananas are yellow";
+//     } else if (randomColor === 'green') {
+//         return "Grass is green";
+//     } else if (randomColor === 'blue') {
+//         return "The ocean is blue";
+//     } else if (randomColor === 'indigo') {
+//         return "The night sky is indigo";
+//     } else if (randomColor === 'violet') {
+//         return "Violets are violet";
+//     } else {
+//         return ("I don't know anything about " + randomColor)
+//     }
+// }
+
+// console.log(analyzeColor(randomColor));
+// console.log(analyzeColor("pink"));
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
-
+// var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+// var randomColor = colors[Math.floor(Math.random() * colors.length)];
+//
+// function analyzeColor(randomColor) {
+//     var colorMessage;
+//
+//     switch (randomColor) {
+//         case ('red'):
+//             colorMessage = "Roses are red";
+//              break;
+//         case ('orange'):
+//             colorMessage = "Traffic cones are orange";
+//             break;
+//         case ('yellow'):
+//             colorMessage = "Bananas are yellow";
+//             break;
+//         case ('green'):
+//             colorMessage = "Grass is green";
+//             break;
+//         case ('blue'):
+//             colorMessage = "The ocean is blue";
+//             break;
+//         case ('indigo'):
+//             colorMessage = "The night sky is indigo";
+//             break;
+//         case ('violet'):
+//             colorMessage =  "Violets are violet";
+//             break;
+//         default:
+//             colorMessage = ("I don't know anything about " + randomColor);
+//         break;
+//     }
+//     return colorMessage
+// }
+//
+// console.log(analyzeColor(randomColor));
+// console.log(analyzeColor("pink"));
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
@@ -100,6 +171,41 @@ function numberGame(number) {
  * function to show it to the user.
  */
 
+// var userInput = prompt("What is your favorite color?");
+//
+// function analyzeColor(userInput) {
+//     var colorMessage;
+//
+//     switch (userInput) {
+//         case ('red'):
+//             colorMessage = "Roses are red";
+//              break;
+//         case ('orange'):
+//             colorMessage = "Traffic cones are orange";
+//             break;
+//         case ('yellow'):
+//             colorMessage = "Bananas are yellow";
+//             break;
+//         case ('green'):
+//             colorMessage = "Grass is green";
+//             break;
+//         case ('blue'):
+//             colorMessage = "The ocean is blue";
+//             break;
+//         case ('indigo'):
+//             colorMessage = "The night sky is indigo";
+//             break;
+//         case ('violet'):
+//             colorMessage =  "Violets are violet";
+//             break;
+//         default:
+//             colorMessage = ("I don't know anything about " + userInput);
+//         break;
+//     }
+//     return colorMessage
+// }
+//
+// console.log(analyzeColor(userInput));
 /* ########################################################################## */
 
 /**
@@ -121,7 +227,43 @@ function numberGame(number) {
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+var luckyNumber = ['0%', '10%', '25%', '35%', '50%', '100%'];
+var randomLuckyNumber = luckyNumber[Math.floor(Math.random() * luckyNumber.length)];
 
+// console.log(randomLuckyNumber);
+// console.log(luckyNumber.indexOf(randomLuckyNumber));
+
+function discount(randomLuckyNumber) {
+    if (luckyNumber.indexOf(1) || luckyNumber.indexOf(2)) {
+        return "Congratulations, you won " + luckyNumber.indexOf(randomLuckyNumber) + " off your purchase! Discount will be applied at checkout.";
+    } else if (luckyNumber.indexOf(5)) {
+        return "Congratulations, Your entire purchase will be free! Discount applied at checkout."
+    } else {
+        return "Sorry, you did not win a discount. Try again later!";
+    }
+}
+
+alert(discount(randomLuckyNumber));
+//     if (luckyNumber.indexOf(0)) {
+//         return "Sorry, you did not win a discount. Try again later!";
+//     } else if (luckyNumber.indexOf(5)) {
+//         return "Congratulations, Your entire purchase will be free! Discount applied at checkout."
+//     } else {
+//         return "Congratulations, you won " + luckyNumber[luckyNumber.indexOf(randomLuckyNumber)] + " off your purchase! Discount will be applied at checkout."
+//     }
+// }
+
+// alert(discount(randomLuckyNumber));
+// console.log(randomLuckyNumber);
+// console.log(luckyNumber.indexOf(randomLuckyNumber));
+// function calculateTotal(randomLuckyNumber) {
+//     var tipPercentage = tipPercentage.replace("%", "");
+//     var tipPercentage = (tipPercentage * .01);
+//     var meal = meal.replace("$", "");
+//     return (meal * tipPercentage);
+// }
+//
+// console.log(parseFloat(tipTotal(meal, tipPercentage)).toFixed(2));
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.

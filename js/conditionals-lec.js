@@ -371,29 +371,29 @@ var weather = "sunny";
 
 //TODO: Rewrite the intersection function from earlier as a switch statement.
 
-var lightColor = prompt("What color is the traffic light?");
-console.log(lightColor);
-console.log(typeof(lightColor));
-
-function checkTrafficLight(lightColor){
-    var colorMessage;
-
-    switch(lightColor) {
-        case "green":
-            colorMessage = "go";
-            break;
-        case "yellow":
-            colorMessage = "slow";
-            break;
-        case "red":
-            colorMessage = "stop"
-            break;
-        default:
-            colorMessage = "that is not a traffic light color :|"
-    }
-    return colorMessage
-}
-alert(checkTrafficLight(lightColor));
+// var lightColor = prompt("What color is the traffic light?");
+// console.log(lightColor);
+// console.log(typeof(lightColor));
+//
+// function checkTrafficLight(lightColor){
+//     var colorMessage;
+//
+//     switch(lightColor) {
+//         case "green":
+//             colorMessage = "go";
+//             break;
+//         case "yellow":
+//             colorMessage = "slow";
+//             break;
+//         case "red":
+//             colorMessage = "stop"
+//             break;
+//         default:
+//             colorMessage = "that is not a traffic light color :|"
+//     }
+//     return colorMessage
+// }
+// alert(checkTrafficLight(lightColor));
 
 // This is an example of what NOT to do with switch statements
 // function lightInstructions(lightColor) {
