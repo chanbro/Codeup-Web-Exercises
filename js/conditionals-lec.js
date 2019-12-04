@@ -61,16 +61,16 @@ console.log("hello from conditionals lec.js!");
 // checkGameOver(1);
 // checkGameOver(0);
 
-function checkIfGameIsOver(numberOfLives){
-    var returnMessage;
-    if (numberOfLives === 0) {
-        returnMessage = "Game Over"
-    } else {
-        returnMessage = "Next Level"
-    }
-    return returnMessage;
-}
-checkIfGameIsOver(4);
+// function checkIfGameIsOver(numberOfLives){
+//     var returnMessage;
+//     if (numberOfLives === 0) {
+//         returnMessage = "Game Over"
+//     } else {
+//         returnMessage = "Next Level"
+//     }
+//     return returnMessage;
+// }
+// checkIfGameIsOver(4);
 //TODO: Write an if statement that alerts "It's snowing!" if weather is equal to "snowing"
 // function checkWeather(weather) {
 //     if (weather === "snowing") {
@@ -135,21 +135,27 @@ checkIfGameIsOver(4);
     
 // SHOULD WE DELETE STUFF EXAMPLE
 
-
+// var weShouldDeleteStuff = confirm('Are you sure you want to delete everything?');
+// console.log("the value of the confirm is: ");
+//
+// if (weShouldDeleteStuff) {
+//     alert("Deleted everything :)")
+// } else {
+//     alert("Operation Canceled!");
+// }
 
 
 //TODO: Write a confirm asking the user if they are 13 years of age or older. If they are, alert "You may proceed", if they are not, alert "Sorry, you are not able to proceed"
+// var userAge = confirm("Are you 13 or older?");
 // function ageCheck(userAge) {
-//     if (userAge >= 13) {
+//     if (userAge) {
 //         return alert("You may proceed.");
 //     } else {
 //         return alert("Sorry, you are not able to proceed.");
 //     }
 // }
 //
-// ageCheck(12);
-// ageCheck(13);
-// ageCheck(55);
+// ageCheck(userAge);
 
 // ================ IF / ELSE IF / ELSE STATEMENT SYNTAX ===============
 // if(condition1){
@@ -163,8 +169,19 @@ checkIfGameIsOver(4);
     
 
 // =============== IF / ELSE IF/ELSE STATEMENT EXAMPLES ================
-//TODO Together: Write an if/else if/else statement that alerts "It's snowing!" if weather is equal to "snowing", alerts "It's raining" if weather is equal to "raining", alerts "have a nice day" for all other cases
-
+// TODO Together: Write an if/else if/else statement that alerts "It's snowing!" if weather is equal to "snowing", alerts "It's raining" if weather is equal to "raining", alerts "have a nice day" for all other cases
+// function checkWeather(weather) {
+//     if (weather === "snowing") {
+//         return alert("It's snowing!")
+//     } else if (weather === "raining") {
+//         return alert("It's raining!")
+//     } else {
+//         return alert("Have a nice day!")
+//     }
+// }
+// checkWeather("snowing");
+// checkWeather("raining");
+// checkWeather("sunny");
 //TODO Together: refactor the above statement as a function
 
 // Together: PIZZA PREFERENCE EXAMPLE 
@@ -179,7 +196,7 @@ checkIfGameIsOver(4);
 // }  else if (pizzaPreference === "ham"){
 //     alert("Ham is easy to spell and awesome!");
 // } else {
-//     alert(pizzaPreference + " isn't my favorite, but let's order some!");
+//     alert(pizzaPreference.() + " isn't my favorite, but let's order some!");
 // }
 
 
@@ -187,7 +204,7 @@ checkIfGameIsOver(4);
 
 //TODO: Write a function that accepts a string that is a traffic light color as an input. When this function is called, it should return a message informing the user what to do when approaching that color light at an intersection.
 
-var lightColor = prompt("What color is the traffic light?");
+// var lightColor = prompt("What color is the traffic light?");
 // function trafficLightInstructions(lightColor) {
 //     if (lightColor === "green") {
 //         return alert("You may proceed through the intersection.")
@@ -196,30 +213,45 @@ var lightColor = prompt("What color is the traffic light?");
 //     } else if (lightColor === "red") {
 //         return alert("You should stop before the intersection.")
 //     } else {
-//         return alert("That is definitely not a traffic light color...")
+//         return alert(lightColor + "? That is definitely not a traffic light color...")
 //     }
 // }
 // trafficLightInstructions(lightColor);
 
-switch (lightColor) {
-    case (lightColor === "green"):
-        alert("You may proceed through the intersection.");
-        break;
-    case (lightColor === "yellow"):
-        alert("You should slow down, but you're probably going to speed up :)");
-        break;
-    case (lightColor === "red"):
-        alert("You should stop before the intersection.");
-        break;
-    default:
-        alert(lightColor + "? That is definitely not a traffic light color...");
-        break;
-}
+// switch (lightColor) {
+//     case (lightColor === "green"):
+//         alert("You may proceed through the intersection.");
+//         break;
+//     case (lightColor === "yellow"):
+//         alert("You should slow down, but you're probably going to speed up :)");
+//         break;
+//     case (lightColor === "red"):
+//         alert("You should stop before the intersection.");
+//         break;
+//     default:
+//         alert(lightColor + "? That is definitely not a traffic light color...");
+//         break;
+// }
 
 // ================ NESTED STATEMENTS ===============
 //TODO Together: If user is under 15, they are not eligible for a learners permit, else they are. If they are eligible, check age. If they are 15 they are eligible for a learners permit, if they are 16 or older and have a permit, they are eligible for license, if they are 16 or older and do not have a permit, they are not eligble for a license.
 
+var userAge = prompt("What is your current age?");
+var hasPermit = confirm("Do you currently have a learner's permit?");
 
+function licenseApplication(userAge, hasPermit) {
+     if (userAge < 15) {
+         return alert("You are not eligible for a learners permit at this time. Minimum age for permit application is 15 years old.")
+     } else if (userAge >= 16 && hasPermit) {
+        return alert("You are eligible for a driver's license.")
+     } else if ((!hasPermit && userAge >= 16) || (userAge === 15)) {
+        return alert("You are not eligible for a driver's license at this time. Please apply for a learner's permit before applying for a driver's license.")
+     } else {
+         return alert("Error. Please check for errors and resubmit form.");
+     }
+}
+
+licenseApplication(userAge, hasPermit);
 
 
 
