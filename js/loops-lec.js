@@ -132,11 +132,23 @@
 
 
 // TODO TOGETHER: Console.log each color from the array randomColors
-//  var randomColors = ["red","orange","yellow","blue","green"]
+    // We reference the index!
+
+//  var randomColors = ["red","orange","yellow","blue","green"];
+//
+// for (var i = 0; i < randomColors.length; i++){
+//     console.log(randomColors[i])
+// }
+
 
 
 // TODO TOGETHER: Using a for loop, log all even numbers 0 - 100;
 
+// for (var i = 0; i <= 100; i++){
+//     if (i % 2 === 0) {
+//         console.log(i)
+//     }
+// }
 
 // TODO: Using a for loop, log all numbers divisible by 5, from 0 - 100;
 
@@ -148,6 +160,17 @@
 //  If divisible by 3 and 5, log "FizzBuzz"
 //  All other cases, just log the number.
 
+for (var i = 0; i <= 100; i++){
+    if ((i % 3 === 0) && (i % 5 ===0)) { //i is divisible by 3 and 5
+        console.log("FizzBuzz")
+    } else if (i % 3 === 0) { //i is divisible by 3
+        console.log("Fizz")
+    } else if (i % 5 ===0) { // i is divisible by 5
+        console.log("Buzz")
+    } else {
+        console.log(i)
+    }
+}
 
 
 /*********************************************
@@ -174,10 +197,10 @@
 // We can get an iteration to skip using continue;
 // for (var i = 1; i < 100; i++) {
 //
-// 	if (i % 2 !== 0) {
-// 		// skipping all odd numbers;
-// 		continue;
-// 	}
+//     if (i % 2 !== 0) {
+//         // skipping all odd numbers;
+//         continue;
+//     }
 //
-// 	console.log('Here is a lovely even number: ' + i);
+//     console.log('Here is a lovely even number: ' + i);
 // }
