@@ -90,15 +90,24 @@
 //TODO TOGETHER: Create a do-while loop that asks the user to confirm: "Would you like to exit?" What difference do you notice?
 // >>Answer: we can declare the variable inside the loop, because the do block runs at least once compared to while loop
 
-do {
-    var userConfirm = confirm("Would you like to exit?")
-} while (!userConfirm);
+// do {
+//     var userConfirm = confirm("Would you like to exit?")
+// } while (userConfirm === false);
 
 //TODO TOGETHER: Create a do-while loop that counts up to 20 (inclusive) by 2s (0, 2, 4...)
 // (0, 2, 4...20)
 
+// var i = 0;
+// do {
+//     console.log(i);
+//     i+=2;
+// } while (i <= 20);
 
 //TODO: Create a do-while loop that prompts the user for a color and continues to prompt until the string passed is "blue"
+
+// do {
+//     var userColor = prompt("Enter a color");
+// } while (userColor !== "blue");
 
 
 /*********************************************
@@ -115,6 +124,9 @@ do {
 
 // TODO TOGETHER: Write a for loop that loops through numbers 0 - 5 (inclusive);
 
+// for (var i = 0; i <= 5; i++){
+//     console.log(i)
+// }
 
 // TODO TOGETHER: Why are loops beneficial?
 
