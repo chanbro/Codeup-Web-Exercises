@@ -52,3 +52,12 @@ pets.forEach(function (pet, i, arr) {
 // Assigning variables to indexes within an array of arrays:  variableName[0][0] = x means set array 0's index of 0 to x;
 // variableName[1][0] = o means set Array 1's index of 0 to o
 
+var tictactoe = [[' '], [' '], [' '],
+                [' '], [' '], [' '],
+                [' '], [' '], [' ']];
+var takeTurn = function (who, row, column) {
+    for (var i = 0; i < tictactoe.length; i++) {
+        console.log(" " + tictactoe[i][0]) + " | " + tictactoe[i][1] + " | " + tictactoe[i][2]
+        console.log("_________");
+    }
+}
