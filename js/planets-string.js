@@ -38,16 +38,9 @@
     console.log(planetsArray);
 
 
-    function planetsSplice() {
-        console.log(planetsArray.splice(i, 0, "</li><li>"));
-    }
-
-    function planetsHTML() {
-        for (var i = 2; i < planetsArray.length; i++) {
-            planetsSplice()
-        }
-    }
-    planetsHTML()
+    planetsArray.forEach(function(planet) {
+        planetsUl
+    })
 
 })();
 
