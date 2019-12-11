@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSS Grid Layout 1</title>
+    <title>CSS Grid Layout 2</title>
     <style>
         body {
             margin: 1em;
         }
-        main {
+        .container {
             display: grid;
             grid-template-rows: repeat(8,1fr);
             grid-template-columns: repeat(8,1fr);
@@ -25,7 +25,7 @@
         .nav {
             background-color: gold;
             border: 2px solid black;
-            grid-area: 2 / 1 / 9 / 3;
+            grid-area: 2 / 1 / 8 / 3;
             margin: 0;
         }
         .article {
@@ -37,24 +37,24 @@
         .ads {
             background-color: gold;
             border: 2px solid black;
-            grid-area: 8 / 8 / 2 / 8;
+            grid-area: 8 / 8 / 2 / 9;
             margin: 0;
         }
         .footer {
             background-color: gold;
             border: 2px solid black;
-            grid-area: 8 / 3 / 8 / 9;
+            grid-area: 8 / 1 / 9 / 9;
             margin: 0;
         }
     </style>
 </head>
 <body>
-    <main>
-        <div class="header">header</div>
-        <div class="nav">nav</div>
-        <div class="article">article</div>
-        <div class="ads">ads</div>
-        <div class="footer">footer</div>
-    </div>
+<div class="container">
+    <p class="header">header</p>
+    <p class="nav">nav</p>
+    <p class="article">article</p>
+    <p class="ads">ads</p>
+    <p class="footer">footer</p>
+</div>
 </body>
 </html>
