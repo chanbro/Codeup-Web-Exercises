@@ -52,21 +52,22 @@
      */
 
     var shoppers = [
-        {
-            name: 'Cameron', amount: 180,
-            cartTotal: function() {
-                if (this.amount >= 200) {
-                    return ("Hello, " + this.name + "." + "Your total before the                         discount was $" + this.amount + "." + "Your total after discount is $" +                  (this.amount - (this.amount * .12)))
-                } else {
-                    return ("Add $" + (200 - this.amount) + " to your cart to qualify                     for discount")
-                }
-            },
-        },
-        // {name: 'Ryan', amount: 250},
-        // {name: 'George', amount: 320},
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320},
 
     ];
-    console.log(shoppers.cartTotal());
+
+    var i;
+    for (i = 0; i < shoppers.length; i++) {
+        shoppers.forEach(function () {
+            if (shoppers[i].amount >= 200) {
+                console.log("Hello, " + shoppers[i].name + ". Your total before the discount was $" + shoppers[i].amount + ". Your total after discount is $" + (shoppers[i].amount - (shoppers[i].amount * .12)))
+            } else {
+                console.log("Hello, " + shoppers[i].name + ". Add $" + (200 -                        shoppers[i].amount) + " to your cart to qualify for discount")
+            }
+        })
+    }
 
 
     // report = function() {
