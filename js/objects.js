@@ -64,10 +64,12 @@
             if (shoppers[i].amount >= 200) {
                 console.log("Hello, " + shoppers[i].name + ". Your total before the discount was $" + shoppers[i].amount + ". Your total after discount is $" + (shoppers[i].amount - (shoppers[i].amount * .12)))
             } else {
-                console.log("Hello, " + shoppers[i].name + ". Add $" + (200 -                        shoppers[i].amount) + " to your cart to qualify for discount")
+                console.log("Hello, " + shoppers[i].name + ". Add $" + (200 - shoppers[i].amount) + " to your cart to qualify for discount")
             }
-        })
+        });
     }
+
+    //solution from class
 
 
     // report = function() {
