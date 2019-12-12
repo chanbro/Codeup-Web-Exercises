@@ -102,6 +102,25 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
+    // creating initial array of books
+    var books = [
+        {author:{firstName: "J.K.", lastName: "Rowling",}, title: "Harry Potter and the Chamber of Secrets"},
+        {author:{firstName: "Arthur", lastName: "Golden"}, title: "Memoirs of a Geisha"},
+        {author:{firstName: "Dante", lastName: "Alighieri"}, title: "Divine Comedy"},
+        {author:{firstName: "Carl", lastName: "Jung"}, title: "The Archetypes and the Collective Unconscious"},
+        {author:{firstName: "Karl", lastName: "Marx"}, title: "The Communist Manifesto"},
+        {author:{firstName: "A.A.", lastName: "Milne"}, title: "Winnie the Pooh"},
+    ];
+
+    // defining i and a function for "book" that is more specific than "books" that can be reused in the code; displaying initial array of books
+    // var i;
+    // for (i = 0; i < books.length; i++) {function(book) {
+    //     console.log(book[i].author.firstName + " " + book[i].author.lastName + " " + book[i].title)
+    // };
+    // }
+
+
+
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -127,6 +146,13 @@
      *      ...
      */
 
+    // loop books in console
+books.forEach(function (book, i) {
+    console.log("Book # " + (i + 1));
+    console.log("Title: " + book.title);
+    console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+    console.log("----------");
+});
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -138,4 +164,32 @@
      *   `showBookInfo` function.
      */
 
+    var title = "Hello"; //checking to see if it works
+
+    // function to make sure books.push works
+    var createBook = function(title, authorFirstName, authorLastName){
+        var book = {};
+        book.title = title;
+        book.author = {};
+        book.author.firstName = authorFirstName;
+        book.author.lastName = authorLastName;
+        return book;
+    };
+    // adding new book
+    books.push(createBook("Leviathan", "Scott", "Westfield"));
+    //seeing if new book appears when function is reran
+    var showBookInfo = function(book, i){
+        console.log("Book # " + (i + 1));
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+        console.log("----------");
+    };
+    books.forEach(showBookInfo);
+
+    // books.forEach(function (book, i) {
+    //     console.log("Book # " + (i + 1));
+    //     console.log("Title: " + book.title);
+    //     console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+    //     console.log("----------");
+    // });
 })();
