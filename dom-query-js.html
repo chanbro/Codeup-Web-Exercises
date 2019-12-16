@@ -50,11 +50,11 @@
         console.log(listItems);
 
         // TODO: Set text color on every other list item to grey
-        for (var i = 0; i < listItems.length; i++) {
-            if (i % 2 !== 0) {
-                listItems[i].style.color = "grey"
-            }
-        }
+        // for (var i = 0; i < listItems.length; i++) {
+        //     if (i % 2 !== 0) {
+        //         listItems[i].style.color = "grey"
+        //     }
+        // }
         // TODO: Set text color of li with dbid = 1 to blue (data-dbid [database id] is attribute type in HTML5) (added to Event Listener)
         // listItems[0].style.color = "blue";
         //solution from class didn't work
@@ -76,10 +76,14 @@
             button1.addEventListener("click", function () {mainHeader.innerHTML = "Javascript is Cool";}, );
 
         var button2 = document.getElementById('button-2');
-        button2.addEventListener("click", function () {subHeader.style.color = "blue";}, );
+        button2.addEventListener("click", function () {        for (var i = 0; i < listItems.length; i++) {
+            if (i % 2 !== 0) {
+                listItems[i].style.color = "grey"
+            }
+        }}, );
 
         var button3 = document.getElementById('button-3');
-        button3.addEventListener("click", function () {listItems[0].style.color = "blue";}, );
+        button3.addEventListener("click", function () {listItems[0].style.color = "blue"; subHeader.style.color = "blue";}, );
 
         var button4 = document.getElementById('button-4');
         button4.addEventListener("click", function () {subParagraphs[0].innerHTML = "Mission Accomplished!";}, );
