@@ -33,7 +33,7 @@
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
         mainHeader.innerHTML = "Javascript is Cool";
-        
+
         // TODO: Uncomment the next line and get the sub header element by id
         var subHeader = document.getElementById("sub-header");
 
@@ -52,6 +52,12 @@
         }
         // TODO: Set text color of li with dbid = 1 to blue (data-dbid [database id] is attribute type in HTML5)
         listItems[0].style.color = "blue";
+        //solution from class didn't work
+        // for(var j = 0; j<listItems.length;j++){
+        //     if (listItems[j].getAttribute("data-dbid") == 1)
+        //         listItems[j].setAttribute("class", subHeader.getAttribute("class") + " blue");
+        // }
+
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         var subParagraphs = document.getElementsByClassName("sub-paragraph");
         console.log(subParagraphs);
