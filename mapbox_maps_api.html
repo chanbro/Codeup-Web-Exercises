@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mapbox Exercise</title>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4773d21f04.js" crossorigin="anonymous"></script>
     <!-- Mapbox CSS -->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <!-- Custom CSS -->
@@ -16,25 +18,143 @@
 </head>
 <body>
 
-<h1>My First Mapbox Map!</h1>
+<h1>Mapbox Exercise</h1>
+<input type="text" placeholder="Search..">
+<button type="submit" id="search-btn"><i class="fas fa-search"></i></button>
 
-<!-- The HTML element that serves as the Mapbox container -->
+<select id="zoom" onchange="getZoomValue(zoom)">
+    <option value="13" >Default Zoom</option>
+    <option value="5" >5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+</select>
+<button type="button" id="hide-btn" onclick="hideMarkers()"><i class="fas fa-search"></i></button>
+
+<!-- The HTML element that serves as the Mapbox container; Mapbox JS reference code -->
 <div id='map'></div>
-
-<!--My Mapbox Key-->
-<script src="js/keys.js"></script>
-<!-- Mapbox JS -->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
 
 <!-- Custom JS -->
 <script>
-    mapboxgl.accessToken = YOUR_API_TOKEN_HERE;
+    // Generate a map that shows the city with your favorite restaurant using geocoding.
+
+    mapboxgl.accessToken = mapboxToken;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-98.4916, 29.4252]
+        zoom: 15,
+        center: [-90.275009, 38.615791],
     });
+
+    //     Redraw the map of the above location at zoom levels 5, 15, and 20. Do this by simply changing the value of zoom level where the map properties are initially set and refresh the page to see the changes. Can the zoom be changed programmatically after the initial map is drawn?
+
+    map.setZoom(12);
+
+    //     Create a marker on your map of the exact location of your favorite restaurant set the zoom to allow for best viewing distance.
+
+    var ziasMarkerOptions = { //stylize the marker and it how to interact
+        color: "#355e3b",
+    };
+
+    var ziasMarker = new mapboxgl.Marker(ziasMarkerOptions) //creating the marker on the map
+        .setLngLat([-90.275009, 38.615791])  //set the location in Long, Lat
+        .addTo(map);                          //add it to the map
+
+    //     Create a popup with the name of the restaurant.
+
+    var ziasPopup = new mapboxgl.Popup() //creating the popup
+        .setHTML("<p>Zia's On The Hill</p>" + "<img src='http://placeholder.pics/svg/150'>");
+        // .addTo(map);
+        // ziasMarker.setPopup(ziasPopup); //binds popup to marker
+
+
+    //     Make sure the info window does not display until the marker has been clicked on. https://docs.mapbox.com/mapbox-gl-js/example/popup-on-click/
+
+    map.on('load', function () { //when the map loads, set up popups. They appear on click.
+        ziasMarker.setPopup(ziasPopup);
+        missionMarker.setPopup(missionPopup);
+        plantersMarker.setPopup(plantersPopup);
+    });
+
+    //     Refactor your code to display at least three of your favorite restaurants with information about each. Create an array of objects with information about each restaurant to accomplish this. Use a .forEach() loop rather than a for loop.
+
+
+    //Mission Taco
+    var missionMarkerOptions = { //stylize the marker and it how to interact
+        color: "#562680",
+    };
+
+    var missionMarker = new mapboxgl.Marker(missionMarkerOptions) //creating the marker on the map
+        .setLngLat([-90.2608, 38.6482])  //set the location in Long, Lat
+        .setPopup(missionPopup)
+        .addTo(map);                          //add it to the map
+
+    var missionPopup = new mapboxgl.Popup() //creating the popup
+        .setHTML("<p>Mission Taco Central West End</p>" + "<img src='http://placeholder.pics/svg/150'>");
+
+    //Planter's House
+
+    var plantersMarkerOptions = { //stylize the marker and it how to interact
+        color: "#fc8c03",
+    };
+
+    var plantersMarker = new mapboxgl.Marker(plantersMarkerOptions) //creating the marker on the map
+        .setLngLat([-90.2120, 38.6207])  //set the location in Long, Lat
+        .setPopup(plantersPopup)
+        .addTo(map);                          //add it to the map
+
+    var plantersPopup = new mapboxgl.Popup() //creating the popup
+        .setHTML("<p>Planter's House</p>" + "<img src='http://placeholder.pics/svg/150'>");
+
+
+
+    //Array of restaurants
+
+    var restaurants = [
+        {
+            name: "Zia's On The Hill",
+            info: "Quaint Italian eatery in St. Louis's Little Italy",
+        },
+        {
+            name: "Mission Taco",
+            info: "West Coast-style street tacos and late night snacks",
+        },
+        {
+            name: "Planter's House",
+            info: "Grill and lounge featuring a custom cocktail menu",
+        }
+    ];
+
+    restaurants.forEach(function (restaurant) {
+        return  console.log("Restaurant Name: " + restaurant.name + ", Restaurant Description: " + restaurant.info)
+    });
+
+    //BONUS
+
+    // Add a select input that allows the user to change the zoom level to 5, 15, or 20.
+    //Reference for solution: https://www.aspsnippets.com/Articles/Call-JavaScript-function-on-SelectedIndexChanged-of-HTML-DropDownList-using-JavaScript-and-jQuery.aspx
+
+    function getZoomValue(zoom) {
+        return map.setZoom(zoom.value);
+    }
+
+    //Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
+    //
+    // var reverseGeo = reverseGeocode({lng: -98.4861, lat: 29.4260}, mapboxToken).then(function (result) {
+    //     console.log(result);
+    // });
+
+    // function doSomething(something) {
+    //     return
+    // }
+
+    // Add a button that will hide all markers.
+    function hideMarkers() {
+        return (plantersMarker.remove() + missionMarker.remove() + ziasMarker.remove());
+    }
 </script>
 </body>
 </html>
