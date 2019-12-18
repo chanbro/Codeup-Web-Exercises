@@ -6,7 +6,7 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4773d21f04.js" crossorigin="anonymous"></script>
     <!-- Mapbox CSS -->
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
     <!-- Custom CSS -->
     <style>
         #map {
@@ -23,13 +23,15 @@
 <button type="submit" id="search-btn"><i class="fas fa-search"></i></button>
 
 <select id="zoom" onchange="getZoomValue(zoom)">
-    <option value="13" >Default Zoom</option>
-    <option value="5" >5</option>
+    <option value="12">Default Zoom</option>
+    <option value="5">5</option>
     <option value="10">10</option>
     <option value="15">15</option>
     <option value="20">20</option>
 </select>
-<button type="button" id="hide-btn" onclick="hideMarkers()"><i class="fas fa-search"></i></button>
+<label class="container">Hide Markers
+    <input type="checkbox" id="hide-markers" onclick="hideMarkers()">
+</label>
 
 <!-- The HTML element that serves as the Mapbox container; Mapbox JS reference code -->
 <div id='map'></div>
@@ -67,8 +69,8 @@
 
     var ziasPopup = new mapboxgl.Popup() //creating the popup
         .setHTML("<p>Zia's On The Hill</p>" + "<img src='http://placeholder.pics/svg/150'>");
-        // .addTo(map);
-        // ziasMarker.setPopup(ziasPopup); //binds popup to marker
+    // .addTo(map);
+    // ziasMarker.setPopup(ziasPopup); //binds popup to marker
 
 
     //     Make sure the info window does not display until the marker has been clicked on. https://docs.mapbox.com/mapbox-gl-js/example/popup-on-click/
@@ -110,7 +112,6 @@
         .setHTML("<p>Planter's House</p>" + "<img src='http://placeholder.pics/svg/150'>");
 
 
-
     //Array of restaurants
 
     var restaurants = [
@@ -129,7 +130,7 @@
     ];
 
     restaurants.forEach(function (restaurant) {
-        return  console.log("Restaurant Name: " + restaurant.name + ", Restaurant Description: " + restaurant.info)
+        return console.log("Restaurant Name: " + restaurant.name + ", Restaurant Description: " + restaurant.info)
     });
 
     //BONUS
@@ -152,8 +153,14 @@
     // }
 
     // Add a button that will hide all markers.
+
     function hideMarkers() {
-        return (plantersMarker.remove() + missionMarker.remove() + ziasMarker.remove());
+        var toggleMarkers = document.getElementById("hide-markers");
+        if (toggleMarkers.checked === true) {
+            return (plantersMarker.remove() + missionMarker.remove() + ziasMarker.remove())
+        } else {
+            return (plantersMarker.addTo(map) + missionMarker.addTo(map) + ziasMarker.addTo(map))
+        }
     }
 </script>
 </body>
