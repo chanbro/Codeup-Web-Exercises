@@ -57,80 +57,106 @@
 
     //     Create a marker on your map of the exact location of your favorite restaurant set the zoom to allow for best viewing distance.
 
-    var ziasMarkerOptions = { //stylize the marker and it how to interact
-        color: "#355e3b",
-    };
+    // var ziasMarkerOptions = { //stylize the marker and it how to interact
+    //     color: "#355e3b",
+    // };
 
-    var ziasMarker = new mapboxgl.Marker(ziasMarkerOptions) //creating the marker on the map
-        .setLngLat([-90.275009, 38.615791])  //set the location in Long, Lat
-        .addTo(map);                          //add it to the map
-
-    //     Create a popup with the name of the restaurant.
-
-    var ziasPopup = new mapboxgl.Popup() //creating the popup
-        .setHTML("<p>Zia's On The Hill</p>" + "<img src='http://placeholder.pics/svg/150'>");
+    // var ziasMarker = new mapboxgl.Marker(ziasMarkerOptions) //creating the marker on the map
+    //     .setLngLat([-90.275009, 38.615791])  //set the location in Long, Lat
+    //     .addTo(map);                          //add it to the map
+    //
+    // //     Create a popup with the name of the restaurant.
+    //
+    // var ziasPopup = new mapboxgl.Popup() //creating the popup
+    //     .setHTML("<p>Zia's On The Hill</p>" + "<img src='http://placeholder.pics/svg/150'>");
     // .addTo(map);
     // ziasMarker.setPopup(ziasPopup); //binds popup to marker
 
 
     //     Make sure the info window does not display until the marker has been clicked on. https://docs.mapbox.com/mapbox-gl-js/example/popup-on-click/
 
-    map.on('load', function () { //when the map loads, set up popups. They appear on click.
-        ziasMarker.setPopup(ziasPopup);
-        missionMarker.setPopup(missionPopup);
-        plantersMarker.setPopup(plantersPopup);
-    });
+    // map.on('load', function () { //when the map loads, set up popups. They appear on click.
+    //     ziasMarker.setPopup(ziasPopup);
+    //     missionMarker.setPopup(missionPopup);
+    //     plantersMarker.setPopup(plantersPopup);
+    // });
 
     //     Refactor your code to display at least three of your favorite restaurants with information about each. Create an array of objects with information about each restaurant to accomplish this. Use a .forEach() loop rather than a for loop.
 
 
     //Mission Taco
-    var missionMarkerOptions = { //stylize the marker and it how to interact
-        color: "#562680",
-    };
-
-    var missionMarker = new mapboxgl.Marker(missionMarkerOptions) //creating the marker on the map
-        .setLngLat([-90.2608, 38.6482])  //set the location in Long, Lat
-        .setPopup(missionPopup)
-        .addTo(map);                          //add it to the map
-
-    var missionPopup = new mapboxgl.Popup() //creating the popup
-        .setHTML("<p>Mission Taco Central West End</p>" + "<img src='http://placeholder.pics/svg/150'>");
+    // var missionMarkerOptions = { //stylize the marker and it how to interact
+    //     color: "#562680",
+    // };
+    //
+    // var missionMarker = new mapboxgl.Marker(missionMarkerOptions) //creating the marker on the map
+    //     .setLngLat([-90.2608, 38.6482])  //set the location in Long, Lat
+    //     .setPopup(missionPopup)
+    //     .addTo(map);                          //add it to the map
+    //
+    // var missionPopup = new mapboxgl.Popup() //creating the popup
+    //     .setHTML("<p>Mission Taco Central West End</p>" + "<img src='http://placeholder.pics/svg/150'>");
 
     //Planter's House
 
-    var plantersMarkerOptions = { //stylize the marker and it how to interact
-        color: "#fc8c03",
-    };
+    // var plantersMarkerOptions = { //stylize the marker and it how to interact
+    //     color: "#fc8c03",
+    // };
 
-    var plantersMarker = new mapboxgl.Marker(plantersMarkerOptions) //creating the marker on the map
-        .setLngLat([-90.2120, 38.6207])  //set the location in Long, Lat
-        .setPopup(plantersPopup)
-        .addTo(map);                          //add it to the map
-
-    var plantersPopup = new mapboxgl.Popup() //creating the popup
-        .setHTML("<p>Planter's House</p>" + "<img src='http://placeholder.pics/svg/150'>");
+    // var plantersMarker = new mapboxgl.Marker(plantersMarkerOptions) //creating the marker on the map
+    //     .setLngLat([-90.2120, 38.6207])  //set the location in Long, Lat
+    //     .setPopup(plantersPopup)
+    //     .addTo(map);                          //add it to the map
+    //
+    // var plantersPopup = new mapboxgl.Popup() //creating the popup
+    //     .setHTML("<p>Planter's House</p>" + "<img src='http://placeholder.pics/svg/150'>");
 
 
     //Array of restaurants
 
+    // var restaurants = [
+    //     {
+    //         name: "Zia's On The Hill",
+    //         coordinates: [-90.275009, 38.615791],
+    //         info: "Quaint Italian eatery in St. Louis's Little Italy",
+    //     },
+    //     {
+    //         name: "Mission Taco",
+    //         coordinates: [-90.2608, 38.6482],
+    //         info: "West Coast-style street tacos and late night snacks",
+    //     },
+    //     {
+    //         name: "Planter's House",
+    //         coordinates: [-90.2120, 38.6207],
+    //         info: "Grill and lounge featuring a custom cocktail menu",
+    //     }
+    // ];
+
     var restaurants = [
         {
-            name: "Zia's On The Hill",
-            info: "Quaint Italian eatery in St. Louis's Little Italy",
+            popupHTML: "<h1>Zia's On The Hill</h1><br><p>Quaint Italian eatery in St. Louis's Little Italy</p>",
+            coordinates: [-90.275009, 38.615791],
         },
         {
-            name: "Mission Taco",
-            info: "West Coast-style street tacos and late night snacks",
+            popupHTML: "<h1>Mission Taco</h1><br><p>West Coast-style street tacos and late night snacks</p>",
+            coordinates: [-90.2608, 38.6482],
         },
         {
-            name: "Planter's House",
-            info: "Grill and lounge featuring a custom cocktail menu",
+            popupHTML: "<h1>Planter's House</h1><br><p>Grill and lounge featuring a custom cocktail menu</p>",
+            coordinates: [-90.2120, 38.6207],
         }
     ];
 
     restaurants.forEach(function (restaurant) {
-        return console.log("Restaurant Name: " + restaurant.name + ", Restaurant Description: " + restaurant.info)
+        geocode(restaurant.coordinates, mapboxToken).then(function(result) {
+        var popupEvent = new mapboxgl.Popup(restaurant.popupHTML) //creating the popup
+            .setHTML(restaurant.popupHTML);
+            // .setHTML(restaurant.name + "<img src='http://placeholder.pics/svg/150'>" + restaurant.info);
+        var marker = new mapboxgl.Marker() //creating the marker
+            .setLngLat(result)
+            .setPopup(popupEvent)
+            .addTo(map)
+        });
     });
 
     //BONUS
@@ -158,10 +184,19 @@
 
     // Add a button that will hide all markers.
 
+    // function hideMarkers() {
+    //     var toggleMarkers = document.getElementById("hide-markers");
+    //     if (toggleMarkers.checked === true) {
+    //         return (plantersMarker.remove() + missionMarker.remove() + ziasMarker.remove())
+    //     } else {
+    //         return (plantersMarker.addTo(map) + missionMarker.addTo(map) + ziasMarker.addTo(map))
+    //     }
+    // }
+
     function hideMarkers() {
         var toggleMarkers = document.getElementById("hide-markers");
         if (toggleMarkers.checked === true) {
-            return (plantersMarker.remove() + missionMarker.remove() + ziasMarker.remove())
+            return (restaurant.marker.remove())
         } else {
             return (plantersMarker.addTo(map) + missionMarker.addTo(map) + ziasMarker.addTo(map))
         }
