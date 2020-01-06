@@ -2,18 +2,68 @@
 <html>
 <head>
     <title>jQuery Exercise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-weight: lighter;
+        }
+
+        .black-container {
+            height: 100%;
+            background-color: black;
+            color: white;
+        }
+
+        .white-container {
+            height: 100%;
+            background-color: white;
+            color: black;
+        }
+
+    </style>
 </head>
 <body>
 
-<h1>New Years Resolutions</h1>
-<ul>
-    <li>Wake up earlier</li>
-    <li>Go to gym more often</li>
-    <li>Eat out less</li>
-    <li>Save money for vacation</li>
-    <li id="important">Get a new job</li>
-</ul>
-<button class="cyan" id="button" type="button">Click</button>
+<!--<h1>New Years Resolutions</h1>-->
+<!--<ul>-->
+<!--    <li>Wake up earlier</li>-->
+<!--    <li>Go to gym more often</li>-->
+<!--    <li>Eat out less</li>-->
+<!--    <li>Save money for vacation</li>-->
+<!--    <li id="important">Get a new job</li>-->
+<!--</ul>-->
+<!--<button class="cyan" id="button" type="button">Click</button>-->
+
+<div class="black-container" id="page-1">
+    <section>
+        <ul class="scroll-nav">
+            <li><a href="#page-1">PAGE 1</a></li>
+            <li><a href="#page-2">PAGE 2</a></li>
+        </ul>
+    </section>
+    <section>
+    <h1 class="header">Section Head</h1>
+        <p class="header-subtext">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequuntur eligendi, et eum id ipsum numquam quod veritatis vero voluptatem? A animi dicta exercitationem facilis ipsa magnam possimus sapiente tempora.</p>
+    </section>
+    <div class="white-container" id="page-2">
+        <section>
+            <h1 class="header">Section Head</h1>
+            <ol class="projects">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ol>
+
+        </section>
+    </div>
+</div>
+
 
 
 
