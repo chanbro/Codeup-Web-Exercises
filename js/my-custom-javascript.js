@@ -45,12 +45,20 @@ $(document).ready(function() {
         $(this).css('font-size', '18px')
     })
 
-    $('li').hover(
-        function () {
-            $('li').css('color', 'red')
-        },
-        function () {
-            $('li').css('color', 'black')
-        }
-    )
+    // $('li').hover(
+    //     function () {
+    //         $('li').css('color', 'red')
+    //     },
+    //     function () {
+    //         $('li').css('color', 'black')
+    //     }
+    // )
+
+    $('li')
+        .mouseenter(function () {
+            $('li').css('color','red')
+        })
+        .mouseout(function () {
+            $('li').css('color','black')
+        })
 });
