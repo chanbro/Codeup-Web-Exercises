@@ -2,6 +2,6 @@
 
 $(document).ready(function() {
 
-    // INSERT JAVASCRIPT CODE SAMPLE HERE
+    alert("complete");
 
 });
