@@ -295,19 +295,35 @@
    //
    // console.log(getGoldReindeer(reindeerList));
 
-   //.forEach() solution
-    function getGoldReindeer(reindeerArray){
-       var bucket = [];
+   // //.forEach() solution
+   //  function getGoldReindeer(reindeerArray){
+   //     var bucket = [];
+   //
+   //     reindeerArray.forEach(function(reindeer){
+   //         if (reindeer.isGold === true){
+   //             bucket.push(reindeer);
+   //         }
+   //     });
+   //     return bucket;
+   //  }
 
-       reindeerArray.forEach(function(reindeer){
-           if (reindeer.isGold === true){
-               bucket.push(reindeer);
-           }
-       });
-       return bucket;
+   // console.log(getGoldReindeer(reindeerList));
+
+    //Fizz buzz from paper
+
+    function fizzbuzz(num) {
+       for (var i = 1;i<=num;i++){
+           if (i % 15 === 0)
+               console.log("fizzbuzz");
+           else if (i % 3 === 0)
+               console.log("fizz");
+           else if (i % 5 === 0)
+               console.log("buzz");
+           else
+               console.log(i)
+       }
     }
 
-   console.log(getGoldReindeer(reindeerList));
 
 </script>
 </body>
