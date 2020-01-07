@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery FAQs</title>
+
+    <style>
+
+        .invisible {
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<h1>National Parks Facts</h1>
+
+<dl>
+    <dt>Yosemite National Park</dt>
+        <dd>Has 3 of the 10 highest waterfalls in the world</dd>
+    <dt>Death Valley National Park</dt>
+        <dd>One of the hottest temperatures on earth recorded in 1913 (134 degrees)</dd>
+    <dt>The Grand Canyon</dt>
+        <dd>One of the Seven Natural Wonders of the World</dd>
+    <dt>California's Sequoia National Park</dt>
+        <dd> Largest living single-stem tree in the world (275 feet tall)</dd>
+    <dt>Yosemite National Park</dt>
+        <dd>Has 3 of the 10 highest waterfalls in the world</dd>
+    <dt>Death Valley National Park</dt>
+        <dd>One of the hottest temperatures on earth recorded in 1913 (134 degrees)</dd>
+    <dt>The Grand Canyon</dt>
+        <dd>One of the Seven Natural Wonders of the World</dd>
+    <dt>California's Sequoia National Park</dt>
+        <dd> Largest living single-stem tree in the world (275 feet tall)</dd>
+</dl>
+
+<a href="#" id="show-hide">Click to toggle facts</a>
+<script>
+
+    $(document).ready(function () {
+        $('#show-hide').click(function () {
+            // event.preventDefault();
+            $('dd').toggleClass('invisible')
+        });
+    });
+
+
+</script>
+</body>
+</html>
