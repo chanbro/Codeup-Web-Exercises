@@ -24,12 +24,18 @@
             text-align: center;
         }
 
+        .hidden {
+        visibility: hidden
+        }
+
+
+
     </style>
 </head>
 <body>
 <h1>Enter the Code:</h1>
-<div class="img-display">
-    <img class="gameboy" src="img/gameboy-og.png" alt="Gameboy Neutral">
+<div>
+    <img class="gameboy img-display" src="img/gameboy-og.png" alt="Gameboy Neutral">
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
@@ -66,8 +72,23 @@
         console.log("konamiCodeLength:" + konamiCode.length);
 
         if (userKey === 'up') {
-            $('.gameboy').html('<img class="gameboy" src="img/gameboy-up.png" alt="Gameboy Up">')
+            $('.gameboy').attr('src','img/gameboy-up.png')
+        } else if (userKey === 'down') {
+            $('.gameboy').attr('src','img/gameboy-down.png')
+        } else if (userKey === 'left') {
+            $('.gameboy').attr('src','img/gameboy-left.png')
+        } else if (userKey === 'right') {
+            $('.gameboy').attr('src','img/gameboy-right.png')
+        }  else if (userKey === 'enter') {
+            $('.gameboy').attr('src','img/gameboy-start.png')
+        } else if (userKey === 'b'){
+            $('.gameboy').attr('src','img/gameboy-b.png')
+        } else if (userKey === 'a'){
+            $('.gameboy').attr('src','img/gameboy-a.png')
+        } else {
+            $('.gameboy').attr('src','img/gameboy-og.png')
         }
+
 
         //move the sequence along to check for the next value if the correct key is pressed
         if (userKey === requiredKey) {
@@ -88,9 +109,11 @@
     });
 
     function cheatsActivated() {
+        $('.img-display').removeClass('gameboy').addClass("pokemon-center").attr('src','img/pokemon-center.jpg');
+
         $('body').css('background-color','pink');
 
-        $('.img-display').append('<img class="pokemon-center" src="img/pokemon-center.jpg" alt="Pokemon Center">');
+        // $('.img-display').append('<img class="pokemon-center" src="img/pokemon-center.jpg" alt="Pokemon Center">');
 
         $('h1').addClass('pokemon-cheat').html('<img class="pokeball" src="img/recovered-pokeball.png" alt="Pokemon Center"> Yay Free Healthcare <img class="pokemonball" src="img/recovered-pokeball.png" alt="Pokemon Center">');
 
@@ -105,12 +128,6 @@
         var audio = new Audio('pokemon-recovery.mp3');
         audio.play();
     }
-
-    // function upKey() {
-    //     $('.document').on("keypress", function () {
-    //         $('img').html('<img class="gameboy" src="img/gameboy-up.png" alt="Gameboy Up">')
-    //     });
-    // };
 
     // // a key map of allowed keys stored as an object
     // var allowedKeys = {
