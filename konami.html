@@ -2,33 +2,178 @@
 <html>
 <head>
     <title>Konami Code</title>
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            font-family: 'B612 Mono', monospace;
+        }
+        .pokemon-center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .gameboy {
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
-<h1>Konami Code</h1>
+<h1>Enter the Code:</h1>
+<div class="img-display">
+    <img class="gameboy" src="img/gameboy-og.png" alt="Gameboy Neutral">
+</div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 <script>
     "use strict";
 
-    var konamiCode = '38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13';
-    // var konamiCode = 'ArrowUp, ArrowDown, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, ArrowLeft, ArrowRight, KeyB, KeyA, Enter';
-    var codeInput = [];
 
-    $(document).keyup(function(e){
+    //allowed keys stored as object
+    var konamiKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down',
+        65: 'a',
+        66: 'b',
+        13: 'enter'
+    };
 
-        console.log(e.code);
-        codeInput.push(e.code);
+    var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
 
-        if (codeInput.toString().indexOf(konamiCode) >= 0) {
-            alert('You have added 30 lives!')
+    //allows checking of value at an index of konamiCodePosition
+    var konamiCodePosition = 0;
+
+    $(document).keyup(function(event){
+        //index of key pressed by user
+        var userKey = konamiKeys[event.keyCode];
+        var selectedKey = event.keyCode
+        console.log("pressed key :" + konamiKeys[event.keyCode]);
+        //value of key at the index of the user's key press in the sequence
+        var requiredKey = konamiCode[konamiCodePosition];
+        //checking values in console
+        console.log("required key :" + requiredKey);
+        console.log("konamiCodePosition: " + konamiCodePosition);
+        console.log("konamiCodeLength:" + konamiCode.length);
+
+        if (userKey === 'up') {
+            $('.gameboy').html('<img class="gameboy" src="img/gameboy-up.png" alt="Gameboy Up">')
+        }
+
+        //move the sequence along to check for the next value if the correct key is pressed
+        if (userKey === requiredKey) {
+            konamiCodePosition++;
+            console.log("newKonamiCodePosition: " + konamiCodePosition);
+
+            //in addition to this condition, if the user input is allowed to proceed to a length equal to the konamiCode length, then the code was input correctly
+            if (konamiCodePosition === konamiCode.length) {
+                //activate some function to change the page
+                cheatsActivated();
+                //reset counter
+                konamiCodePosition = 0
+            }
+        } else {
+            //reset counter if wrong button is pressed
+            konamiCodePosition = 0;
         }
     });
 
-    // $(document).keydown(function () {
-    //     var codeInput = []
+    function cheatsActivated() {
+        $('body').css('background-color','pink');
+
+        $('.img-display').append('<img class="pokemon-center" src="img/pokemon-center.jpg" alt="Pokemon Center">');
+
+        $('h1').addClass('pokemon-cheat').html('<img class="pokeball" src="img/recovered-pokeball.png" alt="Pokemon Center"> Yay Free Healthcare <img class="pokemonball" src="img/recovered-pokeball.png" alt="Pokemon Center">');
+
+        $('.pokemon-cheat').mouseenter(function () {
+                $('.pokemon-cheat').html('<img class="pokeball" src="img/dead-pokeball.png" alt="Pokemon Center"> You know you wish you had it too <img class="pokeball" src="img/dead-pokeball.png" alt="Pokemon Center">');
+        });
+
+        $('.pokemon-cheat').mouseleave(function () {
+            $('.pokemon-cheat').html('<img class="pokeball" src="img/recovered-pokeball.png" alt="Pokemon Center"> Yay Free Healthcare <img class="pokeball" src="img/recovered-pokeball.png" alt="Pokemon Center">');
+        });
+
+        var audio = new Audio('pokemon-recovery.mp3');
+        audio.play();
+    }
+
+    // function upKey() {
+    //     $('.document').on("keypress", function () {
+    //         $('img').html('<img class="gameboy" src="img/gameboy-up.png" alt="Gameboy Up">')
+    //     });
+    // };
+
+    // // a key map of allowed keys stored as an object
+    // var allowedKeys = {
+    //     37: 'left',
+    //     38: 'up',
+    //     39: 'right',
+    //     40: 'down',
+    //     65: 'a',
+    //     66: 'b',
+    //     13: 'enter'
+    // };
     //
-    //     if ()
-    // })
+    // // the 'official' Konami Code sequence
+    // var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
+    //
+    // // a variable to remember the 'position' the user has reached so far.
+    // var konamiCodePosition = 0;
+    //
+    // // add keydown event listener
+    // $(document).keyup(function(event){
+    //     // get the value of the key code from the key map
+    //     var key = allowedKeys[event.keyCode];
+    //     // get the value of the required key from the konami code
+    //     var requiredKey = konamiCode[konamiCodePosition];
+    //
+    //     // compare the key with the required key
+    //     if (key === requiredKey) {
+    //
+    //         // move to the next key in the konami code sequence
+    //         konamiCodePosition++;
+    //
+    //         // if the last key is reached, activate cheats
+    //         if (konamiCodePosition === konamiCode.length) {
+    //             activateCheats();
+    //             konamiCodePosition = 0;
+    //         }
+    //     } else {
+    //         konamiCodePosition = 0;
+    //     }
+    // });
+    //
+    // function activateCheats() {
+    //     // document.body.style.backgroundImage = "url('images/cheatBackground.png')";
+    //     //
+    //     // var audio = new Audio('audio/pling.mp3');
+    //     // audio.play();
+    //
+    //     alert("cheats activated");
+    // }
+
+
+    // var konamiCode = "3838404037393739666513";
+
+    // $(document).keyup(function(event){
+
+    // var codeInput = "";
+
+    // var finalInput = codeInput.push(event.keyCode);
+
+    // console.log(finalInput);
+    // if (codeInput.indexOf(13) >= 0 && finalInput.toString() === konamiCode) {
+    //     alert('You have added 30 lives!')
+    // }
 
 </script>
 </body>

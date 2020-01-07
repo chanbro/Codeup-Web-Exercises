@@ -26,10 +26,10 @@ $(document).ready(function() {
     //     alert($('#button').html())
     // });
     //
-    // $('ol.projects > li').addClass('codeup');
-    // $('ol').children('li').eq(2).removeClass('codeup');
-    // $('.codeup').css('border', '1px solid red');
-    // $('ol').children('li').eq(2).attr('id','codeup');
+    $('ol.projects > li').addClass('codeup');
+    $('ol').children('li').eq(2).removeClass('codeup');
+    $('.codeup').css('border', '1px solid red');
+    $('ol').children('li').eq(2).attr('id','codeup');
     //
     // $('li').css('font-size', '20px');
     // $('h1, p, li').css('background-color', 'pink');
