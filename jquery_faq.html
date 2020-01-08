@@ -37,28 +37,58 @@
         }
 
     </style>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 
-<div class="wall">
-
-    <div class="frame">
-        <img src="img/shaq.jpg" alt="Shaq" id="shaq">
-        <button class="switch" id="left">Shaq Me</button>
-    </div>
-
-    <div class="frame">
-        <img src="img/shaq-fu.jpg" alt="Shaq Fu" id="shaq-fu">
-        <button class="switch" id="center">Shaq Me</button>
-    </div>
-
-    <div class="frame">
-        <img src="img/shaq-fu-remastered.jpg" alt="Shaq Fu Remastered" id="shaq-fu-2">
-        <button class="switch" id="right">Shaq Me</button>
-    </div>
-
+<div>
+    <h1>Would you like to sign up for our newsletter?</h1>
+    <span>x</span>
 </div>
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+
+<!--<div class="modal fade" tabindex="-1" role="dialog">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--                <h4 class="modal-title">Modal title</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p>One fine body&hellip;</p>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+<!--    </div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+
+<h2>Please register to continue reading</h2>
+
+<!--<div class="wall">-->
+
+<!--    <div class="frame">-->
+<!--        <img src="img/shaq.jpg" alt="Shaq" id="photo-left">-->
+<!--        <button class="switch" id="btn-left">Shaq Me</button>-->
+<!--    </div>-->
+
+<!--    <div class="frame">-->
+<!--        <img src="img/shaq-fu.jpg" alt="Shaq Fu" id="photo-mid">-->
+<!--        <button class="switch" id="btn-center">Shaq Me</button>-->
+<!--    </div>-->
+
+<!--    <div class="frame">-->
+<!--        <img src="img/shaq-fu-remastered.jpg" alt="Shaq Fu Remastered" id="photo-right">-->
+<!--        <button class="switch" id="btn-right">Shaq Me</button>-->
+<!--    </div>-->
+
+<!--</div>-->
 
 
 <h1>National Parks Facts</h1>
@@ -137,8 +167,8 @@
         });
 
         $('#yellow-bg').click(function () {
-            $('ul').each(function (){
-                    $(this).children('li').last().css('background-color', 'yellow')
+            $('ul').each(function () {
+                $(this).children('li').last().css('background-color', 'yellow')
             });
         });
 
@@ -149,16 +179,49 @@
         });
 
         $('ul').click(function () {
-            $(this).each(function (){
+            $(this).each(function () {
                 $(this).children('li').first().css('color', 'blue')
             });
         });
-//if button clicked then the child (img) of the button's parent (div)
-        $('#left').click(function () {
 
-            })
+            $('li').click(function () {
+                $(this).parent().children().first().css('color', 'blue')
+            });
+
+        //if button clicked then the child (img) of the button's parent (div)
+//         $('#btn-left').click(function () {
+//             //take src attr from photo right
+//             var holdThis = $('#photo-left').attr('src');
+//             var takeThis = $('#photo-mid').attr('src')
+//
+//             $('#photo-left').attr('src', takeThis)
+//             $('#photo-mid').attr('src', hold)
+//             })
+
+        $('span').click(function () {
+            $('div').first().hide()
+        });
+
+        $('ul').hide();
+        $('h3').click(function () {
+            $('ul').slideToggle()
+        });
+
+        $('h2').hide();
+
+        setTimeout(function(){
+            $('h2').fadeIn("slow");
+        }, 8000);
+
+        $('.alert').show();
+
 
     });
+
+
+
+
+
 
 </script>
 </body>
