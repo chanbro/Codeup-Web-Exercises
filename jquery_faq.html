@@ -10,40 +10,155 @@
             visibility: hidden;
         }
 
+        .highlight {
+            background-color: yellowgreen;
+        }
+
+        .wall {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin: 0 auto;
+        }
+
+        .frame {
+            width: 33vh;
+            height: 33vh;
+            border: 20px solid saddlebrown;
+        }
+
+        .switch {
+            margin: 20px auto;
+        }
+
+        img {
+            width: 33vh;
+            height: 33vh;
+        }
+
     </style>
+
 </head>
 <body>
+
+<div class="wall">
+
+    <div class="frame">
+        <img src="img/shaq.jpg" alt="Shaq" id="shaq">
+        <button class="switch" id="left">Shaq Me</button>
+    </div>
+
+    <div class="frame">
+        <img src="img/shaq-fu.jpg" alt="Shaq Fu" id="shaq-fu">
+        <button class="switch" id="center">Shaq Me</button>
+    </div>
+
+    <div class="frame">
+        <img src="img/shaq-fu-remastered.jpg" alt="Shaq Fu Remastered" id="shaq-fu-2">
+        <button class="switch" id="right">Shaq Me</button>
+    </div>
+
+</div>
+
+
 <h1>National Parks Facts</h1>
 
 <dl>
+
     <dt>Yosemite National Park</dt>
         <dd>Has 3 of the 10 highest waterfalls in the world</dd>
+
     <dt>Death Valley National Park</dt>
         <dd>One of the hottest temperatures on earth recorded in 1913 (134 degrees)</dd>
+
     <dt>The Grand Canyon</dt>
         <dd>One of the Seven Natural Wonders of the World</dd>
+
     <dt>California's Sequoia National Park</dt>
         <dd> Largest living single-stem tree in the world (275 feet tall)</dd>
+
     <dt>Yosemite National Park</dt>
         <dd>Has 3 of the 10 highest waterfalls in the world</dd>
+
     <dt>Death Valley National Park</dt>
         <dd>One of the hottest temperatures on earth recorded in 1913 (134 degrees)</dd>
+
     <dt>The Grand Canyon</dt>
         <dd>One of the Seven Natural Wonders of the World</dd>
+
     <dt>California's Sequoia National Park</dt>
         <dd> Largest living single-stem tree in the world (275 feet tall)</dd>
+
 </dl>
 
 <a href="#" id="show-hide">Click to toggle facts</a>
+
+<h3>Yellowstone National Park</h3>
+<ul>
+    <li>First fact</li>
+    <li>Second Fact</li>
+    <li>Third Fact</li>
+    <li>Last Fact</li>
+</ul>
+
+<h3>Yosemite National Park</h3>
+<ul>
+    <li>First fact</li>
+    <li>Second Fact</li>
+    <li>Third Fact</li>
+    <li>Last Fact</li>
+</ul>
+
+<h3>Death Valley National Park</h3>
+<ul>
+    <li>First fact</li>
+    <li>Second Fact</li>
+    <li>Third Fact</li>
+    <li>Last Fact</li>
+</ul>
+
+<button id="yellow-bg">Click to highlight</button>
+
+
+<script src="js/jquery-2.2.4.js"></script>
 <script>
 
+    "use strict";
+
     $(document).ready(function () {
-        $('#show-hide').click(function () {
-            // event.preventDefault();
+
+        $('#show-hide').click(function (event) {
+            event.preventDefault();
             $('dd').toggleClass('invisible')
         });
-    });
 
+        $('dt').click(function () {
+            $(this).toggleClass('highlight')
+        });
+
+        $('#yellow-bg').click(function () {
+            $('ul').each(function (){
+                    $(this).children('li').last().css('background-color', 'yellow')
+            });
+        });
+
+        $('h3').click(function () {
+            $(this).next().each(function () {
+                $(this).children('li').css('font-weight', 'bold')
+            });
+        });
+
+        $('ul').click(function () {
+            $(this).each(function (){
+                $(this).children('li').first().css('color', 'blue')
+            });
+        });
+//if button clicked then the child (img) of the button's parent (div)
+        $('#left').click(function () {
+
+            })
+
+    });
 
 </script>
 </body>

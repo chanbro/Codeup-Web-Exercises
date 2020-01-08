@@ -5,6 +5,9 @@
     <title>Morning Warmups</title>
 </head>
 <body>
+
+<button class="random-bg">Change BG Color</button>
+<script src="js/jquery-2.2.4.js"></script>
 <script>
 
    //  function helloworld() {
@@ -207,78 +210,78 @@
 
 
    // Loop through the following  array of Reindeer objects and return an array of Reindeer objects that are "gold" reindeer
-   var reindeerList = [
-       {
-           name: "Dot",
-           age: 5,
-           isGold: false
-       },
-       {
-           name: "Dasher",
-           age: 8,
-           isGold: true
-       },
-       {
-           name: "Patch",
-           age: 2,
-           isGold: false
-       },
-       {
-           name: "Rocket",
-           age: 6,
-           isGold: false
-       },
-       {
-           name: "Dancer",
-           age: 9,
-           isGold: true
-       },
-       {
-           name: "Prancer",
-           age: 5,
-           isGold: true
-       },
-       {
-           name: "Groot",
-           age: 9,
-           isGold: false
-       },
-       {
-           name: "Vixen",
-           age: 9,
-           isGold: true
-       },
-       {
-           name: "Comet",
-           age: 11,
-           isGold: true
-       },
-       {
-           name: "Archie",
-           age: 3,
-           isGold: false
-       },
-       {
-           name: "Cupid",
-           age: 13,
-           isGold: true
-       },
-       {
-           name: "Donder",
-           age: 16,
-           isGold: true
-       },
-       {
-           name: "Boots",
-           age: 16,
-           isGold: false
-       },
-       {
-           name: "Blizten",
-           age: 16,
-           isGold: true
-       }
-   ]
+   // var reindeerList = [
+   //     {
+   //         name: "Dot",
+   //         age: 5,
+   //         isGold: false
+   //     },
+   //     {
+   //         name: "Dasher",
+   //         age: 8,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Patch",
+   //         age: 2,
+   //         isGold: false
+   //     },
+   //     {
+   //         name: "Rocket",
+   //         age: 6,
+   //         isGold: false
+   //     },
+   //     {
+   //         name: "Dancer",
+   //         age: 9,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Prancer",
+   //         age: 5,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Groot",
+   //         age: 9,
+   //         isGold: false
+   //     },
+   //     {
+   //         name: "Vixen",
+   //         age: 9,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Comet",
+   //         age: 11,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Archie",
+   //         age: 3,
+   //         isGold: false
+   //     },
+   //     {
+   //         name: "Cupid",
+   //         age: 13,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Donder",
+   //         age: 16,
+   //         isGold: true
+   //     },
+   //     {
+   //         name: "Boots",
+   //         age: 16,
+   //         isGold: false
+   //     },
+   //     {
+   //         name: "Blizten",
+   //         age: 16,
+   //         isGold: true
+   //     }
+   // ]
 
     //for loop solution
 
@@ -296,19 +299,34 @@
    // console.log(getGoldReindeer(reindeerList));
 
    //.forEach() solution
-    function getGoldReindeer(reindeerArray){
-       var bucket = [];
+   //  function getGoldReindeer(reindeerArray){
+   //     var bucket = [];
+   //
+   //     reindeerArray.forEach(function(reindeer){
+   //         if (reindeer.isGold === true){
+   //             bucket.push(reindeer);
+   //         }
+   //     });
+   //     return bucket;
+   //  }
+   //
+   // console.log(getGoldReindeer(reindeerList));
 
-       reindeerArray.forEach(function(reindeer){
-           if (reindeer.isGold === true){
-               bucket.push(reindeer);
-           }
-       });
-       return bucket;
-    }
+   var CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
 
-   console.log(getGoldReindeer(reindeerList));
+    $(document).ready(function () {
 
+        $('.random-bg').click(function () {
+
+            //selecting random color from array, round down
+            var randomIndex = Math.floor(Math.random() * CSS_COLOR_NAMES) + 1;
+
+            //referencing a random color through its index in the array
+            $('body').css('background', CSS_COLOR_NAMES[randomIndex])
+        });
+
+    });
 </script>
+
 </body>
 </html>
