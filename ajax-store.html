@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+    <style>
+        h1 {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            flex-direction: row;
+            font-weight: bold;
+            color: #1969B2;
+        }
+
+        #refresh {
+            color: #0fb784;
+            background-color: #111111;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<h1>My Tool Store</h1>
+
+<button class="pt-0" id="refresh"><i class="fas fa-redo"></i></button>
+<table class="table table-striped table-dark" id="products">
+    <thead class="thead-dark">
+        <tr scope="row">
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Categories</th>
+        </tr scope="row">
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+(function() {
+    "use strict";
+    // TODO: Create an ajax GET request for /data/inventory.json
+    $(function () {
+        var inventory = $.get('data/inventory.json')
+
+            // TODO: Take the data from inventory.json and append it to the products table
+            //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+            //             its contents and fields
+            //       HINT: You will want to target #insertProducts for your new HTML elements
+
+            .done(function (item) {
+                for (var i=0;i<item.length;i++) {
+                $('#insertProducts').append(tableData(i));
+                function tableData(i) {
+                        return (
+                        '<tr scope="row">><td>' + item[i].title +
+                        '</td><td>' + item[i].quantity +
+                        '</td><td>' + item[i].price +
+                        '</td><td>' + item[i].categories +
+                        '</td></tr>'
+                        )
+                    }
+                }
+            });
+        $('#refresh').click(function () {
+          location.reload()
+        })
+    });
+})();
+
+</script>
+
+</body>
+</html>

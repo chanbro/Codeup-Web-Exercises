@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Lecture</title>
+</head>
+<body>
+
+<script src="jquery-2.2.4.js"></script>
+<script>
+    $(function () {
+
+    $.ajax('https://pokeapi.co/api/v2/pokemon/107/')
+        .done(function (obj) { //allows reference to finish loading before fetching data; references object from API
+            console.log(obj) //shows object in console
+        });
+
+        $.ajax('https://pokeapi.co/api/v2/pokemon/69/')
+            .done(function (data, status, jqXhr) { //Takes in a function that is called when the request completes successfully.
+                console.log(data.name); //the body of the response from the server
+                console.log(status); //  a string indicating the status of the request
+                console.log(jqXhr); //a jQuery object that represents the Ajax request
+            })
+            .fail(function (jqXhr, status, error) { // Takes in a function that is called when a request completed with an error (e.g. the server sent back a 404).
+                console.log('call failed');
+                console.log(jqXhr); // jQuery object
+                console.log(status); // "error"
+                console.log(error); // an object that represents the error that occurred, if any
+            })
+            .always( function () { // Takes in a function that is called for both failed and successful requests.
+                    console.log('finally');
+            });
+
+        $.ajax('https://pokeapi.co/api/v2/pokemon/132/')
+            .done(function (data) {
+                console.log(data.stats)
+            });
+
+    });
+</script>
+
+</body>
+</html>
