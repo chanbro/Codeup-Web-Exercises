@@ -1,10 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Welcome to My Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+    <style>
+
+        body {
+            background-color: antiquewhite;
+        }
+
+        .container {
+            background-color: whitesmoke;
+            margin: 0 auto;
+            width: 75%;
+            height: 100%;
+
+
+        }
+
+        .custom-nav {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: whitesmoke;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            flex-direction: row;
+            font-weight: bold;
+            padding: 50px 0;
+        }
+
+        #blog-head {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+        }
+
+        #date{
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+        }
+
+        #content {
+            font-family: 'Lato', sans-serif;
+        }
+
+        #small-text {
+            font-family: 'Lato', sans-serif;
+            font-style: italic;
+            font-size: small;
+        }
+
+        #comment-head {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            padding-top: 20px;
+        }
+
+        #comment-content {
+            font-family: 'Lato', sans-serif;
+            font-size: medium;
+            padding-bottom: 20px;
+        }
+
+    </style>
+
 </head>
 <body>
+
+<div class="container">
+    <h1>My Blog</h1>
+
+    <nav class="custom-nav navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="posts">
+        <!--    Fetched from JSON file -->
+    </div>
+    <div class="new-post">
+        <h5 id="comment-head">Leave a Comment:</h5>
+        <form id="comment-content" action="/action_page.php" method="post">
+            Your Name: <br>
+            <input type="text" name="title" value=""><br>
+            Comment : <br />
+            <textarea name = "description"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    (function() {
+        "use strict";
+        // TODO: Create an ajax GET request for /data/inventory.json
+        $(function () {
+            function loadContent() {
+                $.get('data/blog.json')
+                    .done(function (contents) {
+                        for (var i = 0; i < contents.length; i++) {
+                            $('#posts').append(blogContent(i));
+
+                            function blogContent(i) {
+                                return (
+                                    '<h2 id="blog-head">' + contents[i].title +
+                                    '</h2><p id="date">' + contents[i].date +
+                                    '</p><p id="content">' + contents[i].content +
+                                    '</p><p id="small-text">Tags: ' + contents[i].categories +
+                                    '</p>' +
+                                    '<span><p id="small-text">Share on social media:   <i class="fab fa-twitter-square"></i>   <i class="fab fa-facebook-square"></i>   <i class="fab fa-instagram"></i>   <i class="fab fa-reddit-square"></i></p></span>'
+                                )
+                            }
+                        }
+                    });
+            }
+            loadContent()
+        });
+    })();
+
+</script>
 
 </body>
 </html>

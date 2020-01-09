@@ -50,30 +50,38 @@
     "use strict";
     // TODO: Create an ajax GET request for /data/inventory.json
     $(function () {
-        var inventory = $.get('data/inventory.json')
+        function tableLoad() {
+            $.get('data/inventory.json')
 
-            // TODO: Take the data from inventory.json and append it to the products table
-            //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-            //             its contents and fields
-            //       HINT: You will want to target #insertProducts for your new HTML elements
+                // TODO: Take the data from inventory.json and append it to the products table
+                //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+                //             its contents and fields
+                //       HINT: You will want to target #insertProducts for your new HTML elements
 
-            .done(function (item) {
-                for (var i=0;i<item.length;i++) {
-                $('#insertProducts').append(tableData(i));
-                function tableData(i) {
-                        return (
-                        '<tr scope="row">><td>' + item[i].title +
-                        '</td><td>' + item[i].quantity +
-                        '</td><td>' + item[i].price +
-                        '</td><td>' + item[i].categories +
-                        '</td></tr>'
-                        )
+                .done(function (item) {
+                    for (var i = 0; i < item.length; i++) {
+                        $('#insertProducts').append(tableData(i));
+
+                        function tableData(i) {
+                            return (
+                                '<tr scope="row">><td>' + item[i].title +
+                                '</td><td>' + item[i].quantity +
+                                '</td><td>' + item[i].price +
+                                '</td><td>' + item[i].categories +
+                                '</td></tr>'
+                            )
+                        }
                     }
-                }
-            });
+                });
+        }
+
+        tableLoad();
+
         $('#refresh').click(function () {
-          location.reload()
-        })
+            $('#insertProducts').empty();
+            tableLoad();
+        });
+
     });
 })();
 
