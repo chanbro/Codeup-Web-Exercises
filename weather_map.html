@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map API</title>
+
+</head>
+<body>
+
+
+<script src="js/jquery-2.2.4.js"></script>
+<script src="js/keys.js"></script>
+<script>
+    //***MAPBOX USES LONG,LAT; DARK SKY USES LAT,LONG***
+    $(function () {
+
+        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/37.8267,-122.4233").done
+        (function(data) {
+            console.log(data);
+
+            //Accessing API object to convert their time property to date/time
+            var dateObject = new Date(data.currently.time);
+            console.log(dateObject.toString());
+        })
+
+        //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
+        //var searchInput = some string obtained from HTML input
+
+        //Apply markerLocation to Mapbox and Dark Sky
+        // var markerLocation = some Long,Lat from Mapbox
+    });
+</script>
+<script></script>
+</body>
+</html>
