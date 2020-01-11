@@ -3,31 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Map API</title>
+<!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:400,700,800&display=swap" rel="stylesheet">
+<!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/4773d21f04.js" crossorigin="anonymous"></script>
+<!--Custom CSS-->
+    <style>
 
+        .header-font {
+            font-family: 'Raleway', sans-serif;
+            font-weight: bold;
+        }
+
+        .featured-font {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .custom-card {
+            width: 25vw;
+            background-color: #4591D6;
+            color: white;
+        }
+
+        .custom-navbar {
+            background-color: #1969B2;
+            color: white;
+        }
+
+        .container {
+
+        }
+
+        .weather-container {
+
+        }
+
+        .mapbox-container {
+            background-color: #b4d455;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        #custom-search-btn {
+            width: 25px;
+            height: 25px
+        }
+
+    </style>
 </head>
 <body>
 
+<!--Start Branded Navbar-->
+<div class="navbar header-font custom-navbar">
+        <span>
+         <img src="img/clear-day.png" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch"> umbrella watch
+        </span>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Location Search" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-btn"></button>
+    </form>
+    <!--End Branded Navbar-->
+</div>
 
+<!--Start Main Container-->
+<div class="container">
+    <h3 class="header-font mt-4" id="location">City, Country</h3>
+    <!--Fetched Day of the Week-->
+    <!--Start Weather Contents-->
+    <div class="d-flex flex-row justify-content-center weather-container featured-font">
+        <!--Day at a Glace-->
+        <div class="card custom-card text-center">
+            <div class="card-body" id="daily-container">
+                <img class="icon mx-auto my-0" id="daily-icon" src="img/placeholder-38.svg" alt="Daily Weather Icon">
+                <h4 class="card-title" id="day"></h4>
+                <!--Fetched Data from Dark Sky Start-->
+            </div>
+        </div>
+
+        <!--Right Now-->
+        <div class=" card custom-card text-center">
+            <div class="card-body" id="current-container">
+                <img class="icon mx-auto my-0" id="current-icon" src="" alt="Current Weather Icon">
+                <h4 class="card-title" id="current">Now</h4>
+                <!--Fetched Data from Dark Sky Start-->
+            </div>
+        </div>
+
+        <!--Later-->
+        <div class=" card custom-card text-center">
+            <div class="card-body" id="later-container">
+                <img class="icon mx-auto my-0" id="later-icon" src="" alt="Later Weather Icon">
+                <h4 class="card-title" id="later">Later</h4>
+                <!--Fetched Data from Dark Sky Start-->
+            </div>
+        </div>
+
+    <!--End Weather Contents-->
+    </div>
+
+    <!--Start Mapbox Contents-->
+    <div class="mapbox-container">
+
+        .mapbox-container
+
+    <!--End Mapbox Contents-->
+    </div>
+
+
+<!--End Main Container-->
+</div>
+
+
+<!--Bootstrap jQuery-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--jQuery 2.2.4-->
 <script src="js/jquery-2.2.4.js"></script>
+<!--Bootstrap jQuery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!--My API Keys-->
 <script src="js/keys.js"></script>
+<!--Custom Javascript/jQuery-->
 <script>
-    //***MAPBOX USES LONG,LAT; DARK SKY USES LAT,LONG***
+    /*
+
+    **WORKFLOW**
+
+    1. Create HTML elements/classes/ids
+    2. Create jQuery to display Dark Sky weather on page
+    3. Add Bootstrap design (no custom CSS)
+    4. Add Mapbox
+
+    ***********************************
+
+    ***EXAMPLE REQUEST***
+    * Dark Sky
+        * "https://api.darksky.net/forecast" "+ darkSkyToken + darkSkyCoordinates
+    * Mapbox
+        * "https://" + mapboxToken + mapboxCoordinates
+    ***********************************
+
+
+
+    ***WISH LIST***
+    * (Site Branding)
+    * (Units Toggle)
+        * us - Imperial units (default)
+        * si - SI units (celsius)
+    * (Location)
+        * "latitude"
+        * "longitude"
+    *(Variable Day of the Week) "daily"
+        * "icon"
+        * "data"
+            * "temperatureHigh"
+            * "temperatureLow"
+            * "precipProbability"
+            * "precipType"
+    * "hourly" <--Referencing a property on the same level as "daily"
+            * "summary"
+    * (Right Now) "currently"
+        * "icon"
+        * "temperature"
+        * "apparentTemperature"
+        * "summary"
+        * "precipProbability"
+        * "precipType"
+    ***********************************
+    */
+
+
     $(function () {
 
-        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/37.8267,-122.4233").done
-        (function(data) {
-            console.log(data);
+        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/37.0842,-94.5133").done
+        (function(weather) {
+            console.log(weather);
+
+            //Dark Sky html location variable
+            // let darkSkyCoordinates = '"' + weather.latitude + "," +weather.longitude + '"';
+            // const darkSkyCoordinates = '"' + weather.latitude + ',' + weather.longitude + '"';
 
             //Accessing API object to convert their time property to date/time
-            var dateObject = new Date(data.currently.time);
+            const dateObject = new Date(weather.currently.time * 1000);
             console.log(dateObject.toString());
-        })
+
+            $('#daily-container').append(dailyWeather());
+
+            function dailyWeather() {
+                return (
+                    '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
+                    '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
+                    '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + weather.daily.data[0].precipProbability + '%' +
+                    '</p><p class="mx-auto my-0" id="day-summary">' +  'Day at a Glance: ' + weather.hourly.summary +
+                    '</p>'
+                )
+            }
+
+            $('#current-container').append(currentWeather());
+
+            function currentWeather() {
+                return (
+                    '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
+                    '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
+                    '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.currently.precipProbability + '%' +
+                    '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
+                    '</p>'
+                )
+            }
+
+            $('#later-container').append(futureWeather());
+
+            function futureWeather() {
+                return (
+                    '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
+                    '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
+                    '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.hourly.data[4].precipProbability + '%' +
+                    '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.hourly.data[4].summary +
+                    '</p>'
+                )
+            }
+
+            const iconDisplay =
+                [
+                    {
+                        'conditions': 'clear-day',
+                        'url': 'img/clear-day.png'
+                    }, {
+                        'conditions': 'clear-night',
+                        'url': 'img/clear-night.png'
+                    }, {
+                        'conditions': 'rain',
+                        'url': 'img/rain.png'
+                    }, {
+                        'conditions': 'snow',
+                        'url': 'img/snow.png'
+                    }, {
+                       'conditions': 'sleet',
+                        'url' : 'img/sleet.png'
+                    }, {
+                        'conditions': 'wind',
+                        'url': 'img/wind.png'
+                    }, {
+                        'conditions':'fog',
+                        'url': 'img/fog.png'
+                    }, {
+                        'conditions': 'cloudy',
+                        'url': 'img/cloudy.png'
+                    }, {
+                        'conditions': 'partly-cloudy-day',
+                        'url': 'img/partly-cloudy-day.png'
+                    }, {
+                        'conditions': 'partly-cloudy-night',
+                        'url': 'img/partly-cloudy-night.png'
+                    }
+
+                ];
+
+
+            $('#day').text(dayOfWeek());
+
+            function dayOfWeek(){
+                let dateInfo = dateObject.toString();
+                let day = dateInfo.substring(0, dateInfo.indexOf(" "));
+                if (day === 'Sun' || day === 'Mon' || day === 'Sat' || day === 'Fri')
+                    return day + "day";
+                else if (day === 'Tue')
+                    return "Tuesday";
+                else if (day === 'Wed')
+                    return "Wednesday";
+                else if (day === 'Thurs')
+                    return "Thursday";
+                else
+                    return "error"
+            }
+
+            $('#daily-icon').attr('src', dailyIconUrl());
+
+            function dailyIconUrl() {
+                for (let i = 0; i < iconDisplay.length; i++) {
+                    if (weather.daily.data[0].icon === iconDisplay[i].conditions)
+                        return iconDisplay[i].url
+                }
+            }
+
+            $('#current-icon').attr('src', currentIconUrl());
+
+            function currentIconUrl() {
+                for (let i = 0; i < iconDisplay.length; i++) {
+                    if (weather.currently.icon === iconDisplay[i].conditions)
+                        return iconDisplay[i].url
+                }
+            }
+
+            $('#later-icon').attr('src', laterIconUrl());
+
+            function laterIconUrl() {
+                for (let i = 0; i < iconDisplay.length; i++) {
+                    if (weather.hourly.data[4].icon === iconDisplay[i].conditions)
+                        return iconDisplay[i].url
+                }
+            }
+
+            $('#umbrella-watch').attr('src', umbrellaForecast());
+
+            function umbrellaForecast() {
+                for (let i = 0; i < 4; i++) {
+                    if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
+                        return 'img/umbrella.png';
+                    else
+                        return 'img/clear-day.png'
+                }
+            }
+
+
+            console.log(weather.currently.icon);
+            console.log(iconDisplay[0].conditions);
+
+            //Mapbox html location variable
+        // const mapboxCoordinates = NEEDS to return as a string of "/longitude,latitude" to append to Mapbox request
 
         //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
         //var searchInput = some string obtained from HTML input
 
-        //Apply markerLocation to Mapbox and Dark Sky
-        // var markerLocation = some Long,Lat from Mapbox
+        //Apply markerLocation to Mapbox and Dark Sky html request
+        // var markerLocation = some Long,Lat from Mapbox,
+
+        });
     });
 </script>
 <script></script>
