@@ -21,8 +21,11 @@
             font-family: 'Dosis', sans-serif;
         }
 
+        .weather-container {
+            width: 75vw;
+        }
         .custom-card {
-            width: 25vw;
+            width: 33vw;
             background-color: #4591D6;
             color: white;
         }
@@ -32,16 +35,9 @@
             color: white;
         }
 
-        .container {
-
-        }
-
-        .weather-container {
-
-        }
-
         .mapbox-container {
-            background-color: #b4d455;
+            width: 75vw;
+            height: 45vh
         }
 
         .icon {
@@ -49,37 +45,54 @@
             height: 50px;
         }
 
-        #custom-search-btn {
+        #custom-search-icon {
             width: 25px;
             height: 25px
         }
+
+        .tiny-text {
+            font-family: 'Raleway', sans-serif;
+            font-size: xx-small;
+        }
+
+        #byline {
+            width: 75vw;
+        }
+
+        #search-bar {
+            width: 20vh;
+        }
+
 
     </style>
 </head>
 <body>
 
 <!--Start Branded Navbar-->
-<div class="navbar header-font custom-navbar">
+<div class="navbar sticky-top header-font custom-navbar">
         <span>
-         <img src="img/clear-day.png" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch"> umbrella watch
+         <img src="img/loading-icon.gif" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch">
+            <span id="brand-name">
+                umbrella watch
+            </span>
         </span>
     <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Location Search" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-btn"></button>
+        <input class="form-control mx-2" id="search-bar" type="search" placeholder="#search-bar" aria-label="Search" value="">
+        <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-icon"></button>
     </form>
     <!--End Branded Navbar-->
 </div>
 
 <!--Start Main Container-->
 <div class="container">
-    <h3 class="header-font mt-4" id="location">City, Country</h3>
+    <h3 class="header-font mt-2" id="location">City, Country</h3>
     <!--Fetched Day of the Week-->
     <!--Start Weather Contents-->
     <div class="d-flex flex-row justify-content-center weather-container featured-font">
         <!--Day at a Glace-->
         <div class="card custom-card text-center">
             <div class="card-body" id="daily-container">
-                <img class="icon mx-auto my-0" id="daily-icon" src="img/placeholder-38.svg" alt="Daily Weather Icon">
+                <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
                 <h4 class="card-title" id="day"></h4>
                 <!--Fetched Data from Dark Sky Start-->
             </div>
@@ -88,7 +101,7 @@
         <!--Right Now-->
         <div class=" card custom-card text-center">
             <div class="card-body" id="current-container">
-                <img class="icon mx-auto my-0" id="current-icon" src="" alt="Current Weather Icon">
+                <img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">
                 <h4 class="card-title" id="current">Now</h4>
                 <!--Fetched Data from Dark Sky Start-->
             </div>
@@ -97,7 +110,7 @@
         <!--Later-->
         <div class=" card custom-card text-center">
             <div class="card-body" id="later-container">
-                <img class="icon mx-auto my-0" id="later-icon" src="" alt="Later Weather Icon">
+                <img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">
                 <h4 class="card-title" id="later">Later</h4>
                 <!--Fetched Data from Dark Sky Start-->
             </div>
@@ -107,16 +120,20 @@
     </div>
 
     <!--Start Mapbox Contents-->
-    <div class="mapbox-container">
-
-        .mapbox-container
-
+    <div class="mapbox-container mt-2" id='map'>
     <!--End Mapbox Contents-->
     </div>
 
+    <div id="byline">
 
-<!--End Main Container-->
-</div>
+        <p class="tiny-text text-right">Page Created by Chaney Brown</p>
+
+    </div>
+
+    <!--End Main Container-->
+    </div>
+
+
 
 
 <!--Bootstrap jQuery-->
@@ -126,19 +143,25 @@
 <!--Bootstrap jQuery-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!--Mapbox jQuery-->
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+<!--Mapbox Geocoder JS-->
+<script src="js/mapbox-geocoder-utils.js"></script>
 <!--My API Keys-->
 <script src="js/keys.js"></script>
 <!--Custom Javascript/jQuery-->
 <script>
     /*
 
-    **WORKFLOW**
-
+    ***WORKFLOW***
     1. Create HTML elements/classes/ids
     2. Create jQuery to display Dark Sky weather on page
-    3. Add Bootstrap design (no custom CSS)
-    4. Add Mapbox
-
+    3. Add Bootstrap design/custom css
+    4. Add Mapbox API
+    5. Geocode marker location
+    6. Link marker location to Dark Sky Coordinates
+    7. Add search function with click/enter listener
     ***********************************
 
     ***EXAMPLE REQUEST***
@@ -147,8 +170,6 @@
     * Mapbox
         * "https://" + mapboxToken + mapboxCoordinates
     ***********************************
-
-
 
     ***WISH LIST***
     * (Site Branding)
@@ -180,13 +201,14 @@
 
     $(function () {
 
-        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/37.0842,-94.5133").done
+        $.when(
+            $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241,-98.4936"))
+            .done
         (function(weather) {
             console.log(weather);
 
             //Dark Sky html location variable
             // let darkSkyCoordinates = '"' + weather.latitude + "," +weather.longitude + '"';
-            // const darkSkyCoordinates = '"' + weather.latitude + ',' + weather.longitude + '"';
 
             //Accessing API object to convert their time property to date/time
             const dateObject = new Date(weather.currently.time * 1000);
@@ -194,39 +216,58 @@
 
             $('#daily-container').append(dailyWeather());
 
-            function dailyWeather() {
-                return (
-                    '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
-                    '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
-                    '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + weather.daily.data[0].precipProbability + '%' +
-                    '</p><p class="mx-auto my-0" id="day-summary">' +  'Day at a Glance: ' + weather.hourly.summary +
-                    '</p>'
-                )
-            }
+                function dailyWeather() {
+                    return (
+                        '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
+                        '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
+                        '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + weather.daily.data[0].precipProbability + '%' +
+                        '</p><p class="mx-auto my-0" id="day-summary">' +  'Day at a Glance: ' + weather.hourly.summary +
+                        '</p>'
+                    )
+                }
 
             $('#current-container').append(currentWeather());
 
-            function currentWeather() {
-                return (
-                    '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
-                    '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
-                    '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.currently.precipProbability + '%' +
-                    '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
-                    '</p>'
-                )
-            }
+                function currentWeather() {
+                    return (
+                        '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
+                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.currently.precipProbability + '%' +
+                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
+                        '</p>'
+                    )
+                }
 
             $('#later-container').append(futureWeather());
 
-            function futureWeather() {
-                return (
-                    '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
-                    '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
-                    '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.hourly.data[4].precipProbability + '%' +
-                    '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.hourly.data[4].summary +
-                    '</p>'
-                )
-            }
+                function futureWeather() {
+                    return (
+                        '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
+                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.hourly.data[4].precipProbability + '%' +
+                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Future Conditions: ' + weather.hourly.data[4].summary +
+                        '</p>'
+                    )
+                }
+
+            $('#day').text(dayOfWeek());
+
+                function dayOfWeek(){
+                    let dateInfo = dateObject.toString();
+                    let day = dateInfo.substring(0, dateInfo.indexOf(" "));
+                    if (day === 'Sun' || day === 'Mon' || day === 'Fri')
+                        return day + "day";
+                    else if (day === 'Tue')
+                        return "Tuesday";
+                    else if (day === 'Wed')
+                        return "Wednesday";
+                    else if (day === 'Thurs')
+                        return "Thursday";
+                    else if (day === 'Sat')
+                        return "Saturday";
+                    else
+                        return "error"
+                }
 
             const iconDisplay =
                 [
@@ -264,74 +305,101 @@
 
                 ];
 
-
-            $('#day').text(dayOfWeek());
-
-            function dayOfWeek(){
-                let dateInfo = dateObject.toString();
-                let day = dateInfo.substring(0, dateInfo.indexOf(" "));
-                if (day === 'Sun' || day === 'Mon' || day === 'Sat' || day === 'Fri')
-                    return day + "day";
-                else if (day === 'Tue')
-                    return "Tuesday";
-                else if (day === 'Wed')
-                    return "Wednesday";
-                else if (day === 'Thurs')
-                    return "Thursday";
-                else
-                    return "error"
-            }
-
             $('#daily-icon').attr('src', dailyIconUrl());
 
-            function dailyIconUrl() {
-                for (let i = 0; i < iconDisplay.length; i++) {
-                    if (weather.daily.data[0].icon === iconDisplay[i].conditions)
-                        return iconDisplay[i].url
+                function dailyIconUrl() {
+                    for (let i = 0; i < iconDisplay.length; i++) {
+                        if (weather.daily.data[0].icon === iconDisplay[i].conditions)
+                            return iconDisplay[i].url
+                    }
                 }
-            }
 
             $('#current-icon').attr('src', currentIconUrl());
 
-            function currentIconUrl() {
-                for (let i = 0; i < iconDisplay.length; i++) {
-                    if (weather.currently.icon === iconDisplay[i].conditions)
-                        return iconDisplay[i].url
+                function currentIconUrl() {
+                    for (let i = 0; i < iconDisplay.length; i++) {
+                        if (weather.currently.icon === iconDisplay[i].conditions)
+                            return iconDisplay[i].url
+                    }
                 }
-            }
 
             $('#later-icon').attr('src', laterIconUrl());
 
-            function laterIconUrl() {
-                for (let i = 0; i < iconDisplay.length; i++) {
-                    if (weather.hourly.data[4].icon === iconDisplay[i].conditions)
-                        return iconDisplay[i].url
+                function laterIconUrl() {
+                    for (let i = 0; i < iconDisplay.length; i++) {
+                        if (weather.hourly.data[4].icon === iconDisplay[i].conditions)
+                            return iconDisplay[i].url
+                    }
                 }
-            }
 
             $('#umbrella-watch').attr('src', umbrellaForecast());
 
-            function umbrellaForecast() {
-                for (let i = 0; i < 4; i++) {
-                    if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
-                        return 'img/umbrella.png';
-                    else
-                        return 'img/clear-day.png'
+                function umbrellaForecast() {
+                    for (let i = 0; i < 4; i++) {
+                        if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
+                            return 'img/umbrella.png';
+                        else
+                            return 'img/clear-day.png'
+                    }
                 }
-            }
-
-
-            console.log(weather.currently.icon);
-            console.log(iconDisplay[0].conditions);
 
             //Mapbox html location variable
-        // const mapboxCoordinates = NEEDS to return as a string of "/longitude,latitude" to append to Mapbox request
+        // let mapboxCoordinates = NEEDS to return as a string of "/longitude,latitude" to append to Mapbox request
 
-        //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
-        //var searchInput = some string obtained from HTML input
+            //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
+
+
+
+            $("#custom-search-btn").click(
+                function () {
+                    let searchInput = $('#search-bar').val();
+                    let searchString = searchInput.toLowerCase();
+                    console.log(searchString);
+                    let stringToCoords = function(result) {
+                        console.log(result);
+                        map.setCenter(result);
+                    };
+
+                    let mapboxCoordinates = geocode(searchString, mapboxToken).then(stringToCoords);
+                    console.log(mapboxCoordinates);
+
+                    let darkSkyCoordinates = function () {
+                       let longitude = mapboxCoordinates[0];
+                       let latitude = mapboxCoordinates[1];
+                       return latitude + "," + longitude
+                    };
+
+
+
+                });
+
+
+
+
+            // Generates map
+            mapboxgl.accessToken = mapboxToken;
+            let map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v9',
+                zoom: 10,
+                center: [-98.4936, 29.4241],
+            });
+
+
+
 
         //Apply markerLocation to Mapbox and Dark Sky html request
-        // var markerLocation = some Long,Lat from Mapbox,
+
+            let markerOptions = { //stylize the marker and it how to interact
+                color: "#FDB50D",
+            };
+
+            let marker = new mapboxgl.Marker(markerOptions) //creating the marker on the map
+                .setLngLat([-98.4936, 29.4241])  //set the location in Long, Lat
+                .addTo(map);                          //add it to the map
+
+
+        // let markerLocation = some Long,Lat from Mapbox,
 
         });
     });
