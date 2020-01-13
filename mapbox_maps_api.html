@@ -170,17 +170,17 @@
 
     //Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
     //
-    // var reverseGeo = reverseGeocode({lng: -98.4861, lat: 29.4260}, mapboxToken).then(function (result) {
-    //     console.log(result);
-    // });
+    var reverseGeo = reverseGeocode({lng: -98.4861, lat: 29.4260}, mapboxToken).then(function (result) {
+        console.log(result);
+    });
 
-    // document.getElementById("search-btn").addEventListener("click", function () {
-    //    var address = document.getElementById("search-input").value;
-    //    console.log(address);
-    //    geocode(address, mapboxToken).then(function (result) {
-    //         map.setCenter(result)
-    //    })
-    // });
+    document.getElementById("search-btn").addEventListener("click", function () {
+       var address = document.getElementById("search-input").value;
+       console.log(address);
+       geocode(address, mapboxToken).then(function (result) {
+            map.setCenter(result)
+       })
+    });
 
     // Add a button that will hide all markers.
 

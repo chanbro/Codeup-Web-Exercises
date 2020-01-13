@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Map API</title>
-<!--Bootstrap CSS-->
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<!--Google Fonts-->
+    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:400,700,800&display=swap" rel="stylesheet">
-<!--Font Awesome-->
+    <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/4773d21f04.js" crossorigin="anonymous"></script>
-<!--Custom CSS-->
+    <!--Custom CSS-->
     <style>
 
         .header-font {
             font-family: 'Raleway', sans-serif;
             font-weight: bold;
+            color: #1969B2;
         }
 
         .featured-font {
@@ -23,11 +24,13 @@
 
         .weather-container {
             width: 75vw;
+
         }
         .custom-card {
             width: 33vw;
             background-color: #4591D6;
             color: white;
+            box-shadow: 2px 2px 5px black;
         }
 
         .custom-navbar {
@@ -63,6 +66,76 @@
             width: 20vh;
         }
 
+        #umbrella-verdict {
+            color: #FDB50D;
+        }
+
+        .header-container {
+            width: 75vw;
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
 
     </style>
 </head>
@@ -71,13 +144,15 @@
 <!--Start Branded Navbar-->
 <div class="navbar sticky-top header-font custom-navbar">
         <span>
-         <img src="img/loading-icon.gif" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch">
+         <img src="img/rain.gif" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch">
             <span id="brand-name">
                 umbrella watch
             </span>
         </span>
+    <span id="umbrella-verdict">
+    </span>
     <form class="form-inline">
-        <input class="form-control mx-2" id="search-bar" type="search" placeholder="#search-bar" aria-label="Search" value="">
+        <input class="form-control mx-2" id="search-bar" type="search" placeholder="San Antonio, TX" aria-label="Search" value="">
         <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-icon"></button>
     </form>
     <!--End Branded Navbar-->
@@ -85,8 +160,17 @@
 
 <!--Start Main Container-->
 <div class="container">
-    <h3 class="header-font mt-2" id="location">City, Country</h3>
-    <!--Fetched Day of the Week-->
+    <div class="header-container d-flex my-3">
+        <h3 class="header-font drop-shadow" id="location">san antonio, tx</h3>
+        <span class="d-flex flex-row ml-auto">
+            <h3 class="header-font pr-2 drop-shadow">°f </h3>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <h3 class="header-font pl-2 drop-shadow"> °c</h3>
+            </span>
+    </div>
     <!--Start Weather Contents-->
     <div class="d-flex flex-row justify-content-center weather-container featured-font">
         <!--Day at a Glace-->
@@ -116,12 +200,12 @@
             </div>
         </div>
 
-    <!--End Weather Contents-->
+        <!--End Weather Contents-->
     </div>
 
     <!--Start Mapbox Contents-->
     <div class="mapbox-container mt-2" id='map'>
-    <!--End Mapbox Contents-->
+        <!--End Mapbox Contents-->
     </div>
 
     <div id="byline">
@@ -131,7 +215,7 @@
     </div>
 
     <!--End Main Container-->
-    </div>
+</div>
 
 
 
@@ -202,55 +286,55 @@
     $(function () {
 
         $.when(
-            $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241,-98.4936"))
+            $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241, -98.4936"))
             .done
-        (function(weather) {
-            console.log(weather);
+            (function(weather) {
+                console.log(weather);
 
-            //Dark Sky html location variable
-            // let darkSkyCoordinates = '"' + weather.latitude + "," +weather.longitude + '"';
+                //Dark Sky html location variable
+                // let darkSkyCoordinates = '"' + weather.latitude + "," +weather.longitude + '"';
 
-            //Accessing API object to convert their time property to date/time
-            const dateObject = new Date(weather.currently.time * 1000);
-            console.log(dateObject.toString());
+                //Accessing API object to convert their time property to date/time
+                const dateObject = new Date(weather.currently.time * 1000);
+                console.log(dateObject.toString());
 
-            $('#daily-container').append(dailyWeather());
+                $('#daily-container').append(dailyWeather());
 
                 function dailyWeather() {
                     return (
                         '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
                         '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
-                        '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + weather.daily.data[0].precipProbability + '%' +
+                        '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + (weather.daily.data[0].precipProbability * 100) + '%' +
                         '</p><p class="mx-auto my-0" id="day-summary">' +  'Day at a Glance: ' + weather.hourly.summary +
                         '</p>'
                     )
                 }
 
-            $('#current-container').append(currentWeather());
+                $('#current-container').append(currentWeather());
 
                 function currentWeather() {
                     return (
                         '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
                         '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.currently.precipProbability + '%' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + (weather.currently.precipProbability * 100) + '%' +
                         '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
                         '</p>'
                     )
                 }
 
-            $('#later-container').append(futureWeather());
+                $('#later-container').append(futureWeather());
 
                 function futureWeather() {
                     return (
                         '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
                         '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + weather.hourly.data[4].precipProbability + '%' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + (weather.hourly.data[4].precipProbability * 100) + '%' +
                         '</p><p class="mx-auto my-0" id="current-summary">' + 'Future Conditions: ' + weather.hourly.data[4].summary +
                         '</p>'
                     )
                 }
 
-            $('#day').text(dayOfWeek());
+                $('#day').text(dayOfWeek());
 
                 function dayOfWeek(){
                     let dateInfo = dateObject.toString();
@@ -269,12 +353,12 @@
                         return "error"
                 }
 
-            const iconDisplay =
-                [
-                    {
-                        'conditions': 'clear-day',
-                        'url': 'img/clear-day.png'
-                    }, {
+                const iconDisplay =
+                    [
+                        {
+                            'conditions': 'clear-day',
+                            'url': 'img/clear-day.png'
+                        }, {
                         'conditions': 'clear-night',
                         'url': 'img/clear-night.png'
                     }, {
@@ -284,7 +368,7 @@
                         'conditions': 'snow',
                         'url': 'img/snow.png'
                     }, {
-                       'conditions': 'sleet',
+                        'conditions': 'sleet',
                         'url' : 'img/sleet.png'
                     }, {
                         'conditions': 'wind',
@@ -303,9 +387,9 @@
                         'url': 'img/partly-cloudy-night.png'
                     }
 
-                ];
+                    ];
 
-            $('#daily-icon').attr('src', dailyIconUrl());
+                $('#daily-icon').attr('src', dailyIconUrl());
 
                 function dailyIconUrl() {
                     for (let i = 0; i < iconDisplay.length; i++) {
@@ -314,7 +398,7 @@
                     }
                 }
 
-            $('#current-icon').attr('src', currentIconUrl());
+                $('#current-icon').attr('src', currentIconUrl());
 
                 function currentIconUrl() {
                     for (let i = 0; i < iconDisplay.length; i++) {
@@ -323,7 +407,7 @@
                     }
                 }
 
-            $('#later-icon').attr('src', laterIconUrl());
+                $('#later-icon').attr('src', laterIconUrl());
 
                 function laterIconUrl() {
                     for (let i = 0; i < iconDisplay.length; i++) {
@@ -332,7 +416,7 @@
                     }
                 }
 
-            $('#umbrella-watch').attr('src', umbrellaForecast());
+                $('#umbrella-watch').attr('src', umbrellaForecast());
 
                 function umbrellaForecast() {
                     for (let i = 0; i < 4; i++) {
@@ -343,65 +427,119 @@
                     }
                 }
 
-            //Mapbox html location variable
-        // let mapboxCoordinates = NEEDS to return as a string of "/longitude,latitude" to append to Mapbox request
+                $('body').css('background-color', changeBG());
 
-            //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
+                function changeBG() {
+                    for (let i = 0; i < 4; i++) {
+                        if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
+                            return 'gray';
+                        else
+                            return 'white'
+                    }
+                }
 
-
-
-            $("#custom-search-btn").click(
-                function () {
-                    let searchInput = $('#search-bar').val();
-                    let searchString = searchInput.toLowerCase();
-                    console.log(searchString);
-                    let stringToCoords = function(result) {
-                        console.log(result);
-                        map.setCenter(result);
-                    };
-
-                    let mapboxCoordinates = geocode(searchString, mapboxToken).then(stringToCoords);
-                    console.log(mapboxCoordinates);
-
-                    let darkSkyCoordinates = function () {
-                       let longitude = mapboxCoordinates[0];
-                       let latitude = mapboxCoordinates[1];
-                       return latitude + "," + longitude
-                    };
+                $('#umbrella-verdict').text(umbrellaText()).hide().slideDown('slow');
 
 
+                function umbrellaText() {
+                    for (let i = 0; i < 4; i++) {
+                        if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet") {
+                            $('#umbrella-verdict').css('color', 'white');
+                            $('.drop-shadow').css({
+                                'color' : '#FDB50D',
+                            });
+                            return 'Should I bring an umbrella with me? Yes'}
+                        else
+                            return 'Should I bring an umbrella with me? No'
+                    }
+                }
 
+                //attempt to make F/C switch
+                $('.switch').click(degreesSwitch());
+
+                function degreesSwitch(){
+                    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241,-98.4936?units=si")
+                }
+
+                //Mapbox html location variable
+                // let mapboxCoordinates = NEEDS to return as a string of "/longitude,latitude" to append to Mapbox request
+
+                //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
+
+
+
+                $("#custom-search-btn").click(
+                    function () {
+                        let searchInput = $('#search-bar').val();
+                        let searchString = searchInput.toLowerCase();
+                        $('#location').text(searchString);
+                        console.log(searchString);
+                        let stringToCoords = function(result) {
+                            console.log(result);
+                            map.setCenter(result)
+                            map.setZoom(15);
+                            //Create Draggable Marker
+                            let marker = new mapboxgl.Marker({
+                                draggable: true,
+                                color: "#FDB50D"
+                            })
+                                .setLngLat(result)
+                                .addTo(map);
+
+                            function onDragEnd() {
+                                var lngLat = marker.getLngLat();
+                                coordinates.style.display = 'block';
+                                coordinates.innerHTML =
+                                    'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+                            }
+
+                            marker.on('dragend', onDragEnd);//add it to the map
+                        };
+
+                        let mapboxCoordinates = geocode(searchString, mapboxToken).then(stringToCoords);
+                        console.log(mapboxCoordinates);
+
+                        let darkSkyCoordinates = function () {
+                            let longitude = mapboxCoordinates[0];
+                            let latitude = mapboxCoordinates[1];
+                            return latitude + "," + longitude
+                        };
+
+
+
+                    });
+
+
+
+
+                // Generates map
+                mapboxgl.accessToken = mapboxToken;
+                let map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v9',
+                    zoom: 10,
+                    center: [-98.4936, 29.4241],
                 });
 
 
+                //Create Draggable Marker
+                let marker = new mapboxgl.Marker({
+                    draggable: true,
+                    color: "#FDB50D"
+                })
+                    .setLngLat([-98.4936, 29.4241])
+                    .addTo(map);
 
+                function onDragEnd() {
+                    var lngLat = marker.getLngLat();
+                    coordinates.style.display = 'block';
+                    coordinates.innerHTML =
+                        'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+                }
 
-            // Generates map
-            mapboxgl.accessToken = mapboxToken;
-            let map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v9',
-                zoom: 10,
-                center: [-98.4936, 29.4241],
+                marker.on('dragend', onDragEnd);//add it to the map
+
             });
-
-
-
-
-        //Apply markerLocation to Mapbox and Dark Sky html request
-
-            let markerOptions = { //stylize the marker and it how to interact
-                color: "#FDB50D",
-            };
-
-            let marker = new mapboxgl.Marker(markerOptions) //creating the marker on the map
-                .setLngLat([-98.4936, 29.4241])  //set the location in Long, Lat
-                .addTo(map);                          //add it to the map
-
-
-        // let markerLocation = some Long,Lat from Mapbox,
-
-        });
     });
 </script>
 <script></script>
