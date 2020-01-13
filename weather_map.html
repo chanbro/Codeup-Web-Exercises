@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <title>Weather Map API</title>
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:400,700,800&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:400,700,800&display=swap" rel="stylesheet">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/4773d21f04.js" crossorigin="anonymous"></script>
     <!--Custom CSS-->
@@ -25,10 +23,10 @@
         }
 
         .weather-container {
+            max-height: 25vw;
             width: 75vw;
 
         }
-
         .custom-card {
             width: 33vw;
             background-color: #4591D6;
@@ -65,7 +63,7 @@
             width: 75vw;
         }
 
-        .search-bar {
+        #search-bar {
             width: 20vh;
         }
 
@@ -155,15 +153,11 @@
     <span id="umbrella-verdict">
     </span>
     <form class="form-inline">
-        <input class="search-bar form-control mx-2" id="latitude-search" type="search" placeholder="29.4241"
-               aria-label="Search" value="">
-        <input class="search-bar form-control mx-2" id="longitude-search" type="search" placeholder="-98.4936"
-               aria-label="Search" value="">
-        <input class="search-bar form-control mx-2" id="city-search" type="search" placeholder="San Antonio, TX"
-               aria-label="Search" value="">
-        <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png"
-                                                                                   alt="Search Button Icon"
-                                                                                   id="custom-search-icon"></button>
+        <input class="search-bar form-control mx-2" id="lat" type="search" placeholder="29.4241" aria-label="Search" value="">
+        <input class="search-bar form-control mx-2" id="long" type="search" placeholder="-98.4936" aria-label="Search" value="">
+
+<!--        <input class="search-bar form-control mx-2" id="search-bar" type="search" placeholder="San Antonio, TX" aria-label="Search" value="">-->
+        <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-icon"></button>
     </form>
     <!--End Branded Navbar-->
 </div>
@@ -171,7 +165,7 @@
 <!--Start Main Container-->
 <div class="container">
     <div class="header-container d-flex my-3">
-        <h3 class="header-font drop-shadow" id="location">san antonio, tx</h3>
+        <h3 class="header-font drop-shadow" id="location">Latitude: 29.4241, Longitude: -98.4936</h3>
         <span class="d-flex flex-row ml-auto">
             <h3 class="header-font pr-2 drop-shadow">°f </h3>
             <label class="switch">
@@ -228,22 +222,18 @@
 </div>
 
 
+
+
 <!--Bootstrap jQuery-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <!--jQuery 2.2.4-->
 <script src="js/jquery-2.2.4.js"></script>
 <!--Bootstrap jQuery-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <!--Mapbox jQuery-->
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet'/>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
 <!--Mapbox Geocoder JS-->
 <script src="js/mapbox-geocoder-utils.js"></script>
 <!--My API Keys-->
@@ -296,12 +286,14 @@
     ***********************************
     */
 
+"use strict";
 
     $(function () {
-        // function updateWeather(latitude, longitude) {
-        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241, -98.4936")
-            .done
-            (function (weather) {
+
+        getWeather(29.4241, -98.4936);
+        function getWeather(latitude, longitude, units) {
+            let weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + latitude + ',' + longitude);
+            weather.done(function(weather) {
                 console.log(weather);
 
                 //Dark Sky html location variable
@@ -311,11 +303,11 @@
                 const dateObject = new Date(weather.currently.time * 1000);
                 console.log(dateObject.toString());
 
-
-                $('#daily-container').append(dailyWeather());
+                $('#daily-container').empty().append(dailyWeather());
 
                 function dailyWeather() {
                     return (
+                        '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
                         '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
                         '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
                         '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + parseInt(weather.daily.data[0].precipProbability * 100) + '%' +
@@ -324,10 +316,11 @@
                     )
                 }
 
-                $('#current-container').append(currentWeather());
+                $('#current-container').empty().append(currentWeather());
 
                 function currentWeather() {
                     return (
+                        '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
                         '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
                         '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
                         '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.currently.precipProbability * 100) + '%' +
@@ -336,10 +329,11 @@
                     )
                 }
 
-                $('#later-container').append(futureWeather());
+                $('#later-container').empty().append(futureWeather());
 
                 function futureWeather() {
                     return (
+                        '<img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">' +
                         '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
                         '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
                         '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.hourly.data[4].precipProbability * 100) + '%' +
@@ -367,7 +361,7 @@
                         return "error"
                 }
 
-                const iconDisplay =
+                let iconDisplay =
                     [
                         {
                             'conditions': 'clear-day',
@@ -467,74 +461,68 @@
                             return 'Should I bring an umbrella with me? No'
                     }
                 }
+            })
+        }
 
-                //Mapbox html location variable
-                // let mapboxCoordinates = NEEDS to return as a string of "/longitude,latitude" to append to Mapbox request
+                // //attempt to make F/C switch
+                // $('.switch').click(degreesSwitch());
+                //
+                // function degreesSwitch(){
+                //     $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241,-98.4936?units=si")
+                // }
 
-                //Apply searchInput to Mapbox and Dark Sky; marker should also move with searchInput
+        // Generates map
+        mapboxgl.accessToken = mapboxToken;
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 10,
+            center: [-98.4936, 29.4241],
+        });
+
+        $('#custom-search-btn').click(function (e) {
+            e.preventDefault();
+            var longitude = long.value;
+            var latitude = lat.value;
+            $('#location').text('Latitude: ' + latitude + ', ' + 'Longitude: ' + longitude);
+
+            reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function (result) {
+                geocode(result, mapboxToken).then(function (result2) {
+                    map.setCenter(result2);
+                    map.setZoom(10);
+                    var marker = new mapboxgl.Marker({
+                        draggable: true,
+                        color: "#FDB50D"
+                    })
+                        .setLngLat(result2)
+                        .addTo(map);
+
+                });
 
 
-                $("#custom-search-btn").click(
-                    function () {
-                        let searchInput = $('#city-search').val();
-                        let searchString = searchInput.toLowerCase();
-                        $('#location').text(searchString);
-                        console.log(searchString);
-                        let stringToCoords = function (result) {
-                            console.log(result);
-                            map.setCenter(result);
-                            map.setZoom(15);
-                            //Create Draggable Marker
-                            let marker = new mapboxgl.Marker({
-                                draggable: true,
-                                color: "#FDB50D"
-                            })
-                                .setLngLat(result)
-                                .addTo(map);
-
-                            // function onDragEnd() {
-                            //     var lngLat = marker.getLngLat();
-                            //     coordinates.style.display = 'block';
-                            //     coordinates.innerHTML =
-                            //         'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-                            // }
-                            //
-                            // marker.on('dragend', onDragEnd);//add it to the map
-                        };
-
-                        let mapboxCoordinates = geocode(searchString, mapboxToken).then(stringToCoords);
-
-                    });
-
-                // Generates map
-                mapboxgl.accessToken = mapboxToken;
-                let map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/streets-v9',
-                    zoom: 10,
-                    center: [-98.4936, 29.4241],
+            });
+            getWeather(lat.value, long.value);
+        });
+                //Create Draggable Marker
+                let marker = new mapboxgl.Marker({
+                    draggable: true,
+                    color: "#FDB50D"
                 })
+                    .setLngLat([-98.4936, 29.4241])
+                    .addTo(map);
 
-                    //Create Draggable Marker
-                    // let marker = new mapboxgl.Marker({
-                    //     draggable: true,
-                    //     color: "#FDB50D"
-                    // })
-                    //     .setLngLat([-98.4936, 29.4241])
-                    //     .addTo(map);
-                    //
-                    // function onDragEnd() {
-                    //     var lngLat = marker.getLngLat();
-                    //     coordinates.style.display = 'block';
-                    //     coordinates.innerHTML =
-                    //         'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-                    // }
-                    //
-                    // marker.on('dragend', onDragEnd);//add it to the map
+                function onDragEnd() {
+                    var lngLat = marker.getLngLat();
+                    var fixedLng = lngLat.lng.toFixed(4);
+                    var fixedLat = lngLat.lat.toFixed(4);
+                    $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
+                    getWeather(fixedLat, fixedLng)
+                }
+
+                marker.on('dragend', onDragEnd);//add it to the map
+
 
             })
-    });
-
 </script>
 <script></script>
 </body>

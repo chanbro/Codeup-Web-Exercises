@@ -1,21 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Dark SKy Call</title>
     <style>
-        #foo {
-            background-color: red;
+        .weatherCards {
+            background-color: lightgray;
+            border: 1px solid gray;
+            text-align: center;
         }
-    </style>
-</head>
-<body>
-<h1 class="foo">Codeup Rocks!</h1>
-<script src="/js/jquery.js"></script>
-<script>
-    "use strict";
 
-    $(document).ready(function() {
-        $('.foo').css('background-color', 'blue');
+        .mainBackground {
+            background-color: lavender;
+        }
+
+        body {
+            display: grid;
+            grid-template-areas: "header header header" "header2 header2 header2" "current_weather tomorrows_weather day_after";
+            grid-template-rows: 60px 60px 390px;
+            grid-template-columns: 33% 33% 33%;
+            grid-row-gap: 10px;
+            grid-column-gap: 10px;
+            /*height: 100vh;*/
+            /*margin: 10px;*/
+        }
+
+        #header {
+            grid-area: header;
+        }
+
+        #header2 {
+            grid-area: header2;
+        }
+
+        #current_weather {
+            grid-area: current_weather;
+        }
+
+        #tomorrows_weather {
+            grid-area: tomorrows_weather;
+        }
+
+        #day_after {
+            grid-area: day_after;
+        }
+
+        #map {
+            display: flex;
+            justify-content: center;
+            height: 400px;
+            width: 800px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body class="mainBackground">
+
+<h1 id="header">Weather Applications</h1>
+
+<h3 id="header2">San Antonio</h3>
+
+<div class="Today-weather weatherCards" id="current_weather"></div>
+
+<div class="Tomorrow-weather weatherCards" id="tomorrows_weather"></div>
+
+<div class="Next-weather weatherCards" id="day_after"></div>
+
+
+<form>
+    Latitude:<br>
+
+    <input type="text" name="latitude" placeholder="Enter Latitude Here" id="lat"><br>
+    Longitude:<br>
+
+    <input type="text" name="longitude" placeholder="Enter Longitude Here" id="long"><br>
+
+    <input type="submit" value="Submit" id="go-getter">
+</form>
+
+
+<div id='map'>
+
+</div>
+
+<!--    <div id="stuff"></div>-->
+
+
+<!--<span class="header-right__weather-icon"></span>-->
+<!--<span class="header-right__weather-sit"></span>-->
+<!--<span class="header-right__weather-temp"></span>-->
+
+
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"-->
+<!--        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+
+<script src="js/keyss.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/keyss.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<script>
+    // (function () {
+    var weatherType = {
+        "clear-day": "img/Cloud-Drizzle-Sun-Alt.svg",
+        "clear-night": "img/Cloud-Fog.svg",
+        "rain": "img/Sun.svg",
+        "snow": "img/Cloud-Sun.svg",
+        "sleet": "img/Cloud-Fog.svg",
+        "wind": "img/Cloud-Rain-Alt.svg",
+        "fog": "img/Cloud-Refresh.svg",
+        "cloudy": "img/Cloud-Snow-Sun.svg",
+        "partly-cloudy-day": "img/Sun.svg",
+        "partly-cloudy-night": "img/Moon.svg"
+    };
+
+
+    "use strict";
+    $(document).ready(function () {
+        getWeather(29.4241, -98.4936);
+
+        function getWeather(latitude, longitude) {
+            var weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky + "/" + latitude + ',' + longitude);
+            weather.done(function (weather) {
+                // console.log(weather);
+                for (var i = 0; i <= 2; i++) {
+
+                }
+                $('.Today-weather').empty().append(
+                    '<div class="d-flex-col justify-content-center">' +
+                    '<h5 class="d-flex justify-content-center">' + "Current Weather " + '</h5>' +
+                    '<img src="' + weatherType[weather.daily.data[0].icon] + '" class="mt-2" style="width: 30%">' +
+                    '<p class="d-flex justify-content-center mt-2">' + weather.currently.temperature + '° F' + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "The Sky is " + weather.currently.summary + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Humidity: " + weather.currently.humidity + "%" + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Wind: " + weather.currently.windSpeed + " MPH" + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Pressure: " + weather.currently.pressure + '</p>' +
+                    '</div>');
+
+                $('.Tomorrow-weather').empty().append(
+                    '<div class="d-flex-col justify-content-center">' +
+                    '<h5 class="d-flex justify-content-center">' + "Current Weather " + '</h5>' +
+                    '<img src="' + weatherType[weather.daily.data[1].icon] + '" class="mt-2" style="width: 30%">' +
+                    '<p class="d-flex justify-content-center mt-2">' + weather.daily.data[1].temperatureHigh + '° F' + ' / ' + weather.daily.data[1].temperatureLow + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "The Sky is " + weather.daily.data[1].summary + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Humidity: " + weather.daily.data[1].humidity + "%" + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Wind: " + weather.daily.data[1].windSpeed + " MPH" + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Pressure: " + weather.daily.data[1].pressure + '</p>' +
+                    '</div>');
+
+                $('.Next-weather').empty().append(
+                    '<div class="d-flex-col justify-content-center">' +
+                    '<h5 class="d-flex justify-content-center">' + "Current Weather " + '</h5>' +
+                    '<img src="' + weatherType[weather.daily.data[2].icon] + '" class="mt-2" style="width: 30%">' +
+                    '<p class="d-flex justify-content-center mt-2">' + weather.daily.data[2].temperatureHigh + '° F' + ' / ' + weather.daily.data[2].temperatureLow + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "The Sky is " + weather.daily.data[2].summary + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Humidity: " + weather.daily.data[2].humidity + "%" + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Wind: " + weather.daily.data[2].windSpeed + " MPH" + '</p>' +
+                    '<p class="d-flex justify-content-center mt-2">' + "Pressure: " + weather.daily.data[2].pressure + '</p>' +
+                    '</div>');
+            })
+        }
+
+        mapboxgl.accessToken = mapboxToken;
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 10,
+            center: [-98.4916, 29.4252]
+        });
+
+        $('#go-getter').click(function (e) {
+            e.preventDefault();
+            var longitude = long.value;
+            var latitude = lat.value;
+
+
+            reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function (result) {
+                geocode(result, mapboxToken).then(function (result2) {
+                    map.setCenter(result2);
+                    map.setZoom(15);
+                    var marker = new mapboxgl.Marker()
+                        .setLngLat(result2)
+                        .addTo(map);
+
+                });
+
+
+            });
+            getWeather(lat.value, long.value);
+        });
+
+
+        // var weatherType = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"]
     });
+    // })();
+    //2955742
+    //-98.5349
 </script>
+
 </body>
 </html>
