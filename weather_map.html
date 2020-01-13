@@ -167,12 +167,11 @@
     <div class="header-container d-flex my-3">
         <h3 class="header-font drop-shadow" id="location">Latitude: 29.4241, Longitude: -98.4936</h3>
         <span class="d-flex flex-row ml-auto">
-            <h3 class="header-font pr-2 drop-shadow">°f </h3>
+            <h3 class="header-font pr-2 drop-shadow">°f/°c </h3>
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" id="celsius-slider">
                 <span class="slider round"></span>
             </label>
-            <h3 class="header-font pl-2 drop-shadow"> °c</h3>
             </span>
     </div>
     <!--Start Weather Contents-->
@@ -290,9 +289,11 @@
 
     $(function () {
 
-        getWeather(29.4241, -98.4936);
+        getWeather(29.4241, -98.4936, 'us');
+
+
         function getWeather(latitude, longitude, units) {
-            let weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + latitude + ',' + longitude);
+            let weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + latitude + ',' + longitude + "?units=" + units);
             weather.done(function(weather) {
                 console.log(weather);
 
@@ -464,13 +465,6 @@
             })
         }
 
-                // //attempt to make F/C switch
-                // $('.switch').click(degreesSwitch());
-                //
-                // function degreesSwitch(){
-                //     $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/29.4241,-98.4936?units=si")
-                // }
-
         // Generates map
         mapboxgl.accessToken = mapboxToken;
         let map = new mapboxgl.Map({
@@ -498,10 +492,13 @@
                         .addTo(map);
 
                 });
-
-
             });
-            getWeather(lat.value, long.value);
+            // var slider = $('#celsius-slider').change(function() {
+            //     if(this.checked !== true){
+            //         return 'si'
+            //     }
+            // });
+            getWeather(lat.value, long.value, 'us');
         });
                 //Create Draggable Marker
                 let marker = new mapboxgl.Marker({
@@ -516,10 +513,25 @@
                     var fixedLng = lngLat.lng.toFixed(4);
                     var fixedLat = lngLat.lat.toFixed(4);
                     $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
-                    getWeather(fixedLat, fixedLng)
+                   // var slider = $('#celsius-slider').change(function() {
+                   //     if(this.checked !== true){
+                   //         return 'si'
+                   //     }
+                   // });
+                    getWeather(fixedLat, fixedLng, 'us')
                 }
 
                 marker.on('dragend', onDragEnd);//add it to the map
+
+        // var degreeSwitch = function() {
+        //     if ($('input.checkbox_check').prop('checked', true)) {
+        //         return 'us'
+        //     } else {
+        //         return 'si'
+        //     }
+        // };
+        //
+        // $( "input[type=checkbox]" ).on( "click", getWeather(29.4241, -98.4936, degreeSwitch));
 
 
             })
