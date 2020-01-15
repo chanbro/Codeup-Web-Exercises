@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Weather Map API</title>
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:400,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:400,700,800&display=swap"
+          rel="stylesheet">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/4773d21f04.js" crossorigin="anonymous"></script>
     <!--Custom CSS-->
@@ -26,6 +28,7 @@
             width: 75vw;
 
         }
+
         .custom-card {
             width: 50vw;
             background-color: #4591D6;
@@ -71,10 +74,6 @@
             width: 20vh;
         }
 
-        #umbrella-verdict {
-            color: #FDB50D;
-        }
-
         .header-container {
             width: 75vw;
         }
@@ -83,8 +82,8 @@
         .switch {
             position: relative;
             display: inline-block;
-            width: 60px;
-            height: 34px;
+            width: 30px;
+            height: 15px;
         }
 
         /* Hide default HTML checkbox */
@@ -110,10 +109,10 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
+            height: 14px;
+            width: 14px;
+            left: 1px;
+            bottom: 1px;
             background-color: white;
             -webkit-transition: .4s;
             transition: .4s;
@@ -128,14 +127,14 @@
         }
 
         input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
+            -webkit-transform: translateX(14px);
+            -ms-transform: translateX(14px);
+            transform: translateX(14px);
         }
 
         /* Rounded sliders */
         .slider.round {
-            border-radius: 34px;
+            border-radius: 16px;
         }
 
         .slider.round:before {
@@ -154,34 +153,38 @@
                 umbrella watch
             </span>
         </span>
-    <span id="umbrella-verdict">
-    </span>
+    <span id="location">Latitude: 29.4241, Longitude: -98.4936</span>
     <form class="form-inline">
-        <input class="search-bar form-control mx-2" id="lat" type="search" placeholder="29.4241" aria-label="Search" value="">
-        <input class="search-bar form-control mx-2" id="long" type="search" placeholder="-98.4936" aria-label="Search" value="">
+        <input class="search-bar form-control mx-2" id="lat" type="search" placeholder="29.4241" aria-label="Search"
+               value="">
+        <input class="search-bar form-control mx-2" id="long" type="search" placeholder="-98.4936" aria-label="Search"
+               value="">
 
         <!--        <input class="search-bar form-control mx-2" id="search-bar" type="search" placeholder="San Antonio, TX" aria-label="Search" value="">-->
-        <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-icon"></button>
+        <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png"
+                                                                                   alt="Search Button Icon"
+                                                                                   id="custom-search-icon"></button>
     </form>
     <!--End Branded Navbar-->
 </div>
 
 <!--Start Main Container-->
-<div class="container">
-    <div class="header-container d-flex my-3">
-        <h3 class="header-font drop-shadow" id="location">Latitude: 29.4241, Longitude: -98.4936</h3>
-        <span class="d-flex flex-row ml-auto">
-            <h3 class="header-font pr-2 drop-shadow">°f/°c </h3>
-            <label class="switch">
-                <input type="checkbox" id="celsius-slider">
-                <span class="slider round"></span>
-            </label>
-            </span>
+<div class="container mt-6">
+    <h2 class="header-font d-flex justify-content-center text-center" id="umbrella-verdict">
+
+
+    </h2>
+    <div class="header-container d-flex align-items-end mb-0">
+        <span class="header-font pr-2 d-flex flex-row ml-auto" style="font-size: 15px">°f/°c </span>
+        <label class="switch">
+            <input type="checkbox" id="celsius-slider">
+            <span class="slider round"></span>
+        </label>
     </div>
 
     <!--Day at a Glace-->
     <div class=" d-flex flex-row justify-content-center card header-card featured-font text-left">
-        <div class="card-body" id="daily-container">
+        <div class="card-body mt-0" id="daily-container">
             <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
             <!--                <h4 class="card-title" id="day"></h4>-->
             <!--Fetched Data from Dark Sky Start-->
@@ -226,18 +229,22 @@
 </div>
 
 
-
-
 <!--Bootstrap jQuery-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 <!--jQuery 2.2.4-->
 <script src="js/jquery-2.2.4.js"></script>
 <!--Bootstrap jQuery-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 <!--Mapbox jQuery-->
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet'/>
 <!--Mapbox Geocoder JS-->
 <script src="js/mapbox-geocoder-utils.js"></script>
 <!--My API Keys-->
@@ -299,7 +306,7 @@
 
         function getWeather(latitude, longitude, units) {
             let weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + latitude + ',' + longitude + "?units=" + units);
-            weather.done(function(weather) {
+            weather.done(function (weather) {
                 console.log(weather);
 
                 //Dark Sky html location variable
@@ -308,7 +315,6 @@
                 //Accessing API object to convert their time property to date/time
                 const dateObject = new Date(weather.currently.time * 1000);
                 console.log(dateObject.toString());
-
 
 
                 function dayOfWeek() {
@@ -336,7 +342,7 @@
                         '<p class="mx-auto my-0" id="high-temperature">' + weather.daily.data[0].temperatureHigh + '° <i class="fas fa-thermometer-three-quarters"></i>' +
                         '</p><p class="mx-auto my-0" id="low-temperature">' + weather.daily.data[0].temperatureLow + '° <i class="fas fa-thermometer-quarter"></i>' +
                         '</p><p class="mx-auto my-0" id="precipitation">' + (weather.daily.data[0].precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
-                        '</p><p class="mx-auto my-0" id="day-summary">' + weather.hourly.summary +
+                        '</p><p class="mx-auto my-0" id="day-summary">' + weather.daily.data[0].summary +
                         '</p>'
                     )
                 }
@@ -349,7 +355,7 @@
                     return (
                         '<h4 className="card-title" id="current">Currently</h4>' +
                         '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' +  weather.currently.apparentTemperature + '° <i class="fas fa-thermometer-half"></i>' +
+                        '<p class="mx-auto my-0" id="current-temperature">' + weather.currently.apparentTemperature + '° <i class="fas fa-thermometer-half"></i>' +
                         '</p><p class="mx-auto my-0" id="current-precipProbability">' + (weather.currently.precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="mx-auto my-0" id="current-summary">' + weather.currently.summary +
                         '</p>'
@@ -428,7 +434,7 @@
 
                 function dailyIconUrl() {
                     for (let i = 0; i < iconDisplay.length; i++) {
-                        if (weather.daily.data[0].icon === iconDisplay[i].conditions)
+                        if (weather.daily.icon === iconDisplay[i].conditions)
                             return iconDisplay[i].url
                     }
                 }
@@ -455,7 +461,7 @@
 
                 function umbrellaForecast() {
                     for (let i = 0; i <= 8; i++) {
-                        if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
+                        if ((weather.hourly.data[i].precipProbability * 100) >= 30)
                             return 'img/umbrella.png';
                         else
                             return 'img/clear-day.png'
@@ -466,28 +472,51 @@
 
                 function changeBG() {
                     for (let i = 0; i <= 8; i++) {
-                        if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
-                            return 'gray';
+                        if ((weather.hourly.data[i].precipProbability * 100) >= 30)
+                            return 'lightgray';
                         else
                             return 'white'
                     }
                 }
 
-                $('#umbrella-verdict').text(umbrellaText()).hide().slideDown('slow');
+                // Hourly BG function in case I need it later
+                // function changeBG() {
+                //     for (let i = 0; i <= 8; i++) {
+                //         if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
+                //             return 'gray';
+                //         else
+                //             return 'white'
+                //     }
+                // }
 
+                // $('#umbrella-verdict').text(umbrellaText()).hide().slideDown('slow');
 
+                $('#umbrella-verdict').fadeOut('slow').fadeIn('slow', function () {
+                    $(this).text(umbrellaText())
+                });
+
+                //Hourly String function in case I need it later
                 function umbrellaText() {
                     for (let i = 0; i <= 8; i++) {
-                        if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet") {
-                            $('#umbrella-verdict').css('color', 'white');
-                            $('.drop-shadow').css({
-                                'color': '#FDB50D',
-                            });
-                            return 'Do you need an umbrella? Yes'
+                        if ((weather.hourly.data[i].precipProbability * 100) >= 30){
+                            $('#umbrella-verdict').css('color', '#4591D6');
+                            return 'Bring an umbrella'
                         } else
-                            return 'Do you need an umbrella? No'
+                            $('#umbrella-verdict').css('color', '#FDB50D');
+                            return 'Leave that umbrella at home'
                     }
                 }
+
+                // function umbrellaText() {
+                //     for (let i = 0; i <= 8; i++) {
+                //         if ((weather.hourly.data[i].precipProbability * 100) >= 30) {
+                //             $('#umbrella-verdict').css('color', 'lightgray');
+                //             return 'Bring an umbrella!'
+                //         } else
+                //         $('#umbrella-verdict').css('color', '#FDB50D');
+                //         return 'Leave that umbrella at home'
+                //     }
+                // }
             })
         }
 
@@ -496,7 +525,7 @@
         let map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 10,
+            zoom: 3,
             center: [-98.4936, 29.4241],
         });
 
