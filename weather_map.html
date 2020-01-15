@@ -26,19 +26,16 @@
 
         .weather-container {
             width: 75vw;
-            min-height: 25vh;
 
         }
 
         .icon-2 {
             width: 2rem;
             height: 2rem;
-            filter: drop-shadow(30px 10px 4px #4444dd);
         }
 
         .custom-card {
             width: 50vw;
-            min-height: 25vh;
             background: rgb(31, 130, 219);
             background: radial-gradient(circle, rgba(31, 130, 219, 1) 5%, rgba(27, 109, 184, 1) 100%);
             color: white;
@@ -223,7 +220,7 @@
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <!--Start Fetched Data from Dark Sky-->
             </div>
-        <!--End Day Now-->
+            <!--End Day Now-->
         </div>
         <!--End Right Now-->
         <div class="custom-card text-left">
@@ -239,7 +236,7 @@
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <!--Start Fetched Data from Dark Sky-->
             </div>
-        <!--End Right Now-->
+            <!--End Right Now-->
         </div>
 
         <!--Start 8 Hours Contents-->
@@ -257,9 +254,9 @@
                 <!--Start Fetched Data from Dark Sky-->
 
             </div>
-        <!--End 8 Hours Contents-->
+            <!--End 8 Hours Contents-->
         </div>
-    <!--End Weather Contents-->
+        <!--End Weather Contents-->
     </div>
 
     <!--Byline-->
@@ -294,7 +291,6 @@
 <!--Custom Javascript/jQuery-->
 <script>
     /*
-
     ***WORKFLOW***
     1. Create HTML elements/classes/ids
     2. Create jQuery to display Dark Sky weather on page
@@ -304,14 +300,12 @@
     6. Link marker location to Dark Sky Coordinates
     7. Add search function with click/enter listener
     ***********************************
-
     ***EXAMPLE REQUEST***
     * Dark Sky
         * "https://api.darksky.net/forecast" "+ darkSkyToken + darkSkyCoordinates
     * Mapbox
         * "https://" + mapboxToken + mapboxCoordinates
     ***********************************
-
     ***WISH LIST***
     * (Site Branding)
     * (Units Toggle)
@@ -491,7 +485,7 @@
 
                 function umbrellaForecast() {
                     for (let i = 0; i <= 8; i++) {
-                        if ((weather.currently.precipProbability * 100 >= 30) || ((weather.hourly.data[i].precipProbability * 100) >= 30))
+                        if ((weather.hourly.data[i].precipProbability * 100) >= 30)
                             return 'img/umbrella.png';
                         else
                             return 'img/clear-day.png'
@@ -544,11 +538,12 @@
             var longitude = long.value;
             var latitude = lat.value;
             // Sets specified latitude and longitude in navbar
-            $('#location').text('Latitude: ' + latitude + ', ' + 'Longitude: ' + longitude);
+            // $('#location').text('Latitude: ' + latitude + ', ' + 'Longitude: ' + longitude);
 
             //Get Address from Long Lat
             reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function (result) {
                 geocode(result, mapboxToken).then(function (result2) {
+                    $('#location').text(result);
                     map.setCenter(result2);
                     map.setZoom(10);
                     var marker = new mapboxgl.Marker({
@@ -557,7 +552,6 @@
                     })
                         .setLngLat(result2)
                         .addTo(map);
-
                 });
             });
 
