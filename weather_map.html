@@ -27,10 +27,15 @@
 
         }
         .custom-card {
-            width: 33vw;
+            width: 50vw;
             background-color: #4591D6;
             color: white;
-            box-shadow: 2px 2px 5px black;
+        }
+
+        .header-card {
+            width: 75vw;
+            background-color: #4591D6;
+            color: white;
         }
 
         .custom-navbar {
@@ -173,16 +178,18 @@
             </label>
             </span>
     </div>
-    <!--Start Weather Contents-->
-    <div class="d-flex flex-row justify-content-center weather-container featured-font">
-        <!--Day at a Glace-->
-        <div class="card custom-card text-left">
-            <div class="card-body" id="daily-container">
-                <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
-<!--                <h4 class="card-title" id="day"></h4>-->
-                <!--Fetched Data from Dark Sky Start-->
-            </div>
+
+    <!--Day at a Glace-->
+    <div class=" d-flex flex-row justify-content-center card header-card featured-font text-left">
+        <div class="card-body" id="daily-container">
+            <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
+            <!--                <h4 class="card-title" id="day"></h4>-->
+            <!--Fetched Data from Dark Sky Start-->
         </div>
+    </div>
+
+    <!--Start Future Contents-->
+    <div class="d-flex flex-row justify-content-center weather-container featured-font">
 
         <!--Right Now-->
         <div class=" card custom-card text-left">
