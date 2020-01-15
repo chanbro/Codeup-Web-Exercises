@@ -457,7 +457,9 @@
                     }
                 }
 
-                $('#umbrella-watch').attr('src', umbrellaForecast());
+                $('#umbrella-watch').slideDown('slow').slideUp('slow', function () {
+                    $(this).attr('src', umbrellaForecast())
+                });
 
                 function umbrellaForecast() {
                     for (let i = 0; i <= 8; i++) {
@@ -467,17 +469,19 @@
                             return 'img/clear-day.png'
                     }
                 }
+                //
+                // $('body').fadeOut('slow').fadeIn('slow', function () {
+                //     $(this).css('background-color', changeBG());
+                // });
 
-                $('body').css('background-color', changeBG());
-
-                function changeBG() {
-                    for (let i = 0; i <= 8; i++) {
-                        if ((weather.hourly.data[i].precipProbability * 100) >= 30)
-                            return 'lightgray';
-                        else
-                            return 'white'
-                    }
-                }
+                // function changeBG() {
+                //     for (let i = 0; i <= 8; i++) {
+                //         if ((weather.hourly.data[i].precipProbability * 100) >= 30)
+                //             return 'lightgray';
+                //         else
+                //             return 'white'
+                //     }
+                // }
 
                 // Hourly BG function in case I need it later
                 // function changeBG() {
@@ -491,21 +495,21 @@
 
                 // $('#umbrella-verdict').text(umbrellaText()).hide().slideDown('slow');
 
-                $('#umbrella-verdict').fadeOut('slow').fadeIn('slow', function () {
-                    $(this).text(umbrellaText())
-                });
+                // $('#umbrella-verdict').fadeOut('slow').fadeIn('slow', function () {
+                //     $(this).text(umbrellaText())
+                // });
 
                 //Hourly String function in case I need it later
-                function umbrellaText() {
-                    for (let i = 0; i <= 8; i++) {
-                        if ((weather.hourly.data[i].precipProbability * 100) >= 30){
-                            $('#umbrella-verdict').css('color', '#4591D6');
-                            return 'Bring an umbrella'
-                        } else
-                            $('#umbrella-verdict').css('color', '#FDB50D');
-                            return 'Leave that umbrella at home'
-                    }
-                }
+                // function umbrellaText() {
+                //     for (let i = 0; i <= 8; i++) {
+                //         if ((weather.hourly.data[i].precipProbability * 100) >= 30){
+                //             $('#umbrella-verdict').css('color', '#4591D6');
+                //             return 'Bring an umbrella'
+                //         } else
+                //             $('#umbrella-verdict').css('color', '#FDB50D');
+                //             return 'Leave your umbrella at home'
+                //     }
+                // }
 
                 // function umbrellaText() {
                 //     for (let i = 0; i <= 8; i++) {
