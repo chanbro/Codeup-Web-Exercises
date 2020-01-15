@@ -340,9 +340,11 @@
 
     $(function () {
 
+        // Sets location of map on load
         getWeather(29.4241, -98.4936, 'us');
 
 
+        // Function containing html and JS instructions from Dark Sky with latitude and longitude input from Mapbox
         function getWeather(latitude, longitude, units) {
             let weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyToken + "/" + latitude + ',' + longitude + "?units=" + units);
             weather.done(function (weather) {
@@ -356,6 +358,7 @@
                 console.log(dateObject.toString());
 
 
+                // Fetch day of the week
                 function dayOfWeek() {
                     let dateInfo = dateObject.toString();
                     let day = dateInfo.substring(0, dateInfo.indexOf(" "));
@@ -373,6 +376,8 @@
                         return "error"
                 }
 
+                // Adds updated weather contents to today's container
+                $('#daily-container').empty().append(dailyWeather());
 
                 function dailyWeather() {
                     return (
@@ -385,8 +390,7 @@
                     )
                 }
 
-                $('#daily-container').empty().append(dailyWeather());
-
+                // Adds updated weather contents to current container
                 $('#current-container').empty().append(currentWeather());
 
                 function currentWeather() {
@@ -399,6 +403,7 @@
                     )
                 }
 
+                // Adds updated weather contents to 8 hours later container
                 $('#later-container').empty().append(futureWeather());
 
                 function futureWeather() {
@@ -411,25 +416,7 @@
                     )
                 }
 
-                // function dayOfWeek() {
-                //     let dateInfo = dateObject.toString();
-                //     let day = dateInfo.substring(0, dateInfo.indexOf(" "));
-                //     if (day === 'Sun' || day === 'Mon' || day === 'Fri')
-                //         return day + "day";
-                //     else if (day === 'Tue')
-                //         return "Tuesday";
-                //     else if (day === 'Wed')
-                //         return "Wednesday";
-                //     else if (day === 'Thurs')
-                //         return "Thursday";
-                //     else if (day === 'Sat')
-                //         return "Saturday";
-                //     else
-                //         return "error"
-                // }
-                //
-                // let day = $('#day').text(dayOfWeek());
-
+                // Library of icons
                 let iconDisplay =
                     [
                         {
@@ -466,6 +453,7 @@
 
                     ];
 
+                // Adds today's icon
                 $('#daily-icon').attr('src', dailyIconUrl());
 
                 function dailyIconUrl() {
@@ -475,6 +463,7 @@
                     }
                 }
 
+                // Adds current weather icon
                 $('#current-icon').attr('src', currentIconUrl());
 
                 function currentIconUrl() {
@@ -484,6 +473,7 @@
                     }
                 }
 
+                // Adds 8 hours later icon
                 $('#later-icon').attr('src', laterIconUrl());
 
                 function laterIconUrl() {
@@ -493,6 +483,7 @@
                     }
                 }
 
+                // Adds branding icon
                 $('#umbrella-watch').attr('src', umbrellaForecast());
 
                 function umbrellaForecast() {
@@ -503,29 +494,6 @@
                             return 'img/clear-day.png'
                     }
                 }
-                //
-                // $('body').fadeOut('slow').fadeIn('slow', function () {
-                //     $(this).css('background-color', changeBG());
-                // });
-
-                // function changeBG() {
-                //     for (let i = 0; i <= 8; i++) {
-                //         if ((weather.hourly.data[i].precipProbability * 100) >= 30)
-                //             return 'lightgray';
-                //         else
-                //             return 'white'
-                //     }
-                // }
-
-                // Hourly BG function in case I need it later
-                // function changeBG() {
-                //     for (let i = 0; i <= 8; i++) {
-                //         if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
-                //             return 'gray';
-                //         else
-                //             return 'white'
-                //     }
-                // }
 
                 // $('#umbrella-verdict').text(umbrellaText()).hide().slideDown('slow');
 
@@ -567,12 +535,15 @@
             center: [-98.4936, 29.4241],
         });
 
+        // Lat Long Search
         $('#custom-search-btn').click(function (e) {
             e.preventDefault();
             var longitude = long.value;
             var latitude = lat.value;
+            // Sets specified latitude and longitude in navbar
             $('#location').text('Latitude: ' + latitude + ', ' + 'Longitude: ' + longitude);
 
+            //Get Address from Long Lat
             reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function (result) {
                 geocode(result, mapboxToken).then(function (result2) {
                     map.setCenter(result2);
@@ -586,12 +557,10 @@
 
                 });
             });
-            // var slider = $('#celsius-slider').change(function() {
-            //     if(this.checked !== true){
-            //         return 'si'
-            //     }
-            // });
+
+            // Calls function with inputted lat and long
             getWeather(lat.value, long.value, 'us');
+
         });
         //Create Draggable Marker
         let marker = new mapboxgl.Marker({
@@ -601,42 +570,20 @@
             .setLngLat([-98.4936, 29.4241])
             .addTo(map);
 
-        // function onDragEnd() {
-        //     var lngLat = marker.getLngLat();
-        //     var fixedLng = lngLat.lng.toFixed(4);
-        //     var fixedLat = lngLat.lat.toFixed(4);
-        //     $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
-        //     // var slider = $('#celsius-slider').change(function() {
-        //     //     if(this.checked !== true){
-        //     //         return 'si'
-        //     //     }
-        //     // });
-        //     getWeather(fixedLat, fixedLng, 'us')
-        // }
 
+        // Instructions for marker on drag end
         marker.on('dragend', onDragEnd);//add it to the map
 
+        // Getting lat and log
         function onDragEnd() {
             var lngLat = marker.getLngLat();
             var fixedLng = lngLat.lng.toFixed(4);
             var fixedLat = lngLat.lat.toFixed(4);
+            // Sets specified latitude and longitude in navbar
             $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
-            // var slider = $('#celsius-slider').change(function() {
-            //     if(this.checked !== true){
-            //         return 'si'
-            //     }
-            // });
+            // Calls function with marker location
             getWeather(fixedLat, fixedLng, 'us')
         }
-        // var degreeSwitch = function() {
-        //     if ($('input.checkbox_check').prop('checked', true)) {
-        //         return 'us'
-        //     } else {
-        //         return 'si'
-        //     }
-        // };
-        //
-        // $( "input[type=checkbox]" ).on( "click", getWeather(29.4241, -98.4936, degreeSwitch));
 
 
     })
