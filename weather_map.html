@@ -36,16 +36,16 @@
 
         .custom-card {
             width: 50vw;
-            background: rgb(31,130,219);
-            background: radial-gradient(circle, rgba(31,130,219,1) 5%, rgba(27,109,184,1) 100%);
+            background: rgb(31, 130, 219);
+            background: radial-gradient(circle, rgba(31, 130, 219, 1) 5%, rgba(27, 109, 184, 1) 100%);
             color: white;
             border: 1px #1969B2;
         }
 
         .header-card {
             width: 75vw;
-            background: rgb(31,130,219);
-            background: radial-gradient(circle, rgba(31,130,219,1) 5%, rgba(27,109,184,1) 100%);
+            background: rgb(31, 130, 219);
+            background: radial-gradient(circle, rgba(31, 130, 219, 1) 5%, rgba(27, 109, 184, 1) 100%);
             color: white;
         }
 
@@ -164,9 +164,10 @@
 <!--Start Branded Navbar-->
 <div class="navbar sticky-top header-font custom-navbar">
         <span>
-         <img src="img/loading-icon.gif" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch">
+         <img src="img/loading-icon.gif" width="30" height="30" class="d-inline-block align-top" alt=""
+              id="umbrella-watch">
             <span id="brand-name">
-                umbrella watch
+                Umbrella Watch
             </span>
         </span>
     <span id="location">Latitude: 29.4241, Longitude: -98.4936</span>
@@ -203,7 +204,7 @@
         <!--End Mapbox Contents-->
     </div>
 
-    <!--Start Future Contents-->
+    <!--Start Weather Contents-->
     <div class="d-flex flex-row justify-content-center weather-container featured-font">
         <!--Day at a Glace-->
         <div class="d-flex flex-row justify-content-center  header-card featured-font text-left">
@@ -215,11 +216,13 @@
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <br>
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
-                <!--                <h4 class="card-title" id="day"></h4>-->
-                <!--Fetched Data from Dark Sky Start-->
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <!--Start Fetched Data from Dark Sky-->
             </div>
+        <!--End Day Now-->
         </div>
-        <!--Right Now-->
+        <!--End Right Now-->
         <div class="custom-card text-left">
             <div class="custom-border card-body" id="current-container">
                 <img class="icon mx-auto my-0" src="img/loading-icon.gif" alt="Loading Icon">
@@ -229,11 +232,14 @@
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <br>
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
-                <!--Fetched Data from Dark Sky Start-->
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <!--Start Fetched Data from Dark Sky-->
             </div>
+        <!--End Right Now-->
         </div>
 
-        <!--Later-->
+        <!--Start 8 Hours Contents-->
         <div class="custom-card text-left">
             <div class="custom-border card-body" id="later-container">
                 <img class="icon mx-auto my-0" src="img/loading-icon.gif" alt="Loading Icon">
@@ -243,25 +249,19 @@
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <br>
                 <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <!--Start Fetched Data from Dark Sky-->
 
-<!--                    8 hours-->
-<!--                </h4>-->
-                <!--Fetched Data from Dark Sky Start-->
             </div>
+        <!--End 8 Hours Contents-->
         </div>
-
-        <!--End Weather Contents-->
+    <!--End Weather Contents-->
     </div>
 
-<!--    &lt;!&ndash;Start Mapbox Contents&ndash;&gt;-->
-<!--    <div class="mapbox-container mt-2" id='map'>-->
-<!--        &lt;!&ndash;End Mapbox Contents&ndash;&gt;-->
-<!--    </div>-->
-
+    <!--Byline-->
     <div id="byline">
-
         <p class="tiny-text text-right">Page Created by Chaney Brown</p>
-
     </div>
 
     <!--End Main Container-->
@@ -386,7 +386,7 @@
                         '</p><p class="weather-element mx-auto my-0" id="low-temperature">' + parseInt(weather.daily.data[0].temperatureLow) + '° <i class="fas fa-thermometer-quarter"></i>' +
                         '</p><p class="weather-element mx-auto my-0" id="precipitation">' + parseInt(weather.daily.data[0].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="weather-element mx-auto my-0" id="day-summary">' + weather.daily.data[0].summary +
-                        '</p>'
+                        '</p><!--End Fetched Data from Dark Sky-->'
                     )
                 }
 
@@ -399,7 +399,7 @@
                         '<br><p class="weather-element mx-auto my-0" id="current-temperature">' + parseInt(weather.currently.apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
                         '</p><p class="weather-element mx-auto my-0" id="current-precipProbability">' + parseInt(weather.currently.precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="weather-element mx-auto my-0" id="current-summary">' + weather.currently.summary +
-                        '</p>'
+                        '</p><!--End Fetched Data from Dark Sky-->'
                     )
                 }
 
@@ -408,11 +408,11 @@
 
                 function futureWeather() {
                     return (
-                        '<h4 class="card-title" id="later"><img class="icon mr-3 my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">8 hours</h4>' +
+                        '<h4 class="card-title" id="later"><img class="icon mr-3 my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">8 Hours</h4>' +
                         '<br><p class="weather-element mx-auto my-0" id="current-temperature">' + parseInt(weather.hourly.data[8].apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
                         '</p><p class="weather-element mx-auto my-0" id="current-precipProbability">' + parseInt(weather.hourly.data[8].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="weather-element mx-auto my-0" id="current-summary">' + weather.hourly.data[8].summary +
-                        '</p>'
+                        '</p><!--End Fetched Data from Dark Sky-->'
                     )
                 }
 
