@@ -156,7 +156,7 @@
         <input class="search-bar form-control mx-2" id="lat" type="search" placeholder="29.4241" aria-label="Search" value="">
         <input class="search-bar form-control mx-2" id="long" type="search" placeholder="-98.4936" aria-label="Search" value="">
 
-<!--        <input class="search-bar form-control mx-2" id="search-bar" type="search" placeholder="San Antonio, TX" aria-label="Search" value="">-->
+        <!--        <input class="search-bar form-control mx-2" id="search-bar" type="search" placeholder="San Antonio, TX" aria-label="Search" value="">-->
         <button class="btn my-2 my-sm-0" type="button" id="custom-search-btn"><img src="img/search.png" alt="Search Button Icon"  id="custom-search-icon"></button>
     </form>
     <!--End Branded Navbar-->
@@ -180,7 +180,7 @@
         <div class="card custom-card text-center">
             <div class="card-body" id="daily-container">
                 <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
-                <h4 class="card-title" id="day"></h4>
+<!--                <h4 class="card-title" id="day"></h4>-->
                 <!--Fetched Data from Dark Sky Start-->
             </div>
         </div>
@@ -189,7 +189,6 @@
         <div class=" card custom-card text-center">
             <div class="card-body" id="current-container">
                 <img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">
-                <h4 class="card-title" id="current">Now</h4>
                 <!--Fetched Data from Dark Sky Start-->
             </div>
         </div>
@@ -198,7 +197,7 @@
         <div class=" card custom-card text-center">
             <div class="card-body" id="later-container">
                 <img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">
-                <h4 class="card-title" id="later">Later</h4>
+                <h4 class="card-title" id="later">8 hours</h4>
                 <!--Fetched Data from Dark Sky Start-->
             </div>
         </div>
@@ -285,7 +284,7 @@
     ***********************************
     */
 
-"use strict";
+    "use strict";
 
     $(function () {
 
@@ -304,46 +303,7 @@
                 const dateObject = new Date(weather.currently.time * 1000);
                 console.log(dateObject.toString());
 
-                $('#daily-container').empty().append(dailyWeather());
 
-                function dailyWeather() {
-                    return (
-                        '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
-                        '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
-                        '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
-                        '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + parseInt(weather.daily.data[0].precipProbability * 100) + '%' +
-                        '</p><p class="mx-auto my-0" id="day-summary">' + 'Day at a Glance: ' + weather.hourly.summary +
-                        '</p>'
-                    )
-                }
-
-                $('#current-container').empty().append(currentWeather());
-
-                function currentWeather() {
-                    return (
-                        '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
-                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.currently.precipProbability * 100) + '%' +
-                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
-                        '</p>'
-                    )
-                }
-
-                $('#later-container').empty().append(futureWeather());
-
-                function futureWeather() {
-                    return (
-                        '<img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
-                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.hourly.data[4].precipProbability * 100) + '%' +
-                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Future Conditions: ' + weather.hourly.data[4].summary +
-                        '</p>'
-                    )
-                }
-
-                $('#day').text(dayOfWeek());
 
                 function dayOfWeek() {
                     let dateInfo = dateObject.toString();
@@ -361,6 +321,68 @@
                     else
                         return "error"
                 }
+
+
+                function dailyWeather() {
+                    return (
+                        '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
+                        '<h4 class="card-title" id="day">' + dayOfWeek() + '</h4>' +
+                        '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
+                        '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
+                        '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + parseInt(weather.daily.data[0].precipProbability * 100) + '%' +
+                        '</p><p class="mx-auto my-0" id="day-summary">' + 'Day at a Glance: ' + weather.hourly.summary +
+                        '</p>'
+                    )
+                }
+
+                $('#daily-container').empty().append(dailyWeather());
+
+                $('#current-container').empty().append(currentWeather());
+
+                function currentWeather() {
+                    return (
+                        '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
+                        '<h4 className="card-title" id="current">Currently</h4>' +
+                        '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
+                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.currently.precipProbability * 100) + '%' +
+                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
+                        '</p>'
+                    )
+                }
+
+                $('#later-container').empty().append(futureWeather());
+
+                function futureWeather() {
+                    return (
+                        '<img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">' +
+                        '<h4 className="card-title" id="current">8 Hours</h4>' +
+                        '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
+                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.hourly.data[4].precipProbability * 100) + '%' +
+                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Future Conditions: ' + weather.hourly.data[4].summary +
+                        '</p>'
+                    )
+                }
+
+                // function dayOfWeek() {
+                //     let dateInfo = dateObject.toString();
+                //     let day = dateInfo.substring(0, dateInfo.indexOf(" "));
+                //     if (day === 'Sun' || day === 'Mon' || day === 'Fri')
+                //         return day + "day";
+                //     else if (day === 'Tue')
+                //         return "Tuesday";
+                //     else if (day === 'Wed')
+                //         return "Wednesday";
+                //     else if (day === 'Thurs')
+                //         return "Thursday";
+                //     else if (day === 'Sat')
+                //         return "Saturday";
+                //     else
+                //         return "error"
+                // }
+                //
+                // let day = $('#day').text(dayOfWeek());
 
                 let iconDisplay =
                     [
@@ -420,7 +442,7 @@
 
                 function laterIconUrl() {
                     for (let i = 0; i < iconDisplay.length; i++) {
-                        if (weather.hourly.data[4].icon === iconDisplay[i].conditions)
+                        if (weather.hourly.data[8].icon === iconDisplay[i].conditions)
                             return iconDisplay[i].url
                     }
                 }
@@ -428,7 +450,7 @@
                 $('#umbrella-watch').attr('src', umbrellaForecast());
 
                 function umbrellaForecast() {
-                    for (let i = 0; i < 4; i++) {
+                    for (let i = 0; i <= 8; i++) {
                         if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
                             return 'img/umbrella.png';
                         else
@@ -439,7 +461,7 @@
                 $('body').css('background-color', changeBG());
 
                 function changeBG() {
-                    for (let i = 0; i < 4; i++) {
+                    for (let i = 0; i <= 8; i++) {
                         if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet")
                             return 'gray';
                         else
@@ -451,7 +473,7 @@
 
 
                 function umbrellaText() {
-                    for (let i = 0; i < 4; i++) {
+                    for (let i = 0; i <= 8; i++) {
                         if (weather.hourly.data[i].icon === "rain" || weather.hourly.data[i].icon === "snow" || weather.hourly.data[i].icon === "sleet") {
                             $('#umbrella-verdict').css('color', 'white');
                             $('.drop-shadow').css({
@@ -500,28 +522,28 @@
             // });
             getWeather(lat.value, long.value, 'us');
         });
-                //Create Draggable Marker
-                let marker = new mapboxgl.Marker({
-                    draggable: true,
-                    color: "#FDB50D"
-                })
-                    .setLngLat([-98.4936, 29.4241])
-                    .addTo(map);
+        //Create Draggable Marker
+        let marker = new mapboxgl.Marker({
+            draggable: true,
+            color: "#FDB50D"
+        })
+            .setLngLat([-98.4936, 29.4241])
+            .addTo(map);
 
-                function onDragEnd() {
-                    var lngLat = marker.getLngLat();
-                    var fixedLng = lngLat.lng.toFixed(4);
-                    var fixedLat = lngLat.lat.toFixed(4);
-                    $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
-                   // var slider = $('#celsius-slider').change(function() {
-                   //     if(this.checked !== true){
-                   //         return 'si'
-                   //     }
-                   // });
-                    getWeather(fixedLat, fixedLng, 'us')
-                }
+        function onDragEnd() {
+            var lngLat = marker.getLngLat();
+            var fixedLng = lngLat.lng.toFixed(4);
+            var fixedLat = lngLat.lat.toFixed(4);
+            $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
+            // var slider = $('#celsius-slider').change(function() {
+            //     if(this.checked !== true){
+            //         return 'si'
+            //     }
+            // });
+            getWeather(fixedLat, fixedLng, 'us')
+        }
 
-                marker.on('dragend', onDragEnd);//add it to the map
+        marker.on('dragend', onDragEnd);//add it to the map
 
         // var degreeSwitch = function() {
         //     if ($('input.checkbox_check').prop('checked', true)) {
@@ -534,7 +556,7 @@
         // $( "input[type=checkbox]" ).on( "click", getWeather(29.4241, -98.4936, degreeSwitch));
 
 
-            })
+    })
 </script>
 <script></script>
 </body>
