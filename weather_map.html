@@ -23,7 +23,6 @@
         }
 
         .weather-container {
-            max-height: 25vw;
             width: 75vw;
 
         }
@@ -177,7 +176,7 @@
     <!--Start Weather Contents-->
     <div class="d-flex flex-row justify-content-center weather-container featured-font">
         <!--Day at a Glace-->
-        <div class="card custom-card text-center">
+        <div class="card custom-card text-left">
             <div class="card-body" id="daily-container">
                 <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
 <!--                <h4 class="card-title" id="day"></h4>-->
@@ -186,7 +185,7 @@
         </div>
 
         <!--Right Now-->
-        <div class=" card custom-card text-center">
+        <div class=" card custom-card text-left">
             <div class="card-body" id="current-container">
                 <img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">
                 <!--Fetched Data from Dark Sky Start-->
@@ -194,7 +193,7 @@
         </div>
 
         <!--Later-->
-        <div class=" card custom-card text-center">
+        <div class=" card custom-card text-left">
             <div class="card-body" id="later-container">
                 <img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">
                 <h4 class="card-title" id="later">8 hours</h4>
@@ -325,12 +324,12 @@
 
                 function dailyWeather() {
                     return (
-                        '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
                         '<h4 class="card-title" id="day">' + dayOfWeek() + '</h4>' +
-                        '<p class="mx-auto my-0" id="high-temperature">' + 'High: ' + weather.daily.data[0].temperatureHigh + '°' +
-                        '</p><p class="mx-auto my-0" id="low-temperature">' + 'Low: ' + weather.daily.data[0].temperatureLow + '°' +
-                        '</p><p class="mx-auto my-0" id="precipitation">' + 'Precipitation: ' + parseInt(weather.daily.data[0].precipProbability * 100) + '%' +
-                        '</p><p class="mx-auto my-0" id="day-summary">' + 'Day at a Glance: ' + weather.hourly.summary +
+                        '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
+                        '<p class="mx-auto my-0" id="high-temperature">' + weather.daily.data[0].temperatureHigh + '° <i class="fas fa-thermometer-three-quarters"></i>' +
+                        '</p><p class="mx-auto my-0" id="low-temperature">' + weather.daily.data[0].temperatureLow + '° <i class="fas fa-thermometer-quarter"></i>' +
+                        '</p><p class="mx-auto my-0" id="precipitation">' + (weather.daily.data[0].precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '</p><p class="mx-auto my-0" id="day-summary">' + weather.hourly.summary +
                         '</p>'
                     )
                 }
@@ -341,12 +340,11 @@
 
                 function currentWeather() {
                     return (
-                        '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
                         '<h4 className="card-title" id="current">Currently</h4>' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + 'Current Temperature: ' + weather.currently.temperature + '°' +
-                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.currently.apparentTemperature + '°' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.currently.precipProbability * 100) + '%' +
-                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Current Conditions: ' + weather.currently.summary +
+                        '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
+                        '<p class="mx-auto my-0" id="current-temperature">' +  weather.currently.apparentTemperature + '° <i class="fas fa-thermometer-half"></i>' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + (weather.currently.precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '</p><p class="mx-auto my-0" id="current-summary">' + weather.currently.summary +
                         '</p>'
                     )
                 }
@@ -355,12 +353,11 @@
 
                 function futureWeather() {
                     return (
+                        '<h4 className="card-title header-font" id="current">8 Hours</h4>' +
                         '<img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">' +
-                        '<h4 className="card-title" id="current">8 Hours</h4>' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + 'Temperature: ' + weather.hourly.data[4].temperature + '°' +
-                        '</p><p class="mx-auto my-0" id="apparentTemperature">' + 'Feels Like: ' + weather.hourly.data[4].apparentTemperature + '°' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + 'Precipitation: ' + parseInt(weather.hourly.data[4].precipProbability * 100) + '%' +
-                        '</p><p class="mx-auto my-0" id="current-summary">' + 'Future Conditions: ' + weather.hourly.data[4].summary +
+                        '<p class="mx-auto my-0" id="current-temperature">' + weather.hourly.data[8].apparentTemperature + '° <i class="fas fa-thermometer-half"></i>' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + (weather.hourly.data[8].precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '</p><p class="mx-auto my-0" id="current-summary">' + weather.hourly.data[8].summary +
                         '</p>'
                     )
                 }
@@ -479,9 +476,9 @@
                             $('.drop-shadow').css({
                                 'color': '#FDB50D',
                             });
-                            return 'Should I bring an umbrella with me? Yes'
+                            return 'Do you need an umbrella? Yes'
                         } else
-                            return 'Should I bring an umbrella with me? No'
+                            return 'Do you need an umbrella? No'
                     }
                 }
             })
