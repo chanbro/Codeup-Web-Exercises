@@ -26,16 +26,19 @@
 
         .weather-container {
             width: 75vw;
+            min-height: 25vh;
 
         }
 
         .icon-2 {
             width: 2rem;
             height: 2rem;
+            filter: drop-shadow(30px 10px 4px #4444dd);
         }
 
         .custom-card {
             width: 50vw;
+            min-height: 25vh;
             background: rgb(31, 130, 219);
             background: radial-gradient(circle, rgba(31, 130, 219, 1) 5%, rgba(27, 109, 184, 1) 100%);
             color: white;
@@ -62,6 +65,7 @@
         .icon {
             width: 50px;
             height: 50px;
+            filter: drop-shadow(5px 3px 4px #135086);
         }
 
         #custom-search-icon {
@@ -488,7 +492,7 @@
 
                 function umbrellaForecast() {
                     for (let i = 0; i <= 8; i++) {
-                        if ((weather.hourly.data[i].precipProbability * 100) >= 30)
+                        if ((weather.currently.precipProbability * 100 >= 30) || ((weather.hourly.data[i].precipProbability * 100) >= 30))
                             return 'img/umbrella.png';
                         else
                             return 'img/clear-day.png'
