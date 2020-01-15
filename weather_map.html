@@ -31,13 +31,16 @@
 
         .custom-card {
             width: 50vw;
-            background-color: #4591D6;
+            background: rgb(31,130,219);
+            background: radial-gradient(circle, rgba(31,130,219,1) 5%, rgba(27,109,184,1) 100%);
             color: white;
+            border: 1px #1969B2;
         }
 
         .header-card {
             width: 75vw;
-            background-color: #4591D6;
+            background: rgb(31,130,219);
+            background: radial-gradient(circle, rgba(31,130,219,1) 5%, rgba(27,109,184,1) 100%);
             color: white;
         }
 
@@ -68,6 +71,10 @@
 
         #byline {
             width: 75vw;
+        }
+
+        .custom-border {
+            border: 1px white;
         }
 
         #search-bar {
@@ -148,7 +155,7 @@
 <!--Start Branded Navbar-->
 <div class="navbar sticky-top header-font custom-navbar">
         <span>
-         <img src="img/rain.gif" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch">
+         <img src="img/loading-icon.gif" width="30" height="30" class="d-inline-block align-top" alt="" id="umbrella-watch">
             <span id="brand-name">
                 umbrella watch
             </span>
@@ -174,6 +181,7 @@
 
 
     </h2>
+
     <div class="header-container d-flex align-items-end mb-0">
         <span class="header-font pr-2 d-flex flex-row ml-auto" style="font-size: 15px">°f/°c </span>
         <label class="switch">
@@ -181,30 +189,32 @@
             <span class="slider round"></span>
         </label>
     </div>
-
-    <!--Day at a Glace-->
-    <div class=" d-flex flex-row justify-content-center card header-card featured-font text-left">
-        <div class="card-body mt-0" id="daily-container">
-            <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
-            <!--                <h4 class="card-title" id="day"></h4>-->
-            <!--Fetched Data from Dark Sky Start-->
-        </div>
+    <!--Start Mapbox Contents-->
+    <div class="mapbox-container mt-2" id='map'>
+        <!--End Mapbox Contents-->
     </div>
 
     <!--Start Future Contents-->
     <div class="d-flex flex-row justify-content-center weather-container featured-font">
-
+        <!--Day at a Glace-->
+        <div class="d-flex flex-row justify-content-center  header-card featured-font text-left">
+            <div class="custom-border card-body mt-0" id="daily-container">
+                <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
+                <!--                <h4 class="card-title" id="day"></h4>-->
+                <!--Fetched Data from Dark Sky Start-->
+            </div>
+        </div>
         <!--Right Now-->
-        <div class=" card custom-card text-left">
-            <div class="card-body" id="current-container">
+        <div class="custom-card text-left">
+            <div class="custom-border card-body" id="current-container">
                 <img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">
                 <!--Fetched Data from Dark Sky Start-->
             </div>
         </div>
 
         <!--Later-->
-        <div class=" card custom-card text-left">
-            <div class="card-body" id="later-container">
+        <div class="custom-card text-left">
+            <div class="custom-border card-body" id="later-container">
                 <img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">
                 <h4 class="card-title" id="later">8 hours</h4>
                 <!--Fetched Data from Dark Sky Start-->
@@ -214,10 +224,10 @@
         <!--End Weather Contents-->
     </div>
 
-    <!--Start Mapbox Contents-->
-    <div class="mapbox-container mt-2" id='map'>
-        <!--End Mapbox Contents-->
-    </div>
+<!--    &lt;!&ndash;Start Mapbox Contents&ndash;&gt;-->
+<!--    <div class="mapbox-container mt-2" id='map'>-->
+<!--        &lt;!&ndash;End Mapbox Contents&ndash;&gt;-->
+<!--    </div>-->
 
     <div id="byline">
 
@@ -339,9 +349,9 @@
                     return (
                         '<h4 class="card-title" id="day">' + dayOfWeek() + '</h4>' +
                         '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
-                        '<p class="mx-auto my-0" id="high-temperature">' + weather.daily.data[0].temperatureHigh + '° <i class="fas fa-thermometer-three-quarters"></i>' +
-                        '</p><p class="mx-auto my-0" id="low-temperature">' + weather.daily.data[0].temperatureLow + '° <i class="fas fa-thermometer-quarter"></i>' +
-                        '</p><p class="mx-auto my-0" id="precipitation">' + (weather.daily.data[0].precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '<p class="mx-auto my-0" id="high-temperature">' + parseInt(weather.daily.data[0].temperatureHigh) + '° <i class="fas fa-thermometer-three-quarters"></i>' +
+                        '</p><p class="mx-auto my-0" id="low-temperature">' + parseInt(weather.daily.data[0].temperatureLow) + '° <i class="fas fa-thermometer-quarter"></i>' +
+                        '</p><p class="mx-auto my-0" id="precipitation">' + parseInt(weather.daily.data[0].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="mx-auto my-0" id="day-summary">' + weather.daily.data[0].summary +
                         '</p>'
                     )
@@ -353,10 +363,10 @@
 
                 function currentWeather() {
                     return (
-                        '<h4 className="card-title" id="current">Currently</h4>' +
+                        '<h4 class="card-title" id="current">Currently</h4>' +
                         '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + weather.currently.apparentTemperature + '° <i class="fas fa-thermometer-half"></i>' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + (weather.currently.precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '<p class="mx-auto my-0" id="current-temperature">' + parseInt(weather.currently.apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + parseInt(weather.currently.precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="mx-auto my-0" id="current-summary">' + weather.currently.summary +
                         '</p>'
                     )
@@ -366,10 +376,10 @@
 
                 function futureWeather() {
                     return (
-                        '<h4 className="card-title header-font" id="current">8 Hours</h4>' +
+                        '<h4 class="card-title" id="current">8 Hours</h4>' +
                         '<img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + weather.hourly.data[8].apparentTemperature + '° <i class="fas fa-thermometer-half"></i>' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + (weather.hourly.data[8].precipProbability * 100).toFixed(2) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '<p class="mx-auto my-0" id="current-temperature">' + parseInt(weather.hourly.data[8].apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
+                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + parseInt(weather.hourly.data[8].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
                         '</p><p class="mx-auto my-0" id="current-summary">' + weather.hourly.data[8].summary +
                         '</p>'
                     )
@@ -457,9 +467,7 @@
                     }
                 }
 
-                $('#umbrella-watch').slideDown('slow').slideUp('slow', function () {
-                    $(this).attr('src', umbrellaForecast())
-                });
+                $('#umbrella-watch').attr('src', umbrellaForecast());
 
                 function umbrellaForecast() {
                     for (let i = 0; i <= 8; i++) {
