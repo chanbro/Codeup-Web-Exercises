@@ -29,6 +29,11 @@
 
         }
 
+        .icon-2 {
+            width: 2rem;
+            height: 2rem;
+        }
+
         .custom-card {
             width: 50vw;
             background: rgb(31,130,219);
@@ -67,6 +72,10 @@
         .tiny-text {
             font-family: 'Raleway', sans-serif;
             font-size: xx-small;
+        }
+
+        .weather-element {
+            font-size: large;
         }
 
         #byline {
@@ -199,7 +208,13 @@
         <!--Day at a Glace-->
         <div class="d-flex flex-row justify-content-center  header-card featured-font text-left">
             <div class="custom-border card-body mt-0" id="daily-container">
-                <img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">
+                <img class="icon mx-auto my-0" src="img/loading-icon.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <!--                <h4 class="card-title" id="day"></h4>-->
                 <!--Fetched Data from Dark Sky Start-->
             </div>
@@ -207,7 +222,13 @@
         <!--Right Now-->
         <div class="custom-card text-left">
             <div class="custom-border card-body" id="current-container">
-                <img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">
+                <img class="icon mx-auto my-0" src="img/loading-icon.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
                 <!--Fetched Data from Dark Sky Start-->
             </div>
         </div>
@@ -215,8 +236,16 @@
         <!--Later-->
         <div class="custom-card text-left">
             <div class="custom-border card-body" id="later-container">
-                <img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">
-                <h4 class="card-title" id="later">8 hours</h4>
+                <img class="icon mx-auto my-0" src="img/loading-icon.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+                <br>
+                <img class="icon-2 mx-auto my-0" src="img/loading-2.gif" alt="Loading Icon">
+
+<!--                    8 hours-->
+<!--                </h4>-->
                 <!--Fetched Data from Dark Sky Start-->
             </div>
         </div>
@@ -347,12 +376,11 @@
 
                 function dailyWeather() {
                     return (
-                        '<h4 class="card-title" id="day">' + dayOfWeek() + '</h4>' +
-                        '<img class="icon mx-auto my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' +
-                        '<p class="mx-auto my-0" id="high-temperature">' + parseInt(weather.daily.data[0].temperatureHigh) + '° <i class="fas fa-thermometer-three-quarters"></i>' +
-                        '</p><p class="mx-auto my-0" id="low-temperature">' + parseInt(weather.daily.data[0].temperatureLow) + '° <i class="fas fa-thermometer-quarter"></i>' +
-                        '</p><p class="mx-auto my-0" id="precipitation">' + parseInt(weather.daily.data[0].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
-                        '</p><p class="mx-auto my-0" id="day-summary">' + weather.daily.data[0].summary +
+                        '<h4 class="card-title" id="day"><img class="icon mr-3 my-0" id="daily-icon" src="img/loading-icon.gif" alt="Daily Weather Icon">' + dayOfWeek() + '</h4>' +
+                        '<p class="weather-element mx-auto my-0" id="high-temperature">' + parseInt(weather.daily.data[0].temperatureHigh) + '° <i class="fas fa-thermometer-three-quarters"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="low-temperature">' + parseInt(weather.daily.data[0].temperatureLow) + '° <i class="fas fa-thermometer-quarter"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="precipitation">' + parseInt(weather.daily.data[0].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="day-summary">' + weather.daily.data[0].summary +
                         '</p>'
                     )
                 }
@@ -363,11 +391,10 @@
 
                 function currentWeather() {
                     return (
-                        '<h4 class="card-title" id="current">Currently</h4>' +
-                        '<img class="icon mx-auto my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + parseInt(weather.currently.apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + parseInt(weather.currently.precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
-                        '</p><p class="mx-auto my-0" id="current-summary">' + weather.currently.summary +
+                        '<h4 class="card-title" id="current"><img class="icon mr-3 my-0" id="current-icon" src="img/loading-icon.gif" alt="Current Weather Icon">Currently</h4>' +
+                        '<br><p class="weather-element mx-auto my-0" id="current-temperature">' + parseInt(weather.currently.apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="current-precipProbability">' + parseInt(weather.currently.precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="current-summary">' + weather.currently.summary +
                         '</p>'
                     )
                 }
@@ -376,11 +403,10 @@
 
                 function futureWeather() {
                     return (
-                        '<h4 class="card-title" id="current">8 Hours</h4>' +
-                        '<img class="icon mx-auto my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">' +
-                        '<p class="mx-auto my-0" id="current-temperature">' + parseInt(weather.hourly.data[8].apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
-                        '</p><p class="mx-auto my-0" id="current-precipProbability">' + parseInt(weather.hourly.data[8].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
-                        '</p><p class="mx-auto my-0" id="current-summary">' + weather.hourly.data[8].summary +
+                        '<h4 class="card-title" id="later"><img class="icon mr-3 my-0" id="later-icon" src="img/loading-icon.gif" alt="Later Weather Icon">8 hours</h4>' +
+                        '<br><p class="weather-element mx-auto my-0" id="current-temperature">' + parseInt(weather.hourly.data[8].apparentTemperature) + '° <i class="fas fa-thermometer-half"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="current-precipProbability">' + parseInt(weather.hourly.data[8].precipProbability * 100) + '% <i class="fas fa-cloud-rain"></i>' +
+                        '</p><p class="weather-element mx-auto my-0" id="current-summary">' + weather.hourly.data[8].summary +
                         '</p>'
                     )
                 }
@@ -575,6 +601,21 @@
             .setLngLat([-98.4936, 29.4241])
             .addTo(map);
 
+        // function onDragEnd() {
+        //     var lngLat = marker.getLngLat();
+        //     var fixedLng = lngLat.lng.toFixed(4);
+        //     var fixedLat = lngLat.lat.toFixed(4);
+        //     $('#location').text('Longitude: ' + fixedLat + ', Longitude: ' + fixedLng);
+        //     // var slider = $('#celsius-slider').change(function() {
+        //     //     if(this.checked !== true){
+        //     //         return 'si'
+        //     //     }
+        //     // });
+        //     getWeather(fixedLat, fixedLng, 'us')
+        // }
+
+        marker.on('dragend', onDragEnd);//add it to the map
+
         function onDragEnd() {
             var lngLat = marker.getLngLat();
             var fixedLng = lngLat.lng.toFixed(4);
@@ -587,9 +628,6 @@
             // });
             getWeather(fixedLat, fixedLng, 'us')
         }
-
-        marker.on('dragend', onDragEnd);//add it to the map
-
         // var degreeSwitch = function() {
         //     if ($('input.checkbox_check').prop('checked', true)) {
         //         return 'us'
