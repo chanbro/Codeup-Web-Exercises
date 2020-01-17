@@ -53,24 +53,25 @@ users.push({
   email,
   languages
 });
+// key value pairs
 
 // TODO: replace `var` with `let` in the following variable declarations
 let emails = [];
 let names = [];
 
 // TODO: rewrite the following using arrow functions
-// users.forEach(function(user) {
-//   return emails.push(user.email);
-// });
+users.forEach((user) => {
+  return emails.push(user.email);
+});
 
 for (let user of users) {
   emails.push(user.email)
 }
 console.log(emails);
 
-// users.forEach(function(user) {
-//   return names.push(user.name);
-// });
+users.forEach((user) => {
+  return names.push(user.name);
+});
 
 for (let user of users) {
   names.push(user.name)
@@ -104,6 +105,8 @@ let list = '<ul>';
 
 for (let developer of developers) {
   // TODO: rewrite the assignment below to use template strings
-  list += `<li> ${developer} </li>`;
+  list += `<li>${developer}</li>`;
 }
 list += '</ul>';
+
+// document.getElementById('message').innerHTML = list;

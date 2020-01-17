@@ -42,25 +42,97 @@
 // document.getElementById('message').innerHTML =
 //     `<p>Our ${dog.breed} is named ${dog.name}</p>`;
 //
-// Arrow Functions
-const ourFunction = function (name) {
-    console.log((`Hello ${name}!`));
-};
-ourFunction('Europa');
+// // Arrow Functions
+// const ourFunction = function (name) {
+//     console.log((`Hello ${name}!`));
+// };
+// ourFunction('Europa');
+//
+// // name sent to function instructions
+// const newFunction = name => {
+//     console.log((`Hello ${name}!`));
+// };
+// newFunction("Europa 2");
+//
+// //for this function, if nothing is passed in return this value, otherwise return input value
+// const sayHello = (argument = 'default behavior') => `Hello ${argument}!`;
+// console.log(sayHello('other argument! An argument was put through the function!'));
+// console.log(sayHello());
 
-// name sent to function instructions
-const newFunction = name => {
-    console.log((`Hello ${name}!`));
-};
-newFunction("Europa 2");
+// // Mapping
+//
+// const hamsters = [
+//     {
+//         name: "Hamtaro",
+//         heightInMM: 86,
+//         fur: ['orange', 'white'],
+//         gender: "male",
+//         dateOfBirth: "August 6"
+//     } , {
+//         name: "Bijou",
+//         heightInMM: 75,
+//         fur: ['white'],
+//         gender: "female",
+//         dateOfBirth: "July 10"
+//     } , {
+//         name: "Oxnard",
+//         heightInMM: 100,
+//         fur: ['grey', 'white'],
+//         gender: "male",
+//         dateOfBirth: "May 3"
+//     } , {
+//         name: "Boss",
+//         heightInMM: 120,
+//         fur: ['brown', 'white'],
+//         gender: "male",
+//         dateOfBirth: "Spetember 21"
+//     } , {
+//         name: "Snoozer",
+//         heightInMM: 85,
+//         fur: ['brown', 'white', "pink"],
+//         gender: "male",
+//         dateOfBirth: "January 14"
+//     }
+// ];
+//
+//
+// // Mapping extracts value
+// const hamsterNames = hamsters.map(hamster => hamster.name);
+// console.log(hamsterNames);
+//
+// let furColors = [];
+// hamsters.map(hamster => {
+//     hamster.fur.map(color => furColors.push(color))
+// });
+// console.log(furColors);
+//
+// // Filter extracts particular item or items based on condition
+// let isMale = hamsters
+//     // finds gender: 'male'
+//     .filter(hamster => hamster.gender === 'male')
+//     // finds name of all who meet gender: 'male"
+//     .map(hamster => hamster.name);
+// // returns names that are males
+// console.log(isMale);
+//
+// // // Filter extracts particular item or items based on condition
+// // let isMale = hamsters
+// //     // finds gender: 'male'
+// //     .filter(hamster => hamster.gender === 'male')
+// //     // finds name of all who meet gender: 'male"
+// //     .map(hamster => return {name:hamster.name, gender:hamster.gender});
+// // // returns names that are males
+// // console.log(isMale);
+//
+// // Reduce narrows down array item by item to return to final value
+// let totalHamsterHeight = hamsters.reduce(((totalHeight, hamster) => totalHeight + hamster.heightInMM), 0);
+// let avgHamsterHeight = totalHamsterHeight / hamsters.length;
+// console.log(avgHamsterHeight);
 
-//for this function, if nothing is passed in return this value, otherwise return input value
-const sayHello = (argument = 'default behavior') => `Hello ${argument}!`;
-console.log(sayHello('other argument! An argument was put through the function!');
-console.log(sayHello());
+// let avgHamsterHeight = hamsters.reduce();
 
 // EXERCISE
-say
+
 const users = [
     {
         id: 1,
@@ -99,3 +171,64 @@ const users = [
     }
 ];
 
+
+let threeLanguages = users.filter(user => user.languages.length >= 3);
+console.log(threeLanguages);
+
+let emails = [];
+users.map(user => {
+    emails.push(user.email);
+    // .map(emailString => emails.push(emailString))
+});
+console.log(emails);
+
+let totalUsersExperience = users.reduce(((totalExperience, user) => totalExperience + user.yearsOfExperience), 0);
+let avgUsersExperience = totalUsersExperience / users.length;
+console.log(avgUsersExperience);
+
+let longestEmail = '';
+users.reduce(((letterCount, user) => {
+    if (user.email.length > letterCount) {
+        letterCount = user.email.length;
+        longestEmail = user.email;
+    }
+    return letterCount
+}), 0);
+console.log(longestEmail);
+
+let names = 'Your codeup instructors are: ';
+users.reduce(((index, user) => {
+        const {id, name, email, languages, yearsOfExperience} = user;
+        if (index <= id) {
+            index++;
+            names += `${user.name} `;
+            console.log(index);
+        } else {
+            names += `${user.name}, `;
+            console.log(index);
+        }
+        return names
+    }
+), 0);
+console.log(names);
+
+const instructorsNames = users.reduce((nameCount, nameList) => {
+    return nameCount + " " + nameList.name
+}, 'your instructors are: ');
+
+console.log(instructorsNames);
+
+// const knownLanguages = users.reduce(((language, user) =>
+//     language + ` ${user.languages} `), '');
+// console.log(knownLanguages);
+
+const knownLanguages = users.reduce((languages, user) => {
+    for (let language of user.languages) {
+        if (!languages.includes(language)) {
+            languages.push(language)
+        }
+    }
+    return languages;
+}, []);
+
+console.log(knownLanguages);
