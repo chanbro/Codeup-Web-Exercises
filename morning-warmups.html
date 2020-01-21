@@ -391,23 +391,23 @@
    // }
    // arrayOfObjectsAverage(hamsters)
 
-// Anagrams are words that share all the same letters
-//    Write a function called isAnagram that takes in two strings and returns true if they are anagrams of each other
-
-   // All characters of input to lowercase to be compared (ex. 'tEsT' to 'test']
-   // Split all characters into an array of each letter (ex. ['t', 'e', 's', 't']
-   // Arrange array in alphabetical descending order (ex. ['e', 's', 't', 't']
-   // Join array to make a string (ex. 'estt')
-   let isAnagram = (input1, input2) => {
-        let word1 = input1.toLowerCase().split('').sort().join('');
-        let word2 = input2.toLowerCase().split('').sort().join('');
-        return (word1 === word2)
-    };
-
-   console.log(isAnagram('listen', 'silent'));; //true
-   console.log(isAnagram('test', 'check'));; //false
-   console.log(isAnagram('rAts', 'Star'));; //true
-   console.log(isAnagram('nothing', 'something'));; //false
+// // Anagrams are words that share all the same letters
+// //    Write a function called isAnagram that takes in two strings and returns true if they are anagrams of each other
+//
+//    // All characters of input to lowercase to be compared (ex. 'tEsT' to 'test']
+//    // Split all characters into an array of each letter (ex. ['t', 'e', 's', 't']
+//    // Arrange array in alphabetical descending order (ex. ['e', 's', 't', 't']
+//    // Join array to make a string (ex. 'estt')
+//    let isAnagram = (input1, input2) => {
+//         let word1 = input1.toLowerCase().split('').sort().join('');
+//         let word2 = input2.toLowerCase().split('').sort().join('');
+//         return (word1 === word2)
+//     };
+//
+//    console.log(isAnagram('listen', 'silent')); //true
+//    console.log(isAnagram('test', 'check')); //false
+//    console.log(isAnagram('rAts', 'Star')); //true
+//    console.log(isAnagram('nothing', 'something')); //false
 
 
 
