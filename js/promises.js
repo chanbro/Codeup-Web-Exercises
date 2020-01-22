@@ -98,34 +98,41 @@
 // console.log(getGithubUsernames());
 // console.log(getGithubUsernames('chanbro'));
 
-// const lastCommit = (username) => {
-//     return fetch(`https://api.github.com/search/commits?q=sort:committer-date+committer:${username}`,
-//         {headers: {
-//             'Authorization': githubToken,
-//             'Accept': 'application/vnd.github.cloak-preview'
-//         }})
-//         .then(response => response.json())
-//         .then(response => {
-//             //shows response object with which to reference most recent commit name and date in items[0]
-//             console.log(response);
-//             let name = response.items[0].commit.author.name;
-//             let date = response.items[0].commit.author.date;
-//             console.log(`Last commit was on ${date} by ${name}`)
-//         });
-// }
-//
-// console.log(lastCommit('chanbro')); //Promise object
-
-const lastCommit = username => {
-    let url = `https://api.github.com/users/${username}/events/public`;
-    fetch(url, {headers: {
+const lastCommit = (username) => {
+    return fetch(`https://api.github.com/search/commits?q=sort:committer-date+committer:${username}`,
+        {headers: {
             'Authorization': githubToken,
+            'Accept': 'application/vnd.github.cloak-preview'
         }})
-        .then(data => data.json())
-        .then(data => console.log(data))
-};
+        .then(response => response.json())
+        .then(response => {
+            //shows response object with which to reference most recent commit name and date in items[0]
+            console.log(response);
+            let name = response.items[0].commit.author.name;
+            let date = response.items[0].commit.author.date;
+            console.log(`Last commit was on ${date} by ${name}`)
+        });
+}
 
-lastCommit('chanbro');
+console.log(lastCommit('chanbro')); //Promise object
+
+// const lastCommit = username => {
+//     let url = `https://api.github.com/users/${username}/events/public`;
+//     fetch(url, {
+//         headers: {
+//             'Authorization': githubToken,
+//         }
+//     })
+//         .then(response => response.json())
+//         // .then(data => console.log(data))
+//         .then(data => {
+//             data.find(event => event.type === 'PushEvent')
+//         })
+//         .then(event => event.created_at)
+//         .then(date => console.log(date))
+// };
+//
+// lastCommit('chanbro');
 
 
 
