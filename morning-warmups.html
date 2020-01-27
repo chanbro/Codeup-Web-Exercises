@@ -412,64 +412,60 @@
 // using es6 syntax write a function that accepts an array of movie objects if the movies rating is 5, output : <title> is fantastic! if the movie rating is 1, output </title> is terrible! otherwise, output the title of the movie. Use the array of movies from the project. run the code in node. bonus: add messages for 2 and 4; output the messages to html
 
 
-     const  movies =  [
-       {
-           "title": "Star Wars: A New Hope",
-           "rating": "5",
-           "id": 2
-       },
-       {
-           "title": "Avatar",
-           "rating": "3",
-           "id": 3
-       },
-       {
-           "title": "The Sandlot",
-           "rating": "4",
-           "id": 4
-       },
-       {
-           "title": "Mulan",
-           "rating": "4",
-           "id": 5
-       },
-       {
-           "title": "The Matrix",
-           "rating": "4",
-           "id": 6
-       }
-   ];
-
-     const movieEval = (movies) => {
-         let title = movies.title;
-         let rating = movies.rating;
-         let movie = {
-             title: title,
-             rating: rating
-         };
-
-         let body = document.getElementsByTagName('body');
-         body.innerHTML = '<ul class="movie-eval">';
-         movies.forEach(({title, rating}) => {
-             if (rating === 5)
-                 body.innerHTML += `<li>${title} is fantastic!</li>`;
-             else if (rating === 4)
-                 body.innerHTML += `<li>${title} is good!</li>`;
-             else if (rating === 3)
-                 body.innerHTML += `<li>${title} is ok!</li>`;
-             else if (rating === 2)
-                 body.innerHTML += `<li>${title} is not good!</li>`;
-             else if (rating === 1)
-                 body.innerHTML += `<li>${title} is terrible!</li>`;
-         })
-         body.innerHTML += '</ul>'
-     };
-
-    movieEval(movies)
-
-
-
-
+   //   const  movies =  [
+   //     {
+   //         "title": "Star Wars: A New Hope",
+   //         "rating": "5",
+   //         "id": 2
+   //     },
+   //     {
+   //         "title": "Avatar",
+   //         "rating": "3",
+   //         "id": 3
+   //     },
+   //     {
+   //         "title": "The Sandlot",
+   //         "rating": "4",
+   //         "id": 4
+   //     },
+   //     {
+   //         "title": "Mulan",
+   //         "rating": "4",
+   //         "id": 5
+   //     },
+   //     {
+   //         "title": "The Matrix",
+   //         "rating": "4",
+   //         "id": 6
+   //     }
+   // ];
+   //
+   //   const movieEval = (movies) => {
+   //       let title = movies.title;
+   //       let rating = movies.rating;
+   //       let movie = {
+   //           title: title,
+   //           rating: rating
+   //       };
+   //
+   //       let body = document.getElementsByTagName('body');
+   //       body.innerHTML = '<ul class="movie-eval">';
+   //       movies.forEach(({title, rating}) => {
+   //           if (rating === 5)
+   //               body.innerHTML += `<li>${title} is fantastic!</li>`;
+   //           else if (rating === 4)
+   //               body.innerHTML += `<li>${title} is good!</li>`;
+   //           else if (rating === 3)
+   //               body.innerHTML += `<li>${title} is ok!</li>`;
+   //           else if (rating === 2)
+   //               body.innerHTML += `<li>${title} is not good!</li>`;
+   //           else if (rating === 1)
+   //               body.innerHTML += `<li>${title} is terrible!</li>`;
+   //       })
+   //       body.innerHTML += '</ul>'
+   //   };
+   //
+   //  movieEval(movies)
 
 
 
